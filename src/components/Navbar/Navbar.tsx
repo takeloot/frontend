@@ -1,7 +1,8 @@
 import React from "react";
 
-import Link from "next/link";
-import {Box, Link as ChakraLink, Flex, Select, Text} from "@chakra-ui/react";
+import {Box, Flex, Select, Text} from "@chakra-ui/react";
+
+import {UserPanel} from "../UserPanel";
 
 export const Navbar = () => {
   return (
@@ -21,10 +22,9 @@ export const Navbar = () => {
             _hover={{borderColor: "gray.800"}}
             mr="0.5em"
             w="35"
+            defaultValue="option1"
           >
-            <option value="option1" selected>
-              English
-            </option>
+            <option value="option1">English</option>
             <option value="option2">Русский</option>
           </Select>
           <Select
@@ -35,27 +35,13 @@ export const Navbar = () => {
             _hover={{borderColor: "gray.800"}}
             mr="0.5em"
             w="35"
+            defaultValue="option1"
           >
-            <option value="option1" selected>
-              $ USD
-            </option>
+            <option value="option1">$ USD</option>
             <option value="option2">₽ RUB</option>
           </Select>
         </Flex>
-        <Link href="#">
-          <ChakraLink
-            bg="blue.700"
-            color="gray.50"
-            borderRadius="0.25em"
-            px="0.85em"
-            py="0.5em"
-            fontSize="md"
-            _hover={{textDecoration: "none"}}
-            display="inline-block"
-          >
-            Login with Steam
-          </ChakraLink>
-        </Link>
+        <UserPanel />
       </Flex>
     </Flex>
   );

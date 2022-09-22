@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,7 +12,8 @@
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
     "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
