@@ -1,1 +1,1 @@
-export * from './BalanceModal';
+export * from "./BalanceModal";
