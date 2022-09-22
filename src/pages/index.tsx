@@ -1,22 +1,19 @@
 import type {NextPage} from "next";
 
-import {Box, ChakraProvider, Text} from "@chakra-ui/react";
+import {ChakraProvider, Flex, Text} from "@chakra-ui/react";
 
-import {ContentWrapper} from "../layouts";
-import {Header} from "../components/Header";
+import {MainLayout} from "_app/layouts";
 
 const Home: NextPage = () => {
   return (
     <ChakraProvider>
-      <Header />
-      <ContentWrapper justify="center" height="90vh">
-        <Box textAlign="center">
-          <Text fontSize="6xl" fontWeight="extrabold">
-            takeloot
+      <MainLayout>
+        <Flex direction="column" p="1em">
+          <Text fontSize="md" fontWeight="bold" color="gray.500">
+            Soon.
           </Text>
-          <Text fontSize="2xl">soon.</Text>
-        </Box>
-      </ContentWrapper>
+        </Flex>
+      </MainLayout>
     </ChakraProvider>
   );
 };

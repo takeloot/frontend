@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,19 +11,33 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
-    "prepare": "husky install"
+    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
+    "prepare": "husky install",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@chakra-ui/icons": "^2.0.10",
     "@chakra-ui/react": "^2.3.4",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "deepmerge": "^4.2.2",
     "framer-motion": "^7.3.5",
+    "graphql": "^16.6.0",
+    "graphql-ws": "^5.11.2",
+    "iron-session": "^6.2.1",
+    "lodash.isequal": "^4.5.0",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.12.1",
+    "@graphql-codegen/introspection": "^2.2.1",
+    "@graphql-codegen/typescript": "^2.7.3",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@types/lodash.isequal": "^4.5.6",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
@@ -35,8 +49,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
+    "husky": "^8.0.0",
     "prettier": "^2.7.1",
-    "typescript": "4.8.3",
-    "husky": "^8.0.0"
+    "typescript": "4.8.3"
   }
 }

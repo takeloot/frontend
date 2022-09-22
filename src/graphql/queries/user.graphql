@@ -1,0 +1,19 @@
+query me {
+  me {
+    id
+    name
+    avatar
+    profiles {
+      id
+      provider
+    }
+  }
+}
+
+mutation logout {
+  logout
+}
+
+mutation updateConnectionStatus {
+  updateConnectionStatus
+}
