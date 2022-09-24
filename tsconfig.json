@@ -22,7 +22,7 @@
     "target": "es2018",
     "paths": {
       "_app/*": ["./src/*"],
-      "_mocks": ["./__mocks__"],
+      "_mocks/*": ["./__mocks__/*"],
       "_components/*": ["./src/components/*"],
       "_core/*": ["./src/core/*"],
       "_constants/*": ["./src/constants/*"],
