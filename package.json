@@ -21,6 +21,7 @@
     "@chakra-ui/react": "^2.3.4",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@fontsource/inter": "^4.5.12",
     "deepmerge": "^4.2.2",
     "framer-motion": "^7.3.5",
     "graphql": "^16.6.0",

@@ -9,7 +9,7 @@ export const Navbar = () => {
     <Flex bg="gray.900" p="0.7em" justify="space-between" align="center">
       <Box>
         <Text color="gray.50" fontWeight="bold" fontSize="lg">
-          Takeloot
+          takeloot
         </Text>
       </Box>
       <Flex align="center">
