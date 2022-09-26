@@ -1,5 +1,7 @@
 import {withIronSessionApiRoute} from "iron-session/next";
 
+import {IS_LOCAL} from "_app/constants";
+
 const sessionOptions = {
   cookieName: "ts",
   password: process.env["NEXT_SESSION_PASSWORD"] || "",
@@ -11,11 +13,12 @@ async function provider(req, res) {
   const provider = req?.query?.route;
 
   const params = new URLSearchParams();
-  // TODO: CHANGE TO HTTPS LATER
-  params.set("code_handler", `http://${host}/api/auth/callback?`);
-  // TODO: CHANGE TO HTTPS LATER
-  params.set("redirect_uri", `http://${host}${req.query?.continue}`);
-  const authUrl = `http://${process.env["NEXT_PUBLIC_API"]}/auth/${provider}?${params.toString()}`;
+  const protocol = IS_LOCAL ? "http" : "https";
+
+  params.set("code_handler", `${protocol}://${host}/api/auth/callback?`);
+  params.set("redirect_uri", `${protocol}://${host}${req.query?.continue}`);
+
+  const authUrl = `${protocol}://${process.env["NEXT_PUBLIC_API"]}/auth/${provider}?${params.toString()}`;
 
   return res.redirect(authUrl);
 }

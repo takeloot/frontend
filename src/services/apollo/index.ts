@@ -24,8 +24,7 @@ function createApolloClient({apiUrl, inMemoryCacheConfig}: ApolloInitConfig) {
   if (typeof window !== "undefined") {
     link = new GraphQLWsLink(
       createClient({
-        // WSS
-        url: `ws://${apiUrl}/graphql`,
+        url: `wss://${apiUrl}/graphql`,
         lazy: false,
         isFatalConnectionProblem: () => false,
         retryAttempts: 10,
