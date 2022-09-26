@@ -1,6 +1,6 @@
 import React, {FC, ReactNode} from "react";
-import {Footer} from "_components/Footer";
 
+import {Footer} from "_components/Footer";
 import {Box} from "@chakra-ui/react";
 
 import {Navbar} from "_app/components";
