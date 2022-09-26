@@ -1,9 +1,8 @@
 import React, {FC} from "react";
 
-import {Flex, SimpleGrid} from "@chakra-ui/react";
-
-import {ItemCard} from "_components/UserInventory/ItemCard";
 import {mockItems} from "_mocks/InventoryMock";
+import {ItemCard} from "_components/UserInventory/ItemCard";
+import {Flex, SimpleGrid} from "@chakra-ui/react";
 
 export const UserInventory: FC = () => {
   return (

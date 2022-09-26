@@ -1,9 +1,8 @@
 import type {NextPage} from "next";
 import "@fontsource/inter";
 
-import {ChakraProvider} from "@chakra-ui/react";
-
 import {UserInventory} from "_components/UserInventory";
+import {ChakraProvider} from "@chakra-ui/react";
 
 import {MainLayout} from "_app/layouts";
 import {theme} from "_app/layouts";
