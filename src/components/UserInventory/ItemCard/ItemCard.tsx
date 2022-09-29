@@ -26,7 +26,7 @@ export const ItemCard: FC<ItemCardProps> = (props) => {
       alignContent="space-between"
       cursor="pointer"
       rounded="8"
-      bg={isChecked ? "gray.700" : "gray.800"}
+      bg={isChecked ? "gray.700" : "gray.900"}
       p="4"
       h="360px"
     >
