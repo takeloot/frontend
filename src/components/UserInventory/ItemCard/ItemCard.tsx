@@ -28,7 +28,7 @@ export const ItemCard: FC<ItemCardProps> = (props) => {
       rounded="8"
       bg={isChecked ? "gray.700" : "gray.900"}
       p="4"
-      h="360px"
+      h="100%"
     >
       <Box>
         <Checkbox isChecked={isChecked} borderColor="gray.500" colorScheme="gray.700"></Checkbox>
