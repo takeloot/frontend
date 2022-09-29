@@ -21,7 +21,9 @@ export const MainLayout: FC<IProps> = ({children, title}) => {
       </Head>
       <Box bg="gray.800" h="calc(100%)">
         <Navbar />
-        {children}
+        <Box position="relative" padding="60px 0 50px">
+          {children}
+        </Box>
         <Footer />
       </Box>
     </>

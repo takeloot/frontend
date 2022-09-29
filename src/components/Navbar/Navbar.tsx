@@ -6,7 +6,17 @@ import {UserPanel} from "../UserPanel";
 
 export const Navbar = () => {
   return (
-    <Flex bg="gray.900" p="3" justify="space-between" align="center">
+    <Flex
+      zIndex="10"
+      position="fixed"
+      opacity="0.9"
+      width="100%"
+      height="60px"
+      bg="gray.900"
+      p="3"
+      justify="space-between"
+      align="center"
+    >
       <Box>
         <Text color="gray.50" fontWeight="bold" fontSize="lg">
           takeloot
