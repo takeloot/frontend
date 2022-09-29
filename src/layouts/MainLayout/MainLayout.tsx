@@ -19,7 +19,7 @@ export const MainLayout: FC<IProps> = ({children, title}) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Box bg="gray.800" h="calc(100%)">
+      <Box bg="gray.800" h="calc(100%)" minHeight="100vh">
         <Navbar />
         <Box position="relative" padding="60px 0 50px">
           {children}
