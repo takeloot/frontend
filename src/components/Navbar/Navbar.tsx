@@ -9,6 +9,7 @@ export const Navbar = () => {
     <Flex
       zIndex="10"
       position="fixed"
+      opacity="0.9"
       width="100%"
       height="60px"
       bg="gray.900"
