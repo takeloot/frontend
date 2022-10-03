@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 
 import Link from "next/link";
-import {Avatar, Link as ChakraLink} from "@chakra-ui/react";
+import {Avatar, Link as ChakraLink, SkeletonCircle} from "@chakra-ui/react";
 
 import {useMeQuery, useUpdateConnectionStatusMutation} from "_app/generated/graphql";
 
@@ -23,13 +23,15 @@ export const UserPanel = () => {
   }, [updateStatus]);
 
   const user = userQuery.data?.me;
+  const loading = userQuery.loading;
   const name = user?.name;
   const avatar = user?.avatar;
 
   return (
     <>
-      {!!user && <Avatar name={name || ""} src={avatar || ""} h="10" w="10" mr="0.5em" />}
-      {!user && (
+      {!user && loading && !avatar && <SkeletonCircle h="10" w="10" mr="0.5em" />}
+      {!!user && !loading && avatar && <Avatar src={avatar} h="10" w="10" mr="0.5em" />}
+      {!user && !loading && (
         <Link href="/api/auth/steam?continue=">
           <ChakraLink
             bg="blue.700"
