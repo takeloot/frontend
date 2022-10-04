@@ -4,6 +4,11 @@ on:
   push:
     branches: [develop]
 
+env:
+  NEXT_SESSION_PASSWORD: ${{ secrets.NEXT_SESSION_PASSWORD }}
+  NEXT_PUBLIC_API: dev-api.takeloot.ru
+  NEXT_IS_LOCAL: false
+
 jobs:
   build:
     name: Build and Deploy
@@ -42,12 +47,12 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/takeloot-client:latest
           cache-to: type=inline
       
-      # - name: Update rancher deployment
-      #   uses: th0th/rancher-redeploy-workload@v0.9
-      #   env:
-      #     RANCHER_BEARER_TOKEN: ${{ secrets.RANCHER_BEARER_TOKEN }}
-      #     RANCHER_CLUSTER_ID: 'c-l7qcs'
-      #     RANCHER_NAMESPACE: 'default'
-      #     RANCHER_PROJECT_ID: 'p-pg7wp'
-      #     RANCHER_URL: 'https://rancher.takeloot.ru'
-      #     RANCHER_WORKLOADS: 'dev-takeloot-client'
+      - name: Update rancher deployment
+        uses: th0th/rancher-redeploy-workload@v0.9
+        env:
+          RANCHER_BEARER_TOKEN: ${{ secrets.RANCHER_BEARER_TOKEN }}
+          RANCHER_CLUSTER_ID: 'c-l7qcs'
+          RANCHER_NAMESPACE: 'default'
+          RANCHER_PROJECT_ID: 'p-pg7wp'
+          RANCHER_URL: 'https://rancher.takeloot.ru'
+          RANCHER_WORKLOADS: 'dev-takeloot-client'
