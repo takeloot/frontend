@@ -5,6 +5,7 @@ import {useApollo} from "_app/services/apollo";
 import type {AppProps} from "next/app";
 
 function MyApp({Component, pageProps}: AppProps) {
+  console.log(process.env);
   const apolloClient = useApollo(pageProps, {
     apiUrl: process.env["NEXT_PUBLIC_API"] || "",
   });
