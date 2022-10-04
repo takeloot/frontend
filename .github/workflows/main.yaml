@@ -55,4 +55,4 @@ jobs:
           RANCHER_NAMESPACE: 'default'
           RANCHER_PROJECT_ID: 'p-pg7wp'
           RANCHER_URL: 'https://rancher.takeloot.ru'
-          RANCHER_WORKLOADS: 'dev-takeloot-client'
+          RANCHER_WORKLOADS: 'takeloot-dev-client'
