@@ -35,6 +35,8 @@ FROM node:16-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+ENV NEXT_PUBLIC_API=dev-api.takeloot.ru
+ENV NEXT_IS_LOCAL=false
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
@@ -53,7 +55,5 @@ USER nextjs
 EXPOSE 8080
 
 ENV PORT 8080
-ENV NEXT_PUBLIC_API=dev-api.takeloot.ru
-ENV NEXT_IS_LOCAL=true
 
 CMD ["node", "server.js"]
