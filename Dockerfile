@@ -53,5 +53,7 @@ USER nextjs
 EXPOSE 8080
 
 ENV PORT 8080
+ENV NEXT_PUBLIC_API=dev-api.takeloot.ru
+ENV NEXT_IS_LOCAL=true
 
 CMD ["node", "server.js"]
