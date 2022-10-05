@@ -1,6 +1,6 @@
 import {withIronSessionApiRoute} from "iron-session/next";
 
-import {IS_LOCAL} from "_app/constants";
+import {IS_LOCAL, PUBLIC_API} from "_app/constants";
 
 const sessionOptions = {
   cookieName: "ts",
@@ -18,7 +18,7 @@ async function provider(req, res) {
   params.set("code_handler", `${protocol}://${host}/api/auth/callback?`);
   params.set("redirect_uri", `${protocol}://${host}${req.query?.continue}`);
 
-  const authUrl = `${protocol}://${process.env["NEXT_PUBLIC_API"]}/auth/${provider}?${params.toString()}`;
+  const authUrl = `${protocol}://${PUBLIC_API}/auth/${provider}?${params.toString()}`;
 
   return res.redirect(authUrl);
 }
