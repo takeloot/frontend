@@ -42,15 +42,6 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/takeloot-client:latest
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/takeloot-client:latest
           cache-to: type=inline
-          env: |
-            "NEXT_SESSION_PASSWORD=${{ secrets.NEXT_SESSION_PASSWORD }}"
-            "NEXT_PUBLIC_API=dev-api.takeloot.ru"
-            "NEXT_IS_LOCAL=false"
-          secrets: |
-            "NEXT_SESSION_PASSWORD=${{ secrets.NEXT_SESSION_PASSWORD }}"
-            "NEXT_PUBLIC_API=dev-api.takeloot.ru"
-            "NEXT_IS_LOCAL=false"
-          
       
       - name: Update rancher deployment
         uses: th0th/rancher-redeploy-workload@v0.9
