@@ -27,7 +27,6 @@ export const UserPanel = () => {
   const loading = userQuery.loading;
   const name = user?.name;
   const avatar = user?.avatar;
-  const prevData = userQuery.previousData?.me;
 
   const isShowing = useMemo(() => {
     return Boolean(!!user && !loading && avatar);
