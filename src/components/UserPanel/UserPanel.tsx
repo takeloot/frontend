@@ -35,8 +35,8 @@ export const UserPanel = () => {
 
   return (
     <>
-      {!!prevData && <UserMenu isShowing={isShowing} avatar={avatar} name={name} />}
-      {!prevData && !loading && (
+      {!!user && <UserMenu isShowing={isShowing} avatar={avatar} name={name} />}
+      {!user && !loading && (
         <Link href="/api/auth/steam?continue=">
           <ChakraLink
             bg="blue.700"
