@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    outputStandalone: true,
+  output: "standalone",
+  images: {
+    domains: ["avatars.akamai.steamstatic.com", "community.cloudflare.steamstatic.com"],
+    formats: ["image/avif", "image/webp"],
   },
 };
 

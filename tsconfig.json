@@ -30,7 +30,8 @@
       "_layouts/*": ["./src/layouts/*"],
       "_pages/*": ["./src/pages/*"],
       "_services/*": ["./src/services/*"],
-      "_utils/*": ["./src/utils/*"]
+      "_utils/*": ["./src/utils/*"],
+      "_styles/*": ["./src/styles/*"]
     },
     "incremental": true
   },

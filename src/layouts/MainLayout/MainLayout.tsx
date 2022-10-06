@@ -2,7 +2,6 @@ import React, {FC, ReactNode} from "react";
 
 import Head from "next/head";
 import {Footer} from "_components/Footer";
-import {Box} from "@chakra-ui/react";
 
 import {Navbar} from "_app/components";
 
@@ -19,13 +18,11 @@ export const MainLayout: FC<IProps> = ({children, title}) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Box bg="gray.800" h="calc(100%)" minHeight="100vh">
+      <div>
         <Navbar />
-        <Box position="relative" padding="60px 0 50px">
-          {children}
-        </Box>
+        <div className="mx-4 my-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2">{children}</div>
         <Footer />
-      </Box>
+      </div>
     </>
   );
 };

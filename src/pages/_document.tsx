@@ -3,7 +3,7 @@ import Document, {Head, Html, Main, NextScript} from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html className="dark">
         <Head>
           <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png" />
@@ -27,7 +27,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
-        <body>
+        <body className="dark:bg-tl-black dark:text-tl-light-gray">
           <Main />
           <NextScript />
         </body>
