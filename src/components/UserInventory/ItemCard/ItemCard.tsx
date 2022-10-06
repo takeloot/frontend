@@ -26,7 +26,7 @@ export const ItemCard: FC<ItemCardProps> = (props) => {
       alignContent="space-between"
       cursor="pointer"
       rounded="8"
-      bg={isChecked ? "gray.700" : "gray.900"}
+      bg={isChecked ? "gray.600" : "gray.900"}
       p="4"
       h="100%"
     >
@@ -40,10 +40,10 @@ export const ItemCard: FC<ItemCardProps> = (props) => {
         />
       </Box>
       <Box width="100%">
-        <Text color="gray.500">{quality}</Text>
-        <Divider marginY="1" />
-        <Text color="gray.500">{name}</Text>
-        <Text marginTop="4" color="gray.500">
+        <Text color={isChecked ? "gray.900" : "gray.400"}>{quality}</Text>
+        <Divider marginY="1" borderColor={isChecked ? "gray.900" : "gray.400"} />
+        <Text color={isChecked ? "gray.900" : "gray.400"}>{name}</Text>
+        <Text marginTop="4" color={isChecked ? "gray.900" : "gray.400"}>
           Price {price}
         </Text>
       </Box>

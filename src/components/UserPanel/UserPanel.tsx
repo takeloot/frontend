@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 
 import Link from "next/link";
-import {Avatar, Link as ChakraLink, SkeletonCircle} from "@chakra-ui/react";
+import {Link as ChakraLink} from "@chakra-ui/react";
+import {UserMenu} from "_components/UserPanel/UserMenu";
 
 import {useMeQuery, useUpdateConnectionStatusMutation} from "_app/generated/graphql";
 
@@ -27,10 +28,13 @@ export const UserPanel = () => {
   const name = user?.name;
   const avatar = user?.avatar;
 
+  const isShowing = useMemo(() => {
+    return Boolean(!!user && !loading && avatar);
+  }, [user, loading, avatar]);
+
   return (
     <>
-      {!user && loading && !avatar && <SkeletonCircle h="10" w="10" mr="0.5em" />}
-      {!!user && !loading && avatar && <Avatar src={avatar} h="10" w="10" mr="0.5em" />}
+      {!!user && <UserMenu isShowing={isShowing} avatar={avatar} name={name} />}
       {!user && !loading && (
         <Link href="/api/auth/steam?continue=">
           <ChakraLink
