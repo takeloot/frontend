@@ -17,9 +17,11 @@ export const MainLayout: FC<IProps> = ({children, title}) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div>
-        <Navbar />
-        <div className="mx-4 my-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2">{children}</div>
+      <div className="flex h-screen flex-col">
+        <div className="flex-auto">
+          <Navbar />
+          <div className="mx-4 my-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2">{children}</div>
+        </div>
         <Footer />
       </div>
     </>
