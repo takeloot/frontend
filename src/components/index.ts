@@ -1,2 +1,4 @@
-export * from "./Navbar";
-export * from "./UserPanel";
+export * from "./navbar";
+export * from "./user-panel";
+export * from "./user-inventory";
+export * from "./footer";

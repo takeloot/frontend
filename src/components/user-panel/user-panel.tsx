@@ -55,7 +55,7 @@ export const UserProfile = ({user}) => {
   });
 
   return (
-    <Menu as="div" className="relative max-h-10">
+    <Menu as="div" className="relative">
       <Menu.Button>
         <Image className="rounded-full" src={avatar} alt={name} height="40" width="40" loading="lazy" />
       </Menu.Button>

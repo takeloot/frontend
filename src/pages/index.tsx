@@ -1,8 +1,7 @@
 import type {NextPage} from "next";
 
-import {UserInventory} from "_components/UserInventory";
-
 import {MainLayout} from "_app/layouts";
+import {UserInventory} from "_app/components";
 
 const Home: NextPage = () => {
   return (

@@ -21,11 +21,11 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#0C0C0F" />
           <meta name="msapplication-TileImage" content="/favicon-144x144.png" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
           <link rel="manifest" href="/manifest.json" />
-          <meta name="theme-color" content="#ffffff"></meta>
+          <meta name="theme-color" content="#0C0C0F"></meta>
         </Head>
         <body className="dark:bg-tl-black dark:text-tl-light-gray">
           <Main />

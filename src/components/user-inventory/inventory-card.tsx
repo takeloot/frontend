@@ -2,13 +2,13 @@ import {FC} from "react";
 
 import Image from "next/image";
 
-interface ItemCardProps {
+interface IProps {
   quality: string;
   name: string;
   price: string;
 }
 
-export const ItemCard: FC<ItemCardProps> = ({quality, name, price}) => {
+export const InventoryCard: FC<IProps> = ({quality, name, price}) => {
   return (
     <div className="rounded-lg border border-tl-gray bg-tl-black p-4">
       <div className="text-center">

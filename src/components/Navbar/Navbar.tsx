@@ -5,7 +5,7 @@ import {Listbox, Transition} from "@headlessui/react";
 
 import {CURRENCIES, LANGUAGES} from "_app/constants";
 
-import {UserPanel} from "../UserPanel";
+import {UserPanel} from "../user-panel";
 
 export const Navbar = () => {
   const [language, setLanguage] = useState(LANGUAGES[0]);
@@ -31,9 +31,9 @@ export const Navbar = () => {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-tl-dark-gray py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {LANGUAGES.map((language, personIdx) => (
+                  {LANGUAGES.map((language, languageIdx) => (
                     <Listbox.Option
-                      key={personIdx}
+                      key={languageIdx}
                       className={({active}) =>
                         `relative cursor-default select-none py-2 pl-10 pr-4 ${
                           active ? "bg-tl-gray text-white" : "text-white"
@@ -76,9 +76,9 @@ export const Navbar = () => {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-tl-dark-gray py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {CURRENCIES.map((currency, personIdx) => (
+                  {CURRENCIES.map((currency, currencyIdx) => (
                     <Listbox.Option
-                      key={personIdx}
+                      key={currencyIdx}
                       className={({active}) =>
                         `relative cursor-default select-none py-2 pl-10 pr-4 ${
                           active ? "bg-tl-gray text-white" : "text-white"

@@ -1,9 +1,8 @@
 import React, {FC, ReactNode} from "react";
 
 import Head from "next/head";
-import {Footer} from "_components/Footer";
 
-import {Navbar} from "_app/components";
+import {Footer, Navbar} from "_app/components";
 
 interface IProps {
   children: ReactNode;
