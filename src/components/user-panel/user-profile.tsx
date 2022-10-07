@@ -1,22 +1,35 @@
-import {Fragment} from "react";
+import {Fragment, useCallback} from "react";
 
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {Menu, Transition} from "@headlessui/react";
 
+import {useConfirmationDialog} from "_app/hooks";
 import {useLogoutMutation} from "_app/generated/graphql";
 
 // @ts-ignore: work in progress, will be fixed later
 export const UserProfile = ({user}) => {
   const router = useRouter();
-
-  const {name, avatar} = user;
+  const {getConfirmation} = useConfirmationDialog();
 
   const [logout] = useLogoutMutation({
     onCompleted: () => {
       router.push("/api/auth/logout");
     },
   });
+
+  const {name, avatar} = user;
+
+  const handleLogout = useCallback(async () => {
+    const confirmed = await getConfirmation({
+      title: "Log out",
+      message: "Do you really want to log out?",
+    });
+
+    if (confirmed) {
+      logout();
+    }
+  }, [getConfirmation, logout]);
 
   return (
     <Menu as="div" className="relative pt-2">
@@ -88,7 +101,7 @@ export const UserProfile = ({user}) => {
                   className={`${
                     active ? "bg-tl-gray text-tl-red" : "text-tl-red"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  onClick={() => logout()}
+                  onClick={handleLogout}
                 >
                   Log out
                 </button>

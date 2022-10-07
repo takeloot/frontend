@@ -1,6 +1,7 @@
 import {ApolloProvider} from "@apollo/client";
 
-import {useApollo} from "_app/services/apollo";
+import {useApollo} from "_app/services";
+import {ConfirmationDialogProvider} from "_app/core";
 import {PUBLIC_API} from "_app/constants";
 
 import type {AppProps} from "next/app";
@@ -14,9 +15,11 @@ function MyApp({Component, pageProps}: AppProps) {
   });
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
+    <ConfirmationDialogProvider>
+      <ApolloProvider client={apolloClient}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </ConfirmationDialogProvider>
   );
 }
 
