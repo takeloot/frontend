@@ -5,7 +5,7 @@ import {Listbox, Transition} from "@headlessui/react";
 
 import {CURRENCIES, LANGUAGES} from "_app/constants";
 
-import {UserPanel} from "../user-panel";
+import {UserPanel} from "../auser-panel";
 
 export const Navbar = () => {
   const [language, setLanguage] = useState(LANGUAGES[0]);
