@@ -1,16 +1,19 @@
 import React, {Fragment, useState} from "react";
 
+import {useRouter} from "next/router";
 import Link from "next/link";
+import {clsx} from "clsx";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
 import {useMeQuery} from "_app/generated/graphql";
-import {CURRENCIES, LANGUAGES} from "_app/constants";
+import {CURRENCIES, LANGUAGES, PAGES} from "_app/constants";
 
 import {UserPanel} from "../user-panel";
 import {Loader} from "../loader";
 
 export const Navbar = () => {
+  const router = useRouter();
   const userQuery = useMeQuery();
 
   const [language, setLanguage] = useState(LANGUAGES[0]);
@@ -25,9 +28,33 @@ export const Navbar = () => {
 
   return (
     <div className="flex flex-row items-center justify-between px-4 py-3">
-      <Link href="/">
-        <div className="hover:cursor-pointer">takeloot</div>
-      </Link>
+      <div className="flew-row flex items-center">
+        <Link href="/">
+          <div className="mr-12 text-lg font-semibold hover:cursor-pointer">takeloot</div>
+        </Link>
+
+        <ul className="flex flex-row">
+          {PAGES.map((page, pageIdx) => {
+            const isActiveLink = router.pathname === page.url;
+
+            return (
+              <li key={pageIdx}>
+                <Link href={page.disabled ? "#" : page.url}>
+                  <a
+                    className={clsx(
+                      isActiveLink && "text-blue hover:text-blue",
+                      page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
+                      "mr-6 text-sm font-medium uppercase text-cloud hover:text-blue-light",
+                    )}
+                  >
+                    {page.title}
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       <div className="flex flex-row items-center">
         <div className="mr-4 w-24">
           <Listbox value={language} onChange={setLanguage}>

@@ -21,6 +21,7 @@
     "@fontsource/inter": "^4.5.12",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "clsx": "^1.2.1",
     "color": "^4.2.3",
     "deepmerge": "^4.2.2",
     "framer-motion": "^7.3.5",

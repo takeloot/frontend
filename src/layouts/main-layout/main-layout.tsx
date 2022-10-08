@@ -29,9 +29,7 @@ export const MainLayout: FC<IProps> = ({
       <div className="flex h-screen flex-col">
         <div className="flex-auto">
           {!withoutHeader && <Navbar />}
-          <div className={withStyle ? "my-4 mx-4 rounded-lg border border-gray bg-surface p-2" : "mx-4 my-4"}>
-            {children}
-          </div>
+          <div className={withStyle ? "my-4 mx-4" : "mx-4 my-4"}>{children}</div>
         </div>
         {!withoutFooter && <Footer />}
       </div>

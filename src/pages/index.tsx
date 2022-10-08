@@ -1,12 +1,13 @@
 import type {NextPage} from "next";
 
 import {MainLayout} from "_app/layouts/main-layout";
-import {UserInventory} from "_app/components";
 
 const Home: NextPage = () => {
   return (
-    <MainLayout withStyle>
-      <UserInventory />
+    <MainLayout>
+      <div className="rounded-lg border border-gray bg-surface p-2">
+        <div className="text-lg">Sell CS:GO skins</div>
+      </div>
     </MainLayout>
   );
 };
