@@ -10,7 +10,7 @@ interface IProps {
 
 export const InventoryCard: FC<IProps> = ({quality, name, price}) => {
   return (
-    <div className="rounded-lg border border-tl-gray bg-tl-black p-4">
+    <div className="rounded-lg border border-gray bg-background p-4">
       <div className="text-center">
         <Image
           width={100}

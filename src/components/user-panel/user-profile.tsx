@@ -1,6 +1,7 @@
 import {Fragment, useCallback} from "react";
 
 import {useRouter} from "next/router";
+import Link from "next/link";
 import Image from "next/image";
 import {Menu, Transition} from "@headlessui/react";
 
@@ -45,25 +46,35 @@ export const UserProfile = ({user}) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 w-56 origin-top-right divide-y divide-tl-gray rounded-md bg-tl-dark-gray shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 w-56 origin-top-right divide-y divide-gray rounded-md bg-surface shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="p-2">
+            <Menu.Item>
+              <div
+                className="
+                  group flex w-full items-center rounded-md px-2 py-2 text-sm"
+              >
+                {name}
+              </div>
+            </Menu.Item>
+          </div>
           <div className="p-2">
             <Menu.Item>
               {({active}) => (
-                <button
-                  className={`${
-                    active ? "bg-tl-gray " : ""
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  Profile
-                </button>
+                <Link href="/profile">
+                  <a
+                    className={`${
+                      active ? "bg-gray " : ""
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
+                  >
+                    Profile
+                  </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({active}) => (
                 <button
-                  className={`${
-                    active ? "bg-tl-gray " : ""
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Referral
                 </button>
@@ -74,9 +85,7 @@ export const UserProfile = ({user}) => {
             <Menu.Item>
               {({active}) => (
                 <button
-                  className={`${
-                    active ? "bg-tl-gray " : ""
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Transactions
                 </button>
@@ -85,9 +94,7 @@ export const UserProfile = ({user}) => {
             <Menu.Item>
               {({active}) => (
                 <button
-                  className={`${
-                    active ? "bg-tl-gray" : ""
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  className={`${active ? "bg-gray" : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Promo code
                 </button>
@@ -99,7 +106,7 @@ export const UserProfile = ({user}) => {
               {({active}) => (
                 <button
                   className={`${
-                    active ? "bg-tl-gray text-tl-red" : "text-tl-red"
+                    active ? "bg-gray text-red" : "text-red"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   onClick={handleLogout}
                 >

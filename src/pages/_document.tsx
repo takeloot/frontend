@@ -27,7 +27,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#0C0C0F"></meta>
         </Head>
-        <body className="flex h-full min-h-full flex-col dark:bg-tl-black dark:text-tl-light-gray">
+        <body className="flex h-full min-h-full flex-col dark:bg-background dark:text-cloud">
           <Main />
           <NextScript />
         </body>
