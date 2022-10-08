@@ -1,6 +1,7 @@
-import type {NextPage} from "next";
+import type {GetStaticProps, NextPage} from "next";
 
 import Image from "next/image";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery} from "_app/generated/graphql";
@@ -45,3 +46,11 @@ const Profile: NextPage = () => {
 };
 
 export default Profile;
+
+export const getStaticProps: GetStaticProps = async ({locale}) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ["common"])),
+    },
+  };
+};

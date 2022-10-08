@@ -3,6 +3,7 @@ import {Fragment, useCallback} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import {useTranslation} from "next-i18next";
 import {Menu, Transition} from "@headlessui/react";
 
 import {useConfirmationDialog} from "_app/hooks";
@@ -12,6 +13,7 @@ import {useLogoutMutation} from "_app/generated/graphql";
 export const UserProfile = ({user}) => {
   const router = useRouter();
   const {getConfirmation} = useConfirmationDialog();
+  const {t} = useTranslation("common");
 
   const [logout] = useLogoutMutation({
     onCompleted: () => {
@@ -66,7 +68,7 @@ export const UserProfile = ({user}) => {
                       active ? "bg-gray " : ""
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
                   >
-                    Profile
+                    {t("profile")}
                   </a>
                 </Link>
               )}
@@ -76,7 +78,7 @@ export const UserProfile = ({user}) => {
                 <button
                   className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  Referral
+                  {t("refferal")}
                 </button>
               )}
             </Menu.Item>
@@ -87,16 +89,7 @@ export const UserProfile = ({user}) => {
                 <button
                   className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  Transactions
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({active}) => (
-                <button
-                  className={`${active ? "bg-gray" : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  Promo code
+                  {t("transactions")}
                 </button>
               )}
             </Menu.Item>
@@ -110,7 +103,7 @@ export const UserProfile = ({user}) => {
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   onClick={handleLogout}
                 >
-                  Log out
+                  {t("logout")}
                 </button>
               )}
             </Menu.Item>

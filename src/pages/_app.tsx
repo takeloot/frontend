@@ -1,6 +1,7 @@
 import {useEffect} from "react";
 
 import toast, {useToasterStore} from "react-hot-toast";
+import {appWithTranslation} from "next-i18next";
 import {ApolloProvider} from "@apollo/client";
 
 import {useApollo} from "_app/services";
@@ -35,4 +36,4 @@ function MyApp({Component, pageProps}: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -1,5 +1,9 @@
 import React from "react";
 
+import {GetStaticProps} from "next";
+
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+
 import {MainLayout} from "_app/layouts";
 import {CartListing, UserInventory} from "_app/components";
 
@@ -15,3 +19,11 @@ const Sell = () => {
 };
 
 export default Sell;
+
+export const getStaticProps: GetStaticProps = async ({locale}) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ["common"])),
+    },
+  };
+};

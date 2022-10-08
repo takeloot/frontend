@@ -2,12 +2,13 @@ import React, {Fragment, useState} from "react";
 
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {useTranslation} from "next-i18next";
 import {clsx} from "clsx";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
 import {useMeQuery} from "_app/generated/graphql";
-import {CURRENCIES, LANGUAGES, PAGES} from "_app/constants";
+import {CURRENCIES, LANGUAGES} from "_app/constants";
 
 import {UserPanel} from "../user-panel";
 import {Loader} from "../loader";
@@ -15,12 +16,36 @@ import {Loader} from "../loader";
 export const Navbar = () => {
   const router = useRouter();
   const userQuery = useMeQuery();
+  const {t} = useTranslation("common");
 
   const [language, setLanguage] = useState(LANGUAGES[0]);
   const [currency, setCurrency] = useState(CURRENCIES[0]);
 
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
+
+  const PAGES = [
+    {
+      url: "/trade",
+      title: t("trade"),
+      disabled: true,
+    },
+    {
+      url: "/store",
+      title: t("store"),
+      disabled: true,
+    },
+    {
+      url: "/sell",
+      title: t("sell"),
+      disabled: false,
+    },
+    {
+      url: "/faq",
+      title: t("faq"),
+      disabled: true,
+    },
+  ];
 
   if (loading) {
     return <Loader />;
