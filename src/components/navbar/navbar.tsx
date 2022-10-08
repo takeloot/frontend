@@ -42,7 +42,7 @@ export const Navbar = () => {
                 <Link href={page.disabled ? "#" : page.url}>
                   <a
                     className={clsx(
-                      isActiveLink && "text-blue",
+                      isActiveLink && "text-blue hover:text-blue",
                       page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
                       "mr-6 text-sm font-medium uppercase text-cloud hover:text-blue-light",
                     )}
