@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout>
       <div className="rounded-lg border border-gray bg-surface p-2">
-        <div>Landing</div>
+        <div className="text-lg">Sell CS:GO skins</div>
       </div>
     </MainLayout>
   );
