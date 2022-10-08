@@ -47,25 +47,25 @@ export const ConfirmationDialog: FC<IProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-tl-dark-gray p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-surface p-6 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                   {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-tl-light-gray">{message}</p>
+                  <p className="text-sm text-cloud">{message}</p>
                 </div>
 
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="mr-4 inline-flex w-16 justify-center rounded-lg border border-transparent bg-tl-red px-4 py-2 text-sm font-medium text-white focus:outline-none"
+                    className="mr-4 inline-flex w-16 justify-center rounded-lg border border-transparent bg-red px-4 py-2 text-sm font-medium text-white focus:outline-none"
                     onClick={onConfirm}
                   >
                     {confirmText}
                   </button>
                   <button
                     type="button"
-                    className="inline-flex w-16 justify-center rounded-lg border border-transparent bg-tl-gray px-4 py-2 text-sm font-medium  text-white focus:outline-none"
+                    className="inline-flex w-16 justify-center rounded-lg border border-transparent bg-gray px-4 py-2 text-sm font-medium  text-white focus:outline-none"
                     onClick={onDismiss}
                   >
                     {dismissText}

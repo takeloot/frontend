@@ -33,7 +33,7 @@ export const UserPanel = () => {
       {loading && !user && <UserProfileSkeleton />}
       {!user && !loading && (
         <Link href="/api/auth/steam?continue=">
-          <div className="rounded-lg bg-tl-gray py-2 px-4 hover:cursor-pointer">Login with Steam</div>
+          <div className="rounded-lg bg-gray py-2 px-4 hover:cursor-pointer">Login with Steam</div>
         </Link>
       )}
     </div>

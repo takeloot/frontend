@@ -8,9 +8,17 @@ interface IProps {
   children: ReactNode;
   title?: string;
   withStyle?: boolean;
+  withoutHeader?: boolean;
+  withoutFooter?: boolean;
 }
 
-export const MainLayout: FC<IProps> = ({children, title, withStyle = false}) => {
+export const MainLayout: FC<IProps> = ({
+  children,
+  title,
+  withoutHeader = false,
+  withoutFooter = false,
+  withStyle = false,
+}) => {
   return (
     <>
       <Head>
@@ -20,12 +28,12 @@ export const MainLayout: FC<IProps> = ({children, title, withStyle = false}) => 
       </Head>
       <div className="flex h-screen flex-col">
         <div className="flex-auto">
-          <Navbar />
-          <div className={withStyle ? "my-4 mx-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2" : "mx-4 my-4"}>
+          {!withoutHeader && <Navbar />}
+          <div className={withStyle ? "my-4 mx-4 rounded-lg border border-gray bg-surface p-2" : "mx-4 my-4"}>
             {children}
           </div>
         </div>
-        <Footer />
+        {!withoutFooter && <Footer />}
       </div>
     </>
   );
