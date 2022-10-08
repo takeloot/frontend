@@ -1,0 +1,28 @@
+fragment RegularSkin on Skin {
+  id
+  steamId
+  steamName
+  steamImg
+}
+
+query userInventory($appId: Int!, $userId: ID!) {
+  userInventory(appId: $appId, userId: $userId) {
+    id
+    createdAt
+    updatedAt
+    skins {
+      ...RegularSkin
+    }
+  }
+}
+
+query myInventory($appId: Int!) {
+  myInventory(appId: $appId) {
+    id
+    createdAt
+    updatedAt
+    skins {
+      ...RegularSkin
+    }
+  }
+}

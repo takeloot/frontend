@@ -1,6 +1,5 @@
 overwrite: true
-# TODO: CHANGE TO URL LATER
-schema: "schema.gql"
+schema: "https://dev-api.takeloot.ru/graphql"
 documents: "src/**/*.graphql"
 generates:
   src/generated/graphql.tsx:
