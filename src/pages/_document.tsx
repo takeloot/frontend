@@ -3,7 +3,7 @@ import Document, {Head, Html, Main, NextScript} from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html className="dark min-h-full">
         <Head>
           <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png" />
@@ -21,13 +21,13 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#0C0C0F" />
           <meta name="msapplication-TileImage" content="/favicon-144x144.png" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
           <link rel="manifest" href="/manifest.json" />
-          <meta name="theme-color" content="#ffffff"></meta>
+          <meta name="theme-color" content="#0C0C0F"></meta>
         </Head>
-        <body>
+        <body className="flex h-full min-h-full flex-col dark:bg-tl-black dark:text-tl-light-gray">
           <Main />
           <NextScript />
         </body>

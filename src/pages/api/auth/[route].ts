@@ -2,7 +2,7 @@ import {withIronSessionApiRoute} from "iron-session/next";
 
 import {IS_LOCAL, PUBLIC_API} from "_app/constants";
 
-const sessionOptions = {
+export const sessionOptions = {
   cookieName: "ts",
   password: process.env["NEXT_SESSION_PASSWORD"] || "",
 };
