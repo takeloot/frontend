@@ -7,7 +7,9 @@ export const Loader = () => {
     <MainLayout withoutFooter withoutHeader>
       <div className="flex h-screen w-full items-center justify-center text-center">
         <div>
-          <div className="loader m-auto h-12 w-12 rounded-full border-8 border-t-8 border-surface-light align-middle ease-linear" />
+          <div className="m-auto flex h-14 w-14 animate-spin items-center justify-center rounded-full bg-gradient-to-r from-gray-500 via-surface-light to-surface">
+            <div className="m-auto h-10 w-10 rounded-full bg-background"></div>
+          </div>
           <div className="animate-pulse pt-4">
             <div className="text-lg">Processing</div>
             <div>It takes a few seconds</div>
