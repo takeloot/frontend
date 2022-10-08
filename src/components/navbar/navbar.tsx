@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 
+import Link from "next/link";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
@@ -13,7 +14,9 @@ export const Navbar = () => {
 
   return (
     <div className="flex flex-row items-center justify-between px-4 py-3">
-      <div>takeloot</div>
+      <Link href="/">
+        <div className="hover:cursor-pointer">takeloot</div>
+      </Link>
       <div className="flex flex-row items-center">
         <div className="mr-4 w-24">
           <Listbox value={language} onChange={setLanguage}>

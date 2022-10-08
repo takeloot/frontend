@@ -26,8 +26,6 @@ export const UserPanel = () => {
 
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
-  // const name = user?.name;
-  // const avatar = user?.avatar;
 
   return (
     <div>

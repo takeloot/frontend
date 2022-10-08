@@ -7,9 +7,10 @@ import {Footer, Navbar} from "_app/components";
 interface IProps {
   children: ReactNode;
   title?: string;
+  withStyle?: boolean;
 }
 
-export const MainLayout: FC<IProps> = ({children, title}) => {
+export const MainLayout: FC<IProps> = ({children, title, withStyle = false}) => {
   return (
     <>
       <Head>
@@ -20,7 +21,9 @@ export const MainLayout: FC<IProps> = ({children, title}) => {
       <div className="flex h-screen flex-col">
         <div className="flex-auto">
           <Navbar />
-          <div className="mx-4 my-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2">{children}</div>
+          <div className={withStyle ? "my-4 mx-4 rounded-lg border border-tl-gray bg-tl-dark-gray p-2" : "mx-4 my-4"}>
+            {children}
+          </div>
         </div>
         <Footer />
       </div>
