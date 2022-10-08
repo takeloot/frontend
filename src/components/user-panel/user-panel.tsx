@@ -1,14 +1,13 @@
-import React, {useEffect} from "react";
+import React, {FC, useEffect} from "react";
 
 import Link from "next/link";
 
-import {useMeQuery, useUpdateConnectionStatusMutation} from "_app/generated/graphql";
+import {useUpdateConnectionStatusMutation} from "_app/generated/graphql";
 
-import {UserProfileSkeleton} from "./user-skeleton";
 import {UserProfile} from "./user-profile";
 
-export const UserPanel = () => {
-  const userQuery = useMeQuery();
+// @ts-ignore: work in progress, will be fixed later
+export const UserPanel: FC = ({user}) => {
   const [updateStatus] = useUpdateConnectionStatusMutation();
 
   // @ts-ignore: work in progress, will be fixed later
@@ -24,14 +23,10 @@ export const UserPanel = () => {
     }
   }, [updateStatus]);
 
-  const user = userQuery.data?.me;
-  const loading = userQuery.loading;
-
   return (
     <div>
       {!!user && <UserProfile user={user} />}
-      {loading && !user && <UserProfileSkeleton />}
-      {!user && !loading && (
+      {!user && (
         <Link href="/api/auth/steam?continue=">
           <div className="rounded-lg bg-gray py-2 px-4 hover:cursor-pointer">Login with Steam</div>
         </Link>

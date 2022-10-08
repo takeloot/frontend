@@ -1,3 +1,5 @@
+import {useCallback} from "react";
+
 import type {NextPage} from "next";
 
 import toast, {Toaster} from "react-hot-toast";
@@ -5,10 +7,14 @@ import {Copy} from "react-feather";
 import Image from "next/image";
 
 import {MainLayout} from "_app/layouts/main-layout";
+import useCopyToClipboard from "_app/hooks/useCopyToClipboard";
 import {useMeQuery} from "_app/generated/graphql";
+import {Loader} from "_app/components";
 
 const Profile: NextPage = () => {
   const userQuery = useMeQuery();
+  const [value, copy] = useCopyToClipboard();
+
   const loading = userQuery.loading;
 
   const user = userQuery.data?.me;
@@ -16,7 +22,7 @@ const Profile: NextPage = () => {
   const avatar = user?.avatar;
   const id = user?.id;
 
-  const notify = () =>
+  const successNotify = useCallback(() => {
     toast.success("Successfully copied", {
       duration: 1500,
       style: {
@@ -25,21 +31,33 @@ const Profile: NextPage = () => {
         color: "#FFFFFF",
       },
     });
+  }, []);
+
+  const errorNotify = useCallback(() => {
+    toast.error("Copy failed", {
+      duration: 1500,
+      style: {
+        borderRadius: "0.5rem",
+        background: "#1E1F27",
+        color: "#FFFFFF",
+      },
+    });
+  }, []);
+
+  const handleCopy = useCallback(() => {
+    if (!id) {
+      return errorNotify();
+    }
+
+    copy(id);
+
+    console.log("Successfully copied", value);
+
+    successNotify();
+  }, [id, value, copy, errorNotify, successNotify]);
 
   if (loading) {
-    return (
-      <MainLayout withoutFooter withoutHeader>
-        <div className="flex h-screen w-full items-center justify-center text-center">
-          <div>
-            <div className="loader m-auto h-12 w-12 rounded-full border-8 border-t-8 border-surface-light align-middle ease-linear" />
-            <div className="animate-pulse pt-4">
-              <div className="text-lg">Processing</div>
-              <div>It takes a few seconds</div>
-            </div>
-          </div>
-        </div>
-      </MainLayout>
-    );
+    return <Loader />;
   }
 
   return (
@@ -53,7 +71,7 @@ const Profile: NextPage = () => {
             </div>
             <div
               className="flex flex-row items-center rounded-lg bg-gray px-4 py-2 hover:cursor-pointer hover:bg-gray-light hover:duration-200"
-              onClick={notify}
+              onClick={handleCopy}
             >
               <span className="uppercase">id:</span>
               <span className="ml-1">{id}</span>

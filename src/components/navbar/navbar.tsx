@@ -4,13 +4,24 @@ import Link from "next/link";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
+import {useMeQuery} from "_app/generated/graphql";
 import {CURRENCIES, LANGUAGES} from "_app/constants";
 
 import {UserPanel} from "../user-panel";
+import {Loader} from "../loader";
 
 export const Navbar = () => {
+  const userQuery = useMeQuery();
+
   const [language, setLanguage] = useState(LANGUAGES[0]);
   const [currency, setCurrency] = useState(CURRENCIES[0]);
+
+  const user = userQuery.data?.me;
+  const loading = userQuery.loading;
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex flex-row items-center justify-between px-4 py-3">
@@ -108,7 +119,8 @@ export const Navbar = () => {
             </div>
           </Listbox>
         </div>
-        <UserPanel />
+        {/* @ts-ignore: work in progress, will be fixed later */}
+        <UserPanel user={user} />
       </div>
     </div>
   );
