@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from "react";
-import {useTranslation} from "next-i18next";
 
 import Link from "next/link";
+import {useTranslation} from "next-i18next";
 
 import {useUpdateConnectionStatusMutation} from "_app/generated/graphql";
 
