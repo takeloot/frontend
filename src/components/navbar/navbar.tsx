@@ -22,7 +22,7 @@ export const Navbar = () => {
   const [language, setLanguage] = useState(LANGUAGES[0]);
   const [currency, setCurrency] = useState(CURRENCIES[0]);
   // TODO: Get from data of useOnlineQuery hook when will be done on backend
-  const [online, setOnline] = useState(0);
+  const [online, setOnline] = useState(randomInteger(650, 750));
 
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
