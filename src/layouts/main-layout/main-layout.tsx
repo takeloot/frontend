@@ -29,7 +29,7 @@ export const MainLayout: FC<IProps> = ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex h-screen flex-col">
+      <div className="flex h-screen flex-col scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-thumb-rounded-full">
         <div className="flex-auto">
           {!withoutHeader && <Navbar />}
           <div className={withStyle ? "my-4 mx-4" : "mx-4 my-4"}>{children}</div>
