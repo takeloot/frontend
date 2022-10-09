@@ -2,7 +2,7 @@
   "trade": "Trade",
   "store": "Store",
   "sell": "Sell",
-  "faq": "Help Center",
+  "faq": "FAQ",
   "profile": "Profile",
   "refferal": "Refferal",
   "transactions": "Transaction",
@@ -20,5 +20,7 @@
   "copy_failed": "Copy failed",
   "empty_inventory": "Your inventory is empty",
   "loading": "Loading",
-  "something_went_wrong": "Something went wrong. Try again later."
+  "something_went_wrong": "Something went wrong. Try again later.",
+  "login_steam": "Login with Steam",
+  "start_selling": "Start selling"
 }

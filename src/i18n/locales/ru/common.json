@@ -2,7 +2,7 @@
   "trade": "Обмен",
   "store": "Магазин",
   "sell": "Продажа",
-  "faq": "Справочный центр",
+  "faq": "FAQ",
   "profile": "Профиль",
   "refferal": "Партнерская программа",
   "transactions": "Транзакции",
@@ -20,5 +20,7 @@
   "copy_failed": "Не удалось скопировать",
   "empty_inventory": "Ваш инвентарь пуст",
   "loading": "Загрузка",
-  "something_went_wrong": "Что-то пошло не так. Попробуй позже."
+  "something_went_wrong": "Что-то пошло не так. Попробуй позже.",
+  "login_steam": "Войти через Steam",
+  "start_selling": "Начать продавать"
 }
