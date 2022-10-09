@@ -75,6 +75,9 @@ module.exports = {
         },
       }),
     },
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+    },
   },
   variants: {
     typography: ["dark"],

@@ -50,7 +50,7 @@ export const Navbar = () => {
     {
       url: "/sell",
       title: t("sell"),
-      disabled: false,
+      disabled: !user,
     },
     {
       url: "/faq",
