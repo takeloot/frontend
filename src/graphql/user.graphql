@@ -1,11 +1,16 @@
+fragment RegularProfile on Profile {
+  id
+  provider
+  serviceId
+}
+
 query me {
   me {
     id
     name
     avatar
     profiles {
-      id
-      provider
+      ...RegularProfile
     }
   }
 }
