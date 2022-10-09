@@ -24,6 +24,9 @@ export const Navbar = () => {
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
 
+  // TODO: Get from data of useOnlineQuery hook when will be done on backend
+  const online = 750;
+
   const PAGES = [
     {
       url: "/trade",
@@ -80,7 +83,11 @@ export const Navbar = () => {
           })}
         </ul>
       </div>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center align-middle">
+        <div className="mr-4 mt-1 flex flex-row items-center align-middle">
+          <div className="mr-2 flex h-2 w-2  animate-pulse rounded-full bg-green-dark align-middle" />
+          <div className="text-sm font-bold text-green-dark">{online}</div>
+        </div>
         <div className="mr-4 w-24">
           <Listbox value={language} onChange={setLanguage}>
             <div className="relative mt-1">
