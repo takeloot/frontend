@@ -16,9 +16,7 @@ const Profile: NextPage = () => {
   const name = user?.name;
   const avatar = user?.avatar;
   const id = user?.id;
-
-  // TODO: get from user when will be done on backend
-  const steamId = "76561198079068212";
+  const steamId = user?.profiles?.[0].serviceId;
 
   if (loading) {
     return <Loader />;

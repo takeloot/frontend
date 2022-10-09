@@ -50,6 +50,7 @@ export type Profile = {
   id: Scalars["String"];
   name?: Maybe<Scalars["String"]>;
   provider: Scalars["String"];
+  serviceId: Scalars["String"];
 };
 
 export type Query = {
@@ -250,6 +251,8 @@ export type MyInventoryQuery = {
   } | null;
 };
 
+export type RegularProfileFragment = {__typename?: "Profile"; id: string; provider: string; serviceId: string};
+
 export type MeQueryVariables = Exact<{[key: string]: never}>;
 
 export type MeQuery = {
@@ -259,7 +262,7 @@ export type MeQuery = {
     id: string;
     name?: string | null;
     avatar?: string | null;
-    profiles?: Array<{__typename?: "Profile"; id: string; provider: string}> | null;
+    profiles?: Array<{__typename?: "Profile"; id: string; provider: string; serviceId: string}> | null;
   };
 };
 
@@ -324,6 +327,13 @@ export const RegularSkinFragmentDoc = gql`
   }
   ${RegularCollectionFragmentDoc}
   ${RegularCaseFragmentDoc}
+`;
+export const RegularProfileFragmentDoc = gql`
+  fragment RegularProfile on Profile {
+    id
+    provider
+    serviceId
+  }
 `;
 export const UserInventoryDocument = gql`
   query userInventory($appId: Int!, $userId: ID!) {
@@ -421,11 +431,11 @@ export const MeDocument = gql`
       name
       avatar
       profiles {
-        id
-        provider
+        ...RegularProfile
       }
     }
   }
+  ${RegularProfileFragmentDoc}
 `;
 
 /**
