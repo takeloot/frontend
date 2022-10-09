@@ -18,11 +18,14 @@ const Home: NextPage = () => {
     <MainLayout>
       <div className="flex flex-col items-center pt-20 text-center align-middle">
         <div className="m-auto my-2 w-full text-6xl font-extrabold font-black tracking-tight text-gray-200">
-          Sell your CS:GO skins <br /> for the good price.
+          {t("sell_csgo_skins")}
+          <br />
+          {t("good_price")}
         </div>
         <div className="m-auto my-10 w-full text-2xl text-gray-400">
-          Your best choice to sell your skins <br />
-          fast & safe
+          {t("best_choice")}
+          <br />
+          {t("fast_safe")}
         </div>
         {!user ? (
           <Link href="/api/auth/steam?continue=">
