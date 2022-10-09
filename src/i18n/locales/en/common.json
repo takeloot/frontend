@@ -2,7 +2,7 @@
   "trade": "Trade",
   "store": "Store",
   "sell": "Sell",
-  "faq": "Help Center",
+  "faq": "FAQ",
   "profile": "Profile",
   "refferal": "Refferal",
   "transactions": "Transaction",
@@ -17,5 +17,7 @@
   "sell_list_is_empy": "Sell list is empty",
   "add_items_to_list": "Add items to list on sale",
   "successfully_copied": "Successfully copied",
-  "copy_failed": "Copy failed"
+  "copy_failed": "Copy failed",
+  "login_steam": "Login with Steam",
+  "start_selling": "Start selling"
 }
