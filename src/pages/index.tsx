@@ -1,12 +1,13 @@
 import React from "react";
+
 import type {GetStaticProps, NextPage} from "next";
 
+import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery} from "_app/generated/graphql";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   const {t} = useTranslation("common");
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout>
       <div className="flex flex-col items-center pt-20 text-center align-middle">
-        <div className="m-auto my-2 w-full text-6xl font-extrabold font-black tracking-tight text-gray-200">
+        <div className="m-auto my-2 w-full text-6xl font-black tracking-tight text-gray-200">
           {t("sell_csgo_skins")}
           <br />
           {t("good_price")}

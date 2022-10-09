@@ -6,7 +6,12 @@ const nextConfig = {
   swcMinify: true,
   output: "standalone",
   images: {
-    domains: ["avatars.akamai.steamstatic.com", "community.cloudflare.steamstatic.com"],
+    domains: [
+      "avatars.akamai.steamstatic.com",
+      "community.cloudflare.steamstatic.com",
+      "steamcommunity-a.akamaihd.net",
+      "dev-cdn.takeloot.ru",
+    ],
     formats: ["image/avif", "image/webp"],
   },
   i18n,

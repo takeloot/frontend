@@ -9,7 +9,7 @@ import {Listbox, Transition} from "@headlessui/react";
 
 import {randomInteger} from "_app/utils";
 import {useMeQuery} from "_app/generated/graphql";
-import {CURRENCIES, LANGUAGES} from "_app/constants";
+import {CURRENCIES} from "_app/constants";
 
 import {UserPanel} from "../user-panel";
 import {Loader} from "../loader";

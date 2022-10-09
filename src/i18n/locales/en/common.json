@@ -18,6 +18,9 @@
   "add_items_to_list": "Add items to list on sale",
   "successfully_copied": "Successfully copied",
   "copy_failed": "Copy failed",
+  "empty_inventory": "Your inventory is empty",
+  "loading": "Loading",
+  "something_went_wrong": "Something went wrong. Try again later.",
   "login_steam": "Login with Steam",
   "start_selling": "Start selling"
 }

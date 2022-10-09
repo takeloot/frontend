@@ -18,6 +18,9 @@
   "add_items_to_list": "Добавьте предметы, которые вы хотите продать",
   "successfully_copied": "Успешно скопировано",
   "copy_failed": "Не удалось скопировать",
+  "empty_inventory": "Ваш инвентарь пуст",
+  "loading": "Загрузка",
+  "something_went_wrong": "Что-то пошло не так. Попробуй позже.",
   "login_steam": "Войти через Steam",
   "start_selling": "Начать продавать"
 }
