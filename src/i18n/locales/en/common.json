@@ -17,5 +17,8 @@
   "sell_list_is_empy": "Sell list is empty",
   "add_items_to_list": "Add items to list on sale",
   "successfully_copied": "Successfully copied",
-  "copy_failed": "Copy failed"
+  "copy_failed": "Copy failed",
+  "empty_inventory": "Your inventory is empty",
+  "loading": "Loading",
+  "something_went_wrong": "Something went wrong. Try again later."
 }
