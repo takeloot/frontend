@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout>
       <div className="flex flex-col items-center pt-20 text-center align-middle">
-        <div className="m-auto my-2 w-full text-6xl font-extrabold font-black tracking-tight text-gray-200">
+        <div className="m-auto my-2 w-full text-6xl font-black tracking-tight text-gray-200">
           {t("sell_csgo_skins")}
           <br />
           {t("good_price")}
