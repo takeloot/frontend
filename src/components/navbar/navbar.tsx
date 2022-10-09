@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import {clsx} from "clsx";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
+import {randomInteger} from "_app/utils";
 import {useMeQuery} from "_app/generated/graphql";
 import {CURRENCIES, LANGUAGES} from "_app/constants";
 
@@ -20,12 +21,20 @@ export const Navbar = () => {
 
   const [language, setLanguage] = useState(LANGUAGES[0]);
   const [currency, setCurrency] = useState(CURRENCIES[0]);
+  // TODO: Get from data of useOnlineQuery hook when will be done on backend
+  const [online, setOnline] = useState(0);
 
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
 
-  // TODO: Get from data of useOnlineQuery hook when will be done on backend
-  const online = 750;
+  // TODO: Delete after we can get online from useOnlineQuery
+  useEffect(() => {
+    const id = setInterval(() => setOnline(() => randomInteger(650, 750)), 3000);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, []);
 
   const PAGES = [
     {
