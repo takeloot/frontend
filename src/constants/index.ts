@@ -5,26 +5,3 @@ export const LANGUAGES = ["en", "ru"];
 export const CURRENCIES = ["usd", "rub"];
 
 export const TOAST_LIMIT = 3;
-
-export const PAGES = [
-  {
-    url: "/trade",
-    title: "Trade",
-    disabled: true,
-  },
-  {
-    url: "/store",
-    title: "Store",
-    disabled: true,
-  },
-  {
-    url: "/sell",
-    title: "Sell",
-    disabled: false,
-  },
-  {
-    url: "/faq",
-    title: "Faq",
-    disabled: true,
-  },
-];

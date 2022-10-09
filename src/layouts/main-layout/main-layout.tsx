@@ -1,6 +1,7 @@
 import React, {FC, ReactNode} from "react";
 
 import Head from "next/head";
+import {useTranslation} from "next-i18next";
 
 import {Footer, Navbar} from "_app/components";
 
@@ -19,10 +20,12 @@ export const MainLayout: FC<IProps> = ({
   withoutFooter = false,
   withStyle = false,
 }) => {
+  const {t} = useTranslation("common");
+
   return (
     <>
       <Head>
-        <title>{title || "takeloot - Продать скины CS:GO за реальные деньги с моментальным выводом"}</title>
+        <title>{title || `takeloot - ${t("sell_csgo_skins")}`}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>

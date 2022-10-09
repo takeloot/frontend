@@ -1,13 +1,15 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {useTranslation} from "next-i18next";
 import {clsx} from "clsx";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
+import {randomInteger} from "_app/utils";
 import {useMeQuery} from "_app/generated/graphql";
-import {CURRENCIES, LANGUAGES, PAGES} from "_app/constants";
+import {CURRENCIES, LANGUAGES} from "_app/constants";
 
 import {UserPanel} from "../user-panel";
 import {Loader} from "../loader";
@@ -15,12 +17,47 @@ import {Loader} from "../loader";
 export const Navbar = () => {
   const router = useRouter();
   const userQuery = useMeQuery();
+  const {t} = useTranslation("common");
 
   const [language, setLanguage] = useState(LANGUAGES[0]);
   const [currency, setCurrency] = useState(CURRENCIES[0]);
+  // TODO: Get from data of useOnlineQuery hook when will be done on backend
+  const [online, setOnline] = useState(randomInteger(650, 750));
 
   const user = userQuery.data?.me;
   const loading = userQuery.loading;
+
+  // TODO: Delete after we can get online from useOnlineQuery
+  useEffect(() => {
+    const id = setInterval(() => setOnline(() => randomInteger(650, 750)), 3000);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, []);
+
+  const PAGES = [
+    {
+      url: "/trade",
+      title: t("trade"),
+      disabled: true,
+    },
+    {
+      url: "/store",
+      title: t("store"),
+      disabled: true,
+    },
+    {
+      url: "/sell",
+      title: t("sell"),
+      disabled: false,
+    },
+    {
+      url: "/faq",
+      title: t("faq"),
+      disabled: true,
+    },
+  ];
 
   if (loading) {
     return <Loader />;
@@ -55,7 +92,11 @@ export const Navbar = () => {
           })}
         </ul>
       </div>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center align-middle">
+        <div className="mr-4 mt-1 flex flex-row items-center align-middle">
+          <div className="mr-2 flex h-2 w-2  animate-pulse rounded-full bg-green-dark align-middle" />
+          <div className="text-sm font-bold text-green-dark">{online}</div>
+        </div>
         <div className="mr-4 w-24">
           <Listbox value={language} onChange={setLanguage}>
             <div className="relative mt-1">

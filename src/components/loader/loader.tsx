@@ -1,8 +1,12 @@
 import React from "react";
 
+import {useTranslation} from "next-i18next";
+
 import {MainLayout} from "_app/layouts";
 
 export const Loader = () => {
+  const {t} = useTranslation("common");
+
   return (
     <MainLayout withoutFooter withoutHeader>
       <div className="flex h-screen w-full items-center justify-center text-center">
@@ -11,8 +15,8 @@ export const Loader = () => {
             <div className="m-auto h-10 w-10 rounded-full bg-background"></div>
           </div>
           <div className="animate-pulse pt-4">
-            <div className="text-lg">Processing</div>
-            <div>It takes a few seconds</div>
+            <div className="text-lg">{t("processing")}</div>
+            <div>{t("processing_text")}</div>
           </div>
         </div>
       </div>

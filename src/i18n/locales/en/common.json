@@ -1,0 +1,18 @@
+{
+  "trade": "Trade",
+  "store": "Store",
+  "sell": "Sell",
+  "faq": "Help Center",
+  "profile": "Profile",
+  "refferal": "Refferal",
+  "transactions": "Transaction",
+  "logout": "Log out",
+  "processing": "Processing",
+  "processing_text": "It takes a while",
+  "sell_csgo_skins": "Sell CS:GO skins",
+  "sell_list": "Sell list",
+  "sell_list_is_empy": "Sell list is empty",
+  "add_items_to_list": "Add items to list on sale",
+  "successfully_copied": "Successfully copied",
+  "copy_failed": "Copy failed"
+}
