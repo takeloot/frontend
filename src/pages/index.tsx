@@ -1,12 +1,13 @@
 import React from "react";
+
 import type {GetStaticProps, NextPage} from "next";
 
+import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery} from "_app/generated/graphql";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   const {t} = useTranslation("common");

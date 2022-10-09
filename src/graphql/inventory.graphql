@@ -1,5 +1,47 @@
+fragment RegularCollection on Collection {
+  id
+  name
+  img
+}
+
+fragment RegularCase on Case {
+  id
+  name
+  img
+}
+
 fragment RegularSkin on Skin {
   id
+  appId
+  assetId
+  name
+  img
+  preview
+  screenshot
+  inspect
+  float
+  floatMin
+  floatMax
+  pattern
+  quality
+  rarity
+  botPrice
+  defaultPrice
+  lowestPrice
+  price
+  overstockDiff
+  hasHighDemand
+  isUnsellable
+  model3d
+  collection {
+    ...RegularCollection
+  }
+  case {
+    ...RegularCase
+  }
+  fullName
+  hasScreenshot
+  isStatTrak
   steamId
   steamName
   steamImg

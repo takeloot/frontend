@@ -16,6 +16,20 @@ export type Scalars = {
   DateTime: any;
 };
 
+export type Case = {
+  __typename?: "Case";
+  id: Scalars["String"];
+  img: Scalars["String"];
+  name: Scalars["String"];
+};
+
+export type Collection = {
+  __typename?: "Collection";
+  id: Scalars["String"];
+  img: Scalars["String"];
+  name: Scalars["String"];
+};
+
 export type Inventory = {
   __typename?: "Inventory";
   createdAt: Scalars["DateTime"];
@@ -61,7 +75,33 @@ export type QueryUserInventoryArgs = {
 
 export type Skin = {
   __typename?: "Skin";
+  appId: Scalars["Float"];
+  assetId: Scalars["String"];
+  botPrice?: Maybe<Scalars["Float"]>;
+  case?: Maybe<Array<Case>>;
+  collection?: Maybe<Array<Collection>>;
+  defaultPrice?: Maybe<Scalars["Float"]>;
+  float?: Maybe<Scalars["Float"]>;
+  floatMax?: Maybe<Scalars["Float"]>;
+  floatMin?: Maybe<Scalars["Float"]>;
+  fullName?: Maybe<Scalars["String"]>;
+  hasHighDemand?: Maybe<Scalars["Boolean"]>;
+  hasScreenshot: Scalars["Boolean"];
   id: Scalars["String"];
+  img?: Maybe<Scalars["String"]>;
+  inspect?: Maybe<Scalars["String"]>;
+  isStatTrak?: Maybe<Scalars["Boolean"]>;
+  isUnsellable?: Maybe<Scalars["Boolean"]>;
+  lowestPrice?: Maybe<Scalars["Float"]>;
+  model3d?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  overstockDiff?: Maybe<Scalars["Float"]>;
+  pattern?: Maybe<Scalars["Float"]>;
+  preview?: Maybe<Scalars["String"]>;
+  price?: Maybe<Scalars["Float"]>;
+  quality?: Maybe<Scalars["String"]>;
+  rarity?: Maybe<Scalars["String"]>;
+  screenshot?: Maybe<Scalars["String"]>;
   steamId: Scalars["String"];
   steamImg: Scalars["String"];
   steamName: Scalars["String"];
@@ -77,12 +117,42 @@ export type User = {
   updatedAt: Scalars["DateTime"];
 };
 
+export type RegularCollectionFragment = {__typename?: "Collection"; id: string; name: string; img: string};
+
+export type RegularCaseFragment = {__typename?: "Case"; id: string; name: string; img: string};
+
 export type RegularSkinFragment = {
   __typename?: "Skin";
   id: string;
+  appId: number;
+  assetId: string;
+  name?: string | null;
+  img?: string | null;
+  preview?: string | null;
+  screenshot?: string | null;
+  inspect?: string | null;
+  float?: number | null;
+  floatMin?: number | null;
+  floatMax?: number | null;
+  pattern?: number | null;
+  quality?: string | null;
+  rarity?: string | null;
+  botPrice?: number | null;
+  defaultPrice?: number | null;
+  lowestPrice?: number | null;
+  price?: number | null;
+  overstockDiff?: number | null;
+  hasHighDemand?: boolean | null;
+  isUnsellable?: boolean | null;
+  model3d?: string | null;
+  fullName?: string | null;
+  hasScreenshot: boolean;
+  isStatTrak?: boolean | null;
   steamId: string;
   steamName: string;
   steamImg: string;
+  collection?: Array<{__typename?: "Collection"; id: string; name: string; img: string}> | null;
+  case?: Array<{__typename?: "Case"; id: string; name: string; img: string}> | null;
 };
 
 export type UserInventoryQueryVariables = Exact<{
@@ -97,7 +167,39 @@ export type UserInventoryQuery = {
     id: string;
     createdAt: any;
     updatedAt: any;
-    skins?: Array<{__typename?: "Skin"; id: string; steamId: string; steamName: string; steamImg: string}> | null;
+    skins?: Array<{
+      __typename?: "Skin";
+      id: string;
+      appId: number;
+      assetId: string;
+      name?: string | null;
+      img?: string | null;
+      preview?: string | null;
+      screenshot?: string | null;
+      inspect?: string | null;
+      float?: number | null;
+      floatMin?: number | null;
+      floatMax?: number | null;
+      pattern?: number | null;
+      quality?: string | null;
+      rarity?: string | null;
+      botPrice?: number | null;
+      defaultPrice?: number | null;
+      lowestPrice?: number | null;
+      price?: number | null;
+      overstockDiff?: number | null;
+      hasHighDemand?: boolean | null;
+      isUnsellable?: boolean | null;
+      model3d?: string | null;
+      fullName?: string | null;
+      hasScreenshot: boolean;
+      isStatTrak?: boolean | null;
+      steamId: string;
+      steamName: string;
+      steamImg: string;
+      collection?: Array<{__typename?: "Collection"; id: string; name: string; img: string}> | null;
+      case?: Array<{__typename?: "Case"; id: string; name: string; img: string}> | null;
+    }> | null;
   } | null;
 };
 
@@ -112,7 +214,39 @@ export type MyInventoryQuery = {
     id: string;
     createdAt: any;
     updatedAt: any;
-    skins?: Array<{__typename?: "Skin"; id: string; steamId: string; steamName: string; steamImg: string}> | null;
+    skins?: Array<{
+      __typename?: "Skin";
+      id: string;
+      appId: number;
+      assetId: string;
+      name?: string | null;
+      img?: string | null;
+      preview?: string | null;
+      screenshot?: string | null;
+      inspect?: string | null;
+      float?: number | null;
+      floatMin?: number | null;
+      floatMax?: number | null;
+      pattern?: number | null;
+      quality?: string | null;
+      rarity?: string | null;
+      botPrice?: number | null;
+      defaultPrice?: number | null;
+      lowestPrice?: number | null;
+      price?: number | null;
+      overstockDiff?: number | null;
+      hasHighDemand?: boolean | null;
+      isUnsellable?: boolean | null;
+      model3d?: string | null;
+      fullName?: string | null;
+      hasScreenshot: boolean;
+      isStatTrak?: boolean | null;
+      steamId: string;
+      steamName: string;
+      steamImg: string;
+      collection?: Array<{__typename?: "Collection"; id: string; name: string; img: string}> | null;
+      case?: Array<{__typename?: "Case"; id: string; name: string; img: string}> | null;
+    }> | null;
   } | null;
 };
 
@@ -137,13 +271,59 @@ export type UpdateConnectionStatusMutationVariables = Exact<{[key: string]: neve
 
 export type UpdateConnectionStatusMutation = {__typename?: "Mutation"; updateConnectionStatus: boolean};
 
+export const RegularCollectionFragmentDoc = gql`
+  fragment RegularCollection on Collection {
+    id
+    name
+    img
+  }
+`;
+export const RegularCaseFragmentDoc = gql`
+  fragment RegularCase on Case {
+    id
+    name
+    img
+  }
+`;
 export const RegularSkinFragmentDoc = gql`
   fragment RegularSkin on Skin {
     id
+    appId
+    assetId
+    name
+    img
+    preview
+    screenshot
+    inspect
+    float
+    floatMin
+    floatMax
+    pattern
+    quality
+    rarity
+    botPrice
+    defaultPrice
+    lowestPrice
+    price
+    overstockDiff
+    hasHighDemand
+    isUnsellable
+    model3d
+    collection {
+      ...RegularCollection
+    }
+    case {
+      ...RegularCase
+    }
+    fullName
+    hasScreenshot
+    isStatTrak
     steamId
     steamName
     steamImg
   }
+  ${RegularCollectionFragmentDoc}
+  ${RegularCaseFragmentDoc}
 `;
 export const UserInventoryDocument = gql`
   query userInventory($appId: Int!, $userId: ID!) {
