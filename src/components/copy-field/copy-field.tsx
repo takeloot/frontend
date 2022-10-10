@@ -1,6 +1,6 @@
 import React, {FC, useCallback} from "react";
 
-import toast, {Toaster} from "react-hot-toast";
+import toast from "react-hot-toast";
 import {Copy} from "react-feather";
 import {useTranslation} from "next-i18next";
 
