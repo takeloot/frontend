@@ -30,7 +30,9 @@ export const UserPanel: FC = ({user}) => {
       {!!user && <UserProfile user={user} />}
       {!user && (
         <Link href="/api/auth/steam?continue=">
-          <div className="rounded-lg bg-gray py-2 px-4 hover:cursor-pointer">{t("login_steam")}</div>
+          <div className="rounded-lg bg-blue py-2 px-4 duration-200 hover:cursor-pointer hover:bg-blue-dark">
+            {t("login_steam")}
+          </div>
         </Link>
       )}
     </div>

@@ -30,11 +30,15 @@ const Home: NextPage = () => {
         </div>
         {!user ? (
           <Link href="/api/auth/steam?continue=">
-            <div className="w-1/5 rounded-lg bg-gray py-2 px-4 text-lg hover:cursor-pointer">{t("login_steam")}</div>
+            <div className="w-1/5 rounded-lg bg-blue py-2 px-4 text-lg duration-200 hover:cursor-pointer hover:bg-blue-dark">
+              {t("login_steam")}
+            </div>
           </Link>
         ) : (
           <Link href="/sell">
-            <div className="w-1/5 rounded-lg bg-gray py-2 px-4 text-lg hover:cursor-pointer">{t("start_selling")}</div>
+            <div className="w-1/5 rounded-lg bg-blue py-2 px-4 text-lg duration-200 hover:cursor-pointer hover:bg-blue-dark">
+              {t("start_selling")}
+            </div>
           </Link>
         )}
       </div>
