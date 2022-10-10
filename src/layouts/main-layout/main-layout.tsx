@@ -8,18 +8,11 @@ import {Footer, Navbar} from "_app/components";
 interface IProps {
   children: ReactNode;
   title?: string;
-  withStyle?: boolean;
   withoutHeader?: boolean;
   withoutFooter?: boolean;
 }
 
-export const MainLayout: FC<IProps> = ({
-  children,
-  title,
-  withoutHeader = false,
-  withoutFooter = false,
-  withStyle = false,
-}) => {
+export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, withoutFooter = false}) => {
   const {t} = useTranslation("common");
 
   return (
@@ -32,7 +25,7 @@ export const MainLayout: FC<IProps> = ({
       <div className="flex h-screen flex-col scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-thumb-rounded-full">
         <div className="flex-auto">
           {!withoutHeader && <Navbar />}
-          <div className={withStyle ? "my-4 mx-4" : "mx-4 my-4"}>{children}</div>
+          <div className="m-4">{children}</div>
         </div>
         {!withoutFooter && <Footer />}
       </div>
