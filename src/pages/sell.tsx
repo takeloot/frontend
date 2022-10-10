@@ -10,9 +10,15 @@ import {CartListing, UserInventory} from "_app/components";
 const Sell = () => {
   return (
     <MainLayout>
-      <div className="grid gap-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
-        <UserInventory />
-        <CartListing />
+      {/*
+       * 192px
+       * header height + footer height + content margin (all resolutions)
+       */}
+      <div className="flex h-[calc(100vh-192px)]">
+        <div className="grid w-full gap-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
+          <UserInventory />
+          <CartListing />
+        </div>
       </div>
     </MainLayout>
   );

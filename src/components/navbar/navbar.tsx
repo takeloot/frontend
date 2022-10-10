@@ -64,7 +64,7 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between px-4 py-3">
+    <div className="flex h-20 flex-row items-center justify-between px-4">
       <div className="flew-row flex items-center">
         <Link href="/">
           <div className="mr-12 text-lg font-semibold hover:cursor-pointer">takeloot</div>
