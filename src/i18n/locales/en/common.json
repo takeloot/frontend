@@ -22,5 +22,9 @@
   "loading": "Loading",
   "something_went_wrong": "Something went wrong. Try again later.",
   "login_steam": "Login with Steam",
-  "start_selling": "Start selling"
+  "start_selling": "Start selling",
+  "alpha_preview": "Alpha preview",
+  "got_it_thanks": "Got it, thanks!",
+  "alpha_preview_desc_1": "You are using an early version of the platform intended for demonstration purposes only.",
+  "alpha_preview_desc_2": "Your data may be lost at any time and will be completely deleted when the platform is released."
 }

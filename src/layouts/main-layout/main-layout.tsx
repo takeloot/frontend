@@ -1,9 +1,10 @@
 import React, {FC, ReactNode} from "react";
 
+import {Toaster} from "react-hot-toast";
 import Head from "next/head";
 import {useTranslation} from "next-i18next";
 
-import {Footer, Navbar} from "_app/components";
+import {AlphaPreview, Footer, Navbar} from "_app/components";
 
 interface IProps {
   children: ReactNode;
@@ -29,6 +30,8 @@ export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, 
         </div>
         {!withoutFooter && <Footer />}
       </div>
+      <AlphaPreview />
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };

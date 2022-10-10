@@ -1,6 +1,6 @@
 import React, {FC, useCallback} from "react";
 
-import toast, {Toaster} from "react-hot-toast";
+import toast from "react-hot-toast";
 import {Copy} from "react-feather";
 import {useTranslation} from "next-i18next";
 
@@ -59,7 +59,6 @@ export const CopyField: FC<IProps> = ({title, text}) => {
         <span className="ml-1 text-cloud-dark">{text}</span>
         <Copy className="ml-4" color="#9FAABB" size={14} />
       </div>
-      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };
