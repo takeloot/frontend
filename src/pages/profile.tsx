@@ -1,4 +1,4 @@
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 import type {GetStaticProps, NextPage} from "next";
 
@@ -31,6 +31,10 @@ const Profile: NextPage = () => {
   const avatar = user?.avatar;
   const id = user?.id;
   const steamId = user?.profiles?.[0].serviceId;
+
+  useEffect(() => {
+    setTradeUrl(userQuery.data?.me.tradeURL);
+  }, [userQuery.data?.me.tradeURL]);
 
   const handleTradeUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const tradeURLValue = e.target.value;
@@ -130,7 +134,7 @@ const Profile: NextPage = () => {
                 <div className="relative flex w-full">
                   <input
                     onChange={handleTradeUrlChange}
-                    value={tradeUrl || userQuery.data?.me.tradeURL || ""}
+                    value={tradeUrl || ""}
                     className="block h-10 w-full rounded-lg border border-gray-light bg-gray p-2 pr-14 text-sm text-cloud focus:outline-none"
                     type="text"
                     id="tradeUrl"
