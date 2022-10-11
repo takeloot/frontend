@@ -22,3 +22,7 @@ mutation logout {
 mutation updateConnectionStatus {
   updateConnectionStatus
 }
+
+mutation updateMyTradeUrl($tradeURL: String!) {
+  updateMyTradeUrl(tradeURL: $tradeURL)
+}
