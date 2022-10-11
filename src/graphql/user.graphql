@@ -9,6 +9,7 @@ query me {
     id
     name
     avatar
+    tradeURL
     profiles {
       ...RegularProfile
     }

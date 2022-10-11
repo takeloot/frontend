@@ -120,6 +120,7 @@ export type User = {
   id: Scalars["String"];
   name?: Maybe<Scalars["String"]>;
   profiles?: Maybe<Array<Profile>>;
+  tradeURL?: Maybe<Scalars["String"]>;
   updatedAt: Scalars["DateTime"];
 };
 
@@ -267,6 +268,7 @@ export type MeQuery = {
     id: string;
     name?: string | null;
     avatar?: string | null;
+    tradeURL?: string | null;
     profiles?: Array<{__typename?: "Profile"; id: string; provider: string; serviceId: string}> | null;
   };
 };
@@ -441,6 +443,7 @@ export const MeDocument = gql`
       id
       name
       avatar
+      tradeURL
       profiles {
         ...RegularProfile
       }

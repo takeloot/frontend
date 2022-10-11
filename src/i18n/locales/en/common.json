@@ -26,5 +26,12 @@
   "alpha_preview": "Alpha preview",
   "got_it_thanks": "Got it, thanks!",
   "alpha_preview_desc_1": "You are using an early version of the platform intended for demonstration purposes only.",
-  "alpha_preview_desc_2": "Your data may be lost at any time and will be completely deleted when the platform is released."
+  "alpha_preview_desc_2": "Your data may be lost at any time and will be completely deleted when the platform is released.",
+  "steam_account": "Steam account",
+  "trade_url_successfully_updated": "Trade URL successfully updated",
+  "trade_url_update_failed": "Trade URL update failed",
+  "trade_url": "Trade URL",
+  "find_trade_url": "Find trade URL",
+  "trade_url_placeholder": "Your trade URL",
+  "trade_url_is_not_valid": "Trade URL is not valid"
 }
