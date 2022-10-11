@@ -25,8 +25,6 @@ const Profile: NextPage = () => {
 
   const userLoading = userQuery.loading;
   const tradeUrlLoading = loading;
-  const tradeUrlData = data;
-  const tradeUrlError = error;
 
   const user = userQuery.data?.me;
   const name = user?.name;
