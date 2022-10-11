@@ -21,7 +21,7 @@ const Profile: NextPage = () => {
   const [tradeUrlIsError, setTradeUrlIsError] = useState(false);
   const [tradeUrl, setTradeUrl] = useState(userQuery.data?.me.tradeURL);
 
-  const [updateMyTradeUrlMutation, {data, loading, error}] = useUpdateMyTradeUrlMutation();
+  const [updateMyTradeUrlMutation, {loading}] = useUpdateMyTradeUrlMutation();
 
   const userLoading = userQuery.loading;
   const tradeUrlLoading = loading;
