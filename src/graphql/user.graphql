@@ -9,6 +9,7 @@ query me {
     id
     name
     avatar
+    tradeURL
     profiles {
       ...RegularProfile
     }
@@ -21,4 +22,8 @@ mutation logout {
 
 mutation updateConnectionStatus {
   updateConnectionStatus
+}
+
+mutation updateMyTradeUrl($tradeURL: String!) {
+  updateMyTradeUrl(tradeURL: $tradeURL)
 }

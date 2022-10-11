@@ -42,6 +42,11 @@ export type Mutation = {
   __typename?: "Mutation";
   logout: Scalars["Boolean"];
   updateConnectionStatus: Scalars["Boolean"];
+  updateMyTradeUrl: Scalars["Boolean"];
+};
+
+export type MutationUpdateMyTradeUrlArgs = {
+  tradeURL?: InputMaybe<Scalars["String"]>;
 };
 
 export type Profile = {
@@ -115,6 +120,7 @@ export type User = {
   id: Scalars["String"];
   name?: Maybe<Scalars["String"]>;
   profiles?: Maybe<Array<Profile>>;
+  tradeURL?: Maybe<Scalars["String"]>;
   updatedAt: Scalars["DateTime"];
 };
 
@@ -262,6 +268,7 @@ export type MeQuery = {
     id: string;
     name?: string | null;
     avatar?: string | null;
+    tradeURL?: string | null;
     profiles?: Array<{__typename?: "Profile"; id: string; provider: string; serviceId: string}> | null;
   };
 };
@@ -273,6 +280,12 @@ export type LogoutMutation = {__typename?: "Mutation"; logout: boolean};
 export type UpdateConnectionStatusMutationVariables = Exact<{[key: string]: never}>;
 
 export type UpdateConnectionStatusMutation = {__typename?: "Mutation"; updateConnectionStatus: boolean};
+
+export type UpdateMyTradeUrlMutationVariables = Exact<{
+  tradeURL: Scalars["String"];
+}>;
+
+export type UpdateMyTradeUrlMutation = {__typename?: "Mutation"; updateMyTradeUrl: boolean};
 
 export const RegularCollectionFragmentDoc = gql`
   fragment RegularCollection on Collection {
@@ -430,6 +443,7 @@ export const MeDocument = gql`
       id
       name
       avatar
+      tradeURL
       profiles {
         ...RegularProfile
       }
@@ -534,4 +548,46 @@ export type UpdateConnectionStatusMutationResult = Apollo.MutationResult<UpdateC
 export type UpdateConnectionStatusMutationOptions = Apollo.BaseMutationOptions<
   UpdateConnectionStatusMutation,
   UpdateConnectionStatusMutationVariables
+>;
+export const UpdateMyTradeUrlDocument = gql`
+  mutation updateMyTradeUrl($tradeURL: String!) {
+    updateMyTradeUrl(tradeURL: $tradeURL)
+  }
+`;
+export type UpdateMyTradeUrlMutationFn = Apollo.MutationFunction<
+  UpdateMyTradeUrlMutation,
+  UpdateMyTradeUrlMutationVariables
+>;
+
+/**
+ * __useUpdateMyTradeUrlMutation__
+ *
+ * To run a mutation, you first call `useUpdateMyTradeUrlMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateMyTradeUrlMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateMyTradeUrlMutation, { data, loading, error }] = useUpdateMyTradeUrlMutation({
+ *   variables: {
+ *      tradeURL: // value for 'tradeURL'
+ *   },
+ * });
+ */
+export function useUpdateMyTradeUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<UpdateMyTradeUrlMutation, UpdateMyTradeUrlMutationVariables>,
+) {
+  const options = {...defaultOptions, ...baseOptions};
+  return Apollo.useMutation<UpdateMyTradeUrlMutation, UpdateMyTradeUrlMutationVariables>(
+    UpdateMyTradeUrlDocument,
+    options,
+  );
+}
+export type UpdateMyTradeUrlMutationHookResult = ReturnType<typeof useUpdateMyTradeUrlMutation>;
+export type UpdateMyTradeUrlMutationResult = Apollo.MutationResult<UpdateMyTradeUrlMutation>;
+export type UpdateMyTradeUrlMutationOptions = Apollo.BaseMutationOptions<
+  UpdateMyTradeUrlMutation,
+  UpdateMyTradeUrlMutationVariables
 >;
