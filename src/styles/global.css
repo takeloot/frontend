@@ -8,8 +8,8 @@
   }
 
   .takeloot-gradient {
-    background-image: radial-gradient(circle at 50% 100%, rgb(37, 110, 255, 0.2), transparent 60%);
     border-bottom-color: #256eff;
+    background-image: radial-gradient(circle at 50% 100%, rgb(37, 110, 255, 0.2), transparent 60%);
   }
 
   .takeloot-gradient--mil {
@@ -18,12 +18,12 @@
   }
 
   .takeloot-gradient--restricted {
-    border-color: #8847ff;
+    border-bottom-color: #8847ff;
     background-image: radial-gradient(circle at 50% 100%, rgba(136, 71, 255, 0.2), transparent 60%);
   }
 
   .takeloot-gradient--cover {
-    border-color: #eb4b4b;
+    border-bottom-color: #eb4b4b;
     background-image: radial-gradient(circle at 50% 100%, rgba(235, 75, 75, 0.2), transparent 60%);
   }
 }

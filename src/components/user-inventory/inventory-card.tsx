@@ -18,10 +18,8 @@ export const InventoryCard: FC<IProps> = ({id, quality, name, price, img, select
     <div
       onClick={() => handleSelect(id)}
       className={clsx(
-        selected
-          ? "hover:takeloot-gradient takeloot-gradient border-b-2 border-blue"
-          : "hover:takeloot-gradient border-b-2 bg-gray",
-        "box-border rounded-lg border border-gray bg-background p-4 hover:cursor-pointer",
+        selected ? "hover:takeloot-gradient takeloot-gradient border-blue" : "hover:takeloot-gradient bg-gray",
+        "box-content rounded-lg border border-b-2 border-gray bg-background p-4 hover:cursor-pointer",
       )}
     >
       {!!img && (
