@@ -6,4 +6,24 @@
   body {
     font-family: Inter, sans-serif;
   }
+
+  .takeloot-gradient {
+    border-bottom-color: #256eff;
+    background-image: radial-gradient(circle at 50% 100%, rgb(37, 110, 255, 0.2), transparent 60%);
+  }
+
+  .takeloot-gradient--mil {
+    border-bottom-color: #4b69ff;
+    background-image: radial-gradient(circle at 50% 100%, rgba(75, 105, 255, 0.2), transparent 60%);
+  }
+
+  .takeloot-gradient--restricted {
+    border-bottom-color: #8847ff;
+    background-image: radial-gradient(circle at 50% 100%, rgba(136, 71, 255, 0.2), transparent 60%);
+  }
+
+  .takeloot-gradient--cover {
+    border-bottom-color: #eb4b4b;
+    background-image: radial-gradient(circle at 50% 100%, rgba(235, 75, 75, 0.2), transparent 60%);
+  }
 }
