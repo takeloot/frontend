@@ -1,7 +1,7 @@
 {
   "trade": "Обмен",
   "store": "Магазин",
-  "sell": "Продажа",
+  "sale": "Продажа",
   "faq": "FAQ",
   "profile": "Профиль",
   "refferal": "Партнерская программа",
@@ -33,5 +33,8 @@
   "trade_url": "Торговый URL-адрес",
   "find_trade_url": "Найти URL-адрес для обмена",
   "trade_url_placeholder": "Ваш торговый URL-адрес",
-  "trade_url_is_not_valid": "Торговый URL-адрес недействителен"
+  "trade_url_is_not_valid": "Торговый URL-адрес недействителен",
+  "total_amount": "Общая сумма",
+  "you_will_get": "Вы получите",
+  "sell": "Продать"
 }

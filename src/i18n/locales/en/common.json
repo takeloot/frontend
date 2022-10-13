@@ -1,7 +1,7 @@
 {
   "trade": "Trade",
   "store": "Store",
-  "sell": "Sell",
+  "sale": "Sell",
   "faq": "FAQ",
   "profile": "Profile",
   "refferal": "Refferal",
@@ -33,5 +33,8 @@
   "trade_url": "Trade URL",
   "find_trade_url": "Find trade URL",
   "trade_url_placeholder": "Your trade URL",
-  "trade_url_is_not_valid": "Trade URL is not valid"
+  "trade_url_is_not_valid": "Trade URL is not valid",
+  "total_amount": "Total amount",
+  "you_will_get": "You'll get",
+  "sell": "Sell"
 }

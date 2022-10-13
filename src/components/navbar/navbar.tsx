@@ -49,7 +49,7 @@ export const Navbar = () => {
     },
     {
       url: "/sell",
-      title: t("sell"),
+      title: t("sale"),
       disabled: !user,
     },
     {
