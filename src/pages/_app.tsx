@@ -7,17 +7,31 @@ import {ApolloProvider} from "@apollo/client";
 import {useApollo} from "_app/services";
 import {ConfirmationDialogProvider} from "_app/core";
 import {PUBLIC_API, TOAST_LIMIT} from "_app/constants";
+import {sellListVar} from "_app/components";
 
 import type {AppProps} from "next/app";
 
 import "_styles/global.css";
 import "@fontsource/inter";
 
+const typePolicies = {
+  Query: {
+    fields: {
+      sellList: {
+        read() {
+          return sellListVar();
+        },
+      },
+    },
+  },
+};
+
 function MyApp({Component, pageProps}: AppProps) {
   const {toasts} = useToasterStore();
 
   const apolloClient = useApollo(pageProps, {
     apiUrl: PUBLIC_API,
+    inMemoryCacheConfig: {typePolicies},
   });
 
   useEffect(() => {

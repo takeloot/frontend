@@ -53,6 +53,7 @@ const colors = {
   },
   red: {
     DEFAULT: red,
+    lightest: lighen(red, 0.35),
     light: lighen(red, 0.2),
     dark: darken(red, 0.2),
   },

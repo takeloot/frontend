@@ -3,34 +3,33 @@ import {FC} from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
+import {Skin} from "_app/generated/graphql";
+
 interface IProps {
-  id: string;
-  quality?: string;
-  name: string;
-  price?: string;
-  img?: string;
+  skin: Skin;
   selected: boolean;
-  handleSelect: (value: string) => void;
+  handleSelect: (skin: Skin) => void;
 }
 
-export const InventoryCard: FC<IProps> = ({id, quality, name, price, img, selected, handleSelect}) => {
+export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
+  const {steamName, steamImg, quality, price} = skin;
+
   return (
     <div
-      onClick={() => handleSelect(id)}
+      onClick={() => handleSelect(skin)}
       className={clsx(
         selected ? "hover:takeloot-gradient takeloot-gradient border-blue" : "hover:takeloot-gradient bg-gray",
-        "box-content rounded-lg border border-b-2 border-gray bg-background p-4 hover:cursor-pointer",
+        "box-content rounded-lg border-2 border-gray bg-background p-4 hover:cursor-pointer",
       )}
     >
-      {!!img && (
+      {!!steamImg && (
         <div className="relative mb-4 h-20 w-full text-center">
-          <Image src={img} alt="CS:GO" layout="fill" objectFit="contain" />
+          <Image src={steamImg} alt="CS:GO" layout="fill" objectFit="contain" />
         </div>
       )}
       <div>
         {!!quality && <div>{quality}</div>}
-        <div />
-        <div>{name}</div>
+        {!!steamName && <div>{steamName}</div>}
         {!!price && <div>Price {price}</div>}
       </div>
     </div>
