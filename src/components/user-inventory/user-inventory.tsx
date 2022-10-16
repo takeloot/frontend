@@ -1,6 +1,7 @@
 import React, {FC, ReactNode, useCallback} from "react";
 
 import {useTranslation} from "next-i18next";
+import {EGame} from "@takeloot/dto";
 import {gql, makeVar, useQuery} from "@apollo/client";
 
 import {Skin, useMyInventoryQuery} from "_app/generated/graphql";
@@ -29,7 +30,7 @@ export const UserInventory: FC = () => {
 
   const {data, loading, error} = useMyInventoryQuery({
     variables: {
-      appId: 730,
+      appId: EGame.CSGO,
     },
   });
 

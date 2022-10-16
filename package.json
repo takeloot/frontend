@@ -1,5 +1,5 @@
 {
-  "name": "takeloot",
+  "name": "@takeloot/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -34,7 +34,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
-    "react-hot-toast": "^2.4.0"
+    "react-hot-toast": "^2.4.0",
+    "@takeloot/dto": "takeloot/dto"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.12.1",
@@ -63,6 +64,7 @@
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8",
+    "ts-loader": "^9.4.1",
     "typescript": "4.8.3"
   }
 }
