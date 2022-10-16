@@ -297,7 +297,7 @@
             "description": null,
             "args": [
               {
-                "name": "tradeURL",
+                "name": "tradeUrl",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -1043,7 +1043,7 @@
             "deprecationReason": null
           },
           {
-            "name": "tradeURL",
+            "name": "tradeUrl",
             "description": null,
             "args": [],
             "type": {

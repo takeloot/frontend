@@ -9,7 +9,7 @@ query me {
     id
     name
     avatar
-    tradeURL
+    tradeUrl
     profiles {
       ...RegularProfile
     }
@@ -24,6 +24,6 @@ mutation updateConnectionStatus {
   updateConnectionStatus
 }
 
-mutation updateMyTradeUrl($tradeURL: String!) {
-  updateMyTradeUrl(tradeURL: $tradeURL)
+mutation updateMyTradeUrl($tradeUrl: String!) {
+  updateMyTradeUrl(tradeUrl: $tradeUrl)
 }

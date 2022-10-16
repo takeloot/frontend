@@ -46,7 +46,7 @@ export type Mutation = {
 };
 
 export type MutationUpdateMyTradeUrlArgs = {
-  tradeURL?: InputMaybe<Scalars["String"]>;
+  tradeUrl?: InputMaybe<Scalars["String"]>;
 };
 
 export type Profile = {
@@ -120,7 +120,7 @@ export type User = {
   id: Scalars["String"];
   name?: Maybe<Scalars["String"]>;
   profiles?: Maybe<Array<Profile>>;
-  tradeURL?: Maybe<Scalars["String"]>;
+  tradeUrl?: Maybe<Scalars["String"]>;
   updatedAt: Scalars["DateTime"];
 };
 
@@ -268,7 +268,7 @@ export type MeQuery = {
     id: string;
     name?: string | null;
     avatar?: string | null;
-    tradeURL?: string | null;
+    tradeUrl?: string | null;
     profiles?: Array<{__typename?: "Profile"; id: string; provider: string; serviceId: string}> | null;
   };
 };
@@ -282,7 +282,7 @@ export type UpdateConnectionStatusMutationVariables = Exact<{[key: string]: neve
 export type UpdateConnectionStatusMutation = {__typename?: "Mutation"; updateConnectionStatus: boolean};
 
 export type UpdateMyTradeUrlMutationVariables = Exact<{
-  tradeURL: Scalars["String"];
+  tradeUrl: Scalars["String"];
 }>;
 
 export type UpdateMyTradeUrlMutation = {__typename?: "Mutation"; updateMyTradeUrl: boolean};
@@ -443,7 +443,7 @@ export const MeDocument = gql`
       id
       name
       avatar
-      tradeURL
+      tradeUrl
       profiles {
         ...RegularProfile
       }
@@ -550,8 +550,8 @@ export type UpdateConnectionStatusMutationOptions = Apollo.BaseMutationOptions<
   UpdateConnectionStatusMutationVariables
 >;
 export const UpdateMyTradeUrlDocument = gql`
-  mutation updateMyTradeUrl($tradeURL: String!) {
-    updateMyTradeUrl(tradeURL: $tradeURL)
+  mutation updateMyTradeUrl($tradeUrl: String!) {
+    updateMyTradeUrl(tradeUrl: $tradeUrl)
   }
 `;
 export type UpdateMyTradeUrlMutationFn = Apollo.MutationFunction<
@@ -572,7 +572,7 @@ export type UpdateMyTradeUrlMutationFn = Apollo.MutationFunction<
  * @example
  * const [updateMyTradeUrlMutation, { data, loading, error }] = useUpdateMyTradeUrlMutation({
  *   variables: {
- *      tradeURL: // value for 'tradeURL'
+ *      tradeUrl: // value for 'tradeUrl'
  *   },
  * });
  */
