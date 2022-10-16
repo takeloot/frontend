@@ -19,7 +19,7 @@ const Profile: NextPage = () => {
   const userQuery = useMeQuery();
 
   const [tradeUrlIsError, setTradeUrlIsError] = useState(false);
-  const [tradeUrl, setTradeUrl] = useState(userQuery.data?.me.tradeURL);
+  const [tradeUrl, setTradeUrl] = useState(userQuery.data?.me.tradeUrl);
 
   const [updateMyTradeUrlMutation, {loading}] = useUpdateMyTradeUrlMutation();
 
@@ -33,14 +33,14 @@ const Profile: NextPage = () => {
   const steamId = user?.profiles?.[0].serviceId;
 
   useEffect(() => {
-    setTradeUrl(userQuery.data?.me.tradeURL);
-  }, [userQuery.data?.me.tradeURL]);
+    setTradeUrl(userQuery.data?.me.tradeUrl);
+  }, [userQuery.data?.me.tradeUrl]);
 
   const handleTradeUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const tradeURLValue = e.target.value;
-    setTradeUrl(tradeURLValue);
+    const tradeUrlValue = e.target.value;
+    setTradeUrl(tradeUrlValue);
 
-    if (!tradeURLValue || !tradeURLValue.match(STEAM_TRADE_URL_REGEX)) {
+    if (!tradeUrlValue || !tradeUrlValue.match(STEAM_TRADE_URL_REGEX)) {
       return setTradeUrlIsError(true);
     }
 
@@ -77,7 +77,7 @@ const Profile: NextPage = () => {
     if (!tradeUrlIsError && tradeUrl) {
       const {data} = await updateMyTradeUrlMutation({
         variables: {
-          tradeURL: tradeUrl,
+          tradeUrl: tradeUrl,
         },
         fetchPolicy: "no-cache",
         update: (cache) => {
