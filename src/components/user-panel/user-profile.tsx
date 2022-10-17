@@ -95,6 +95,22 @@ export const UserProfile = ({user}) => {
             </Menu.Item>
           </div>
           <div className="p-2">
+            {/* TODO: Hide by role from api + dto */}
+            <Menu.Item>
+              {({active}) => (
+                <Link href="/manage">
+                  <a
+                    className={`${
+                      active ? "bg-gray " : ""
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
+                  >
+                    {t("manage")}
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
+          </div>
+          <div className="p-2">
             <Menu.Item>
               {({active}) => (
                 <button

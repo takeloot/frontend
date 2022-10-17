@@ -36,5 +36,10 @@
   "trade_url_is_not_valid": "Trade URL is not valid",
   "total_amount": "Total amount",
   "you_will_get": "You'll get",
-  "sell": "Sell"
+  "sell": "Sell",
+  "manage": "Manage",
+  "home": "Home",
+  "users": "Users",
+  "finance": "Finance",
+  "tickets": "Tickets"
 }
