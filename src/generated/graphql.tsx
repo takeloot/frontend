@@ -30,6 +30,17 @@ export type Collection = {
   name: Scalars["String"];
 };
 
+export enum EStatus {
+  IsDepositDisabled = "IS_DEPOSIT_DISABLED",
+  IsFuckup = "IS_FUCKUP",
+  IsMaintenance = "IS_MAINTENANCE",
+  IsQiwiDisabled = "IS_QIWI_DISABLED",
+  IsSellDisabled = "IS_SELL_DISABLED",
+  IsSteamProblems = "IS_STEAM_PROBLEMS",
+  IsTinkoffDisabled = "IS_TINKOFF_DISABLED",
+  IsWithdrawalDisabled = "IS_WITHDRAWAL_DISABLED",
+}
+
 export type Inventory = {
   __typename?: "Inventory";
   createdAt: Scalars["DateTime"];
@@ -41,8 +52,13 @@ export type Inventory = {
 export type Mutation = {
   __typename?: "Mutation";
   logout: Scalars["Boolean"];
+  toggleWorkStatus: WorkStatuses;
   updateConnectionStatus: Scalars["Boolean"];
   updateMyTradeUrl: Scalars["Boolean"];
+};
+
+export type MutationToggleWorkStatusArgs = {
+  status: UpdateWorkStatusesInput;
 };
 
 export type MutationUpdateMyTradeUrlArgs = {
@@ -64,6 +80,7 @@ export type Query = {
   myInventory?: Maybe<Inventory>;
   user?: Maybe<User>;
   userInventory?: Maybe<Inventory>;
+  workStatuses: WorkStatuses;
 };
 
 export type QueryMyInventoryArgs = {
@@ -113,6 +130,15 @@ export type Skin = {
   steamName: Scalars["String"];
 };
 
+export type Subscription = {
+  __typename?: "Subscription";
+  workStatusesUpdated: WorkStatuses;
+};
+
+export type UpdateWorkStatusesInput = {
+  name: EStatus;
+};
+
 export type User = {
   __typename?: "User";
   avatar?: Maybe<Scalars["String"]>;
@@ -121,6 +147,21 @@ export type User = {
   name?: Maybe<Scalars["String"]>;
   profiles?: Maybe<Array<Profile>>;
   tradeUrl?: Maybe<Scalars["String"]>;
+  updatedAt: Scalars["DateTime"];
+};
+
+export type WorkStatuses = {
+  __typename?: "WorkStatuses";
+  createdAt: Scalars["DateTime"];
+  id: Scalars["String"];
+  isDepositDisabled: Scalars["Boolean"];
+  isFuckup: Scalars["Boolean"];
+  isMaintenance: Scalars["Boolean"];
+  isQiwiDisabled: Scalars["Boolean"];
+  isSellDisabled: Scalars["Boolean"];
+  isSteamProblems: Scalars["Boolean"];
+  isTinkoffDisabled: Scalars["Boolean"];
+  isWithdrawalDisabled: Scalars["Boolean"];
   updatedAt: Scalars["DateTime"];
 };
 
@@ -286,6 +327,40 @@ export type UpdateMyTradeUrlMutationVariables = Exact<{
 }>;
 
 export type UpdateMyTradeUrlMutation = {__typename?: "Mutation"; updateMyTradeUrl: boolean};
+
+export type WorkStatusesQueryVariables = Exact<{[key: string]: never}>;
+
+export type WorkStatusesQuery = {
+  __typename?: "Query";
+  workStatuses: {
+    __typename?: "WorkStatuses";
+    isDepositDisabled: boolean;
+    isWithdrawalDisabled: boolean;
+    isSellDisabled: boolean;
+    isMaintenance: boolean;
+    isSteamProblems: boolean;
+    isFuckup: boolean;
+    isQiwiDisabled: boolean;
+    isTinkoffDisabled: boolean;
+  };
+};
+
+export type WorkStatusesUpdatedSubscriptionVariables = Exact<{[key: string]: never}>;
+
+export type WorkStatusesUpdatedSubscription = {
+  __typename?: "Subscription";
+  workStatusesUpdated: {
+    __typename?: "WorkStatuses";
+    isDepositDisabled: boolean;
+    isWithdrawalDisabled: boolean;
+    isSellDisabled: boolean;
+    isMaintenance: boolean;
+    isSteamProblems: boolean;
+    isFuckup: boolean;
+    isQiwiDisabled: boolean;
+    isTinkoffDisabled: boolean;
+  };
+};
 
 export const RegularCollectionFragmentDoc = gql`
   fragment RegularCollection on Collection {
@@ -591,3 +666,92 @@ export type UpdateMyTradeUrlMutationOptions = Apollo.BaseMutationOptions<
   UpdateMyTradeUrlMutation,
   UpdateMyTradeUrlMutationVariables
 >;
+export const WorkStatusesDocument = gql`
+  query workStatuses {
+    workStatuses {
+      isDepositDisabled
+      isWithdrawalDisabled
+      isSellDisabled
+      isMaintenance
+      isSteamProblems
+      isFuckup
+      isQiwiDisabled
+      isTinkoffDisabled
+    }
+  }
+`;
+
+/**
+ * __useWorkStatusesQuery__
+ *
+ * To run a query within a React component, call `useWorkStatusesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useWorkStatusesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useWorkStatusesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useWorkStatusesQuery(
+  baseOptions?: Apollo.QueryHookOptions<WorkStatusesQuery, WorkStatusesQueryVariables>,
+) {
+  const options = {...defaultOptions, ...baseOptions};
+  return Apollo.useQuery<WorkStatusesQuery, WorkStatusesQueryVariables>(WorkStatusesDocument, options);
+}
+export function useWorkStatusesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<WorkStatusesQuery, WorkStatusesQueryVariables>,
+) {
+  const options = {...defaultOptions, ...baseOptions};
+  return Apollo.useLazyQuery<WorkStatusesQuery, WorkStatusesQueryVariables>(WorkStatusesDocument, options);
+}
+export type WorkStatusesQueryHookResult = ReturnType<typeof useWorkStatusesQuery>;
+export type WorkStatusesLazyQueryHookResult = ReturnType<typeof useWorkStatusesLazyQuery>;
+export type WorkStatusesQueryResult = Apollo.QueryResult<WorkStatusesQuery, WorkStatusesQueryVariables>;
+export const WorkStatusesUpdatedDocument = gql`
+  subscription workStatusesUpdated {
+    workStatusesUpdated {
+      isDepositDisabled
+      isWithdrawalDisabled
+      isSellDisabled
+      isMaintenance
+      isSteamProblems
+      isFuckup
+      isQiwiDisabled
+      isTinkoffDisabled
+    }
+  }
+`;
+
+/**
+ * __useWorkStatusesUpdatedSubscription__
+ *
+ * To run a query within a React component, call `useWorkStatusesUpdatedSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useWorkStatusesUpdatedSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useWorkStatusesUpdatedSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useWorkStatusesUpdatedSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    WorkStatusesUpdatedSubscription,
+    WorkStatusesUpdatedSubscriptionVariables
+  >,
+) {
+  const options = {...defaultOptions, ...baseOptions};
+  return Apollo.useSubscription<WorkStatusesUpdatedSubscription, WorkStatusesUpdatedSubscriptionVariables>(
+    WorkStatusesUpdatedDocument,
+    options,
+  );
+}
+export type WorkStatusesUpdatedSubscriptionHookResult = ReturnType<typeof useWorkStatusesUpdatedSubscription>;
+export type WorkStatusesUpdatedSubscriptionResult = Apollo.SubscriptionResult<WorkStatusesUpdatedSubscription>;

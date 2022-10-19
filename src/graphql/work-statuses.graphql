@@ -1,0 +1,25 @@
+query workStatuses {
+  workStatuses {
+    isDepositDisabled
+    isWithdrawalDisabled
+    isSellDisabled
+    isMaintenance
+    isSteamProblems
+    isFuckup
+    isQiwiDisabled
+    isTinkoffDisabled
+  }
+}
+
+subscription workStatusesUpdated {
+  workStatusesUpdated {
+    isDepositDisabled
+    isWithdrawalDisabled
+    isSellDisabled
+    isMaintenance
+    isSteamProblems
+    isFuckup
+    isQiwiDisabled
+    isTinkoffDisabled
+  }
+}
