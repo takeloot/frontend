@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 
 import toast, {useToasterStore} from "react-hot-toast";
+import NProgress from "nprogress";
+import {Router} from "next/router";
 import {appWithTranslation} from "next-i18next";
 import {ApolloProvider} from "@apollo/client";
 
@@ -13,6 +15,10 @@ import type {AppProps} from "next/app";
 
 import "_styles/global.css";
 import "@fontsource/inter";
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 const typePolicies = {
   Query: {

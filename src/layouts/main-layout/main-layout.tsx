@@ -5,7 +5,7 @@ import Head from "next/head";
 import {useTranslation} from "next-i18next";
 
 import {useWorkStatusesQuery, useWorkStatusesUpdatedSubscription} from "_app/generated/graphql";
-import {AlphaPreview, Footer, Loader, Navbar} from "_app/components";
+import {AlphaPreview, Footer, Navbar} from "_app/components";
 
 interface IProps {
   children: ReactNode;
@@ -28,21 +28,13 @@ export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, 
       workStatusesQuery.updateQuery((prev) => {
         return {
           ...prev,
-          userCoins: workStatusesUpdated,
+          workStatuses: workStatusesUpdated,
         };
       });
     },
   });
 
-  const {loading, error, data} = workStatusesQuery;
-
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    console.log("work statuses error", error);
-  }
+  const {data} = workStatusesQuery;
 
   const workStatuses = data?.workStatuses || null;
 

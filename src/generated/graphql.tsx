@@ -328,11 +328,42 @@ export type UpdateMyTradeUrlMutationVariables = Exact<{
 
 export type UpdateMyTradeUrlMutation = {__typename?: "Mutation"; updateMyTradeUrl: boolean};
 
+export type RegularWorkStatusesFragment = {
+  __typename?: "WorkStatuses";
+  isDepositDisabled: boolean;
+  isWithdrawalDisabled: boolean;
+  isSellDisabled: boolean;
+  isMaintenance: boolean;
+  isSteamProblems: boolean;
+  isFuckup: boolean;
+  isQiwiDisabled: boolean;
+  isTinkoffDisabled: boolean;
+};
+
 export type WorkStatusesQueryVariables = Exact<{[key: string]: never}>;
 
 export type WorkStatusesQuery = {
   __typename?: "Query";
   workStatuses: {
+    __typename?: "WorkStatuses";
+    isDepositDisabled: boolean;
+    isWithdrawalDisabled: boolean;
+    isSellDisabled: boolean;
+    isMaintenance: boolean;
+    isSteamProblems: boolean;
+    isFuckup: boolean;
+    isQiwiDisabled: boolean;
+    isTinkoffDisabled: boolean;
+  };
+};
+
+export type ToggleWorkStatusMutationVariables = Exact<{
+  status: UpdateWorkStatusesInput;
+}>;
+
+export type ToggleWorkStatusMutation = {
+  __typename?: "Mutation";
+  toggleWorkStatus: {
     __typename?: "WorkStatuses";
     isDepositDisabled: boolean;
     isWithdrawalDisabled: boolean;
@@ -421,6 +452,18 @@ export const RegularProfileFragmentDoc = gql`
     id
     provider
     serviceId
+  }
+`;
+export const RegularWorkStatusesFragmentDoc = gql`
+  fragment RegularWorkStatuses on WorkStatuses {
+    isDepositDisabled
+    isWithdrawalDisabled
+    isSellDisabled
+    isMaintenance
+    isSteamProblems
+    isFuckup
+    isQiwiDisabled
+    isTinkoffDisabled
   }
 `;
 export const UserInventoryDocument = gql`
@@ -669,16 +712,10 @@ export type UpdateMyTradeUrlMutationOptions = Apollo.BaseMutationOptions<
 export const WorkStatusesDocument = gql`
   query workStatuses {
     workStatuses {
-      isDepositDisabled
-      isWithdrawalDisabled
-      isSellDisabled
-      isMaintenance
-      isSteamProblems
-      isFuckup
-      isQiwiDisabled
-      isTinkoffDisabled
+      ...RegularWorkStatuses
     }
   }
+  ${RegularWorkStatusesFragmentDoc}
 `;
 
 /**
@@ -711,19 +748,58 @@ export function useWorkStatusesLazyQuery(
 export type WorkStatusesQueryHookResult = ReturnType<typeof useWorkStatusesQuery>;
 export type WorkStatusesLazyQueryHookResult = ReturnType<typeof useWorkStatusesLazyQuery>;
 export type WorkStatusesQueryResult = Apollo.QueryResult<WorkStatusesQuery, WorkStatusesQueryVariables>;
+export const ToggleWorkStatusDocument = gql`
+  mutation toggleWorkStatus($status: UpdateWorkStatusesInput!) {
+    toggleWorkStatus(status: $status) {
+      ...RegularWorkStatuses
+    }
+  }
+  ${RegularWorkStatusesFragmentDoc}
+`;
+export type ToggleWorkStatusMutationFn = Apollo.MutationFunction<
+  ToggleWorkStatusMutation,
+  ToggleWorkStatusMutationVariables
+>;
+
+/**
+ * __useToggleWorkStatusMutation__
+ *
+ * To run a mutation, you first call `useToggleWorkStatusMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useToggleWorkStatusMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [toggleWorkStatusMutation, { data, loading, error }] = useToggleWorkStatusMutation({
+ *   variables: {
+ *      status: // value for 'status'
+ *   },
+ * });
+ */
+export function useToggleWorkStatusMutation(
+  baseOptions?: Apollo.MutationHookOptions<ToggleWorkStatusMutation, ToggleWorkStatusMutationVariables>,
+) {
+  const options = {...defaultOptions, ...baseOptions};
+  return Apollo.useMutation<ToggleWorkStatusMutation, ToggleWorkStatusMutationVariables>(
+    ToggleWorkStatusDocument,
+    options,
+  );
+}
+export type ToggleWorkStatusMutationHookResult = ReturnType<typeof useToggleWorkStatusMutation>;
+export type ToggleWorkStatusMutationResult = Apollo.MutationResult<ToggleWorkStatusMutation>;
+export type ToggleWorkStatusMutationOptions = Apollo.BaseMutationOptions<
+  ToggleWorkStatusMutation,
+  ToggleWorkStatusMutationVariables
+>;
 export const WorkStatusesUpdatedDocument = gql`
   subscription workStatusesUpdated {
     workStatusesUpdated {
-      isDepositDisabled
-      isWithdrawalDisabled
-      isSellDisabled
-      isMaintenance
-      isSteamProblems
-      isFuckup
-      isQiwiDisabled
-      isTinkoffDisabled
+      ...RegularWorkStatuses
     }
   }
+  ${RegularWorkStatusesFragmentDoc}
 `;
 
 /**

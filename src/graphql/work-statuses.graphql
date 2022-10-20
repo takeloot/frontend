@@ -1,25 +1,28 @@
+fragment RegularWorkStatuses on WorkStatuses {
+  isDepositDisabled
+  isWithdrawalDisabled
+  isSellDisabled
+  isMaintenance
+  isSteamProblems
+  isFuckup
+  isQiwiDisabled
+  isTinkoffDisabled
+}
+
 query workStatuses {
   workStatuses {
-    isDepositDisabled
-    isWithdrawalDisabled
-    isSellDisabled
-    isMaintenance
-    isSteamProblems
-    isFuckup
-    isQiwiDisabled
-    isTinkoffDisabled
+    ...RegularWorkStatuses
+  }
+}
+
+mutation toggleWorkStatus($status: UpdateWorkStatusesInput!) {
+  toggleWorkStatus(status: $status) {
+    ...RegularWorkStatuses
   }
 }
 
 subscription workStatusesUpdated {
   workStatusesUpdated {
-    isDepositDisabled
-    isWithdrawalDisabled
-    isSellDisabled
-    isMaintenance
-    isSteamProblems
-    isFuckup
-    isQiwiDisabled
-    isTinkoffDisabled
+    ...RegularWorkStatuses
   }
 }
