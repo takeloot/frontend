@@ -41,5 +41,16 @@
   "home": "Home",
   "users": "Users",
   "finance": "Finance",
-  "tickets": "Tickets"
+  "tickets": "Tickets",
+  "settings": "Settings",
+  "statuses": "Statuses",
+  "statuses_setting_subtitle": "Changing statuses in real time",
+  "is_deposit_disabled": "Deposit",
+  "is_withdrawal_disabled": "Withdrawal",
+  "is_sell_disabled": "Sell",
+  "is_maintenance": "Mainenance",
+  "is_steam_problems": "Steam problems",
+  "is_fuckup": "Fuckup",
+  "is_qiwi_disabled": "QIWI",
+  "is_tinkoff_disabled": "Tinkoff"
 }

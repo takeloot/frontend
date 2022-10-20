@@ -3,13 +3,6 @@
 
 echo '👷 Styling, testing and building your project before committing'
 
-# Check Prettier standards
-yarn check-format ||
-(
-    echo '🤮 Your styling looks disgusting. Prettier Check Failed. Run yarn format, add changes and try commit again.';
-    false;
-)
-
 # Check ESLint Standards
 yarn check-lint ||
 (

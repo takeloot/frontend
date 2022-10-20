@@ -41,5 +41,16 @@
   "home": "Главная",
   "users": "Пользователи",
   "finance": "Финансы",
-  "tickets": "Тикеты"
+  "tickets": "Тикеты",
+  "settings": "Настройки",
+  "statuses": "Статусы",
+  "statuses_setting_subtitle": "Изменение статусов в реальном времени",
+  "is_deposit_disabled": "Пополнение",
+  "is_withdrawal_disabled": "Вывод",
+  "is_sell_disabled": "Продажа",
+  "is_maintenance": "Техническое обслуживание",
+  "is_steam_problems": "Проблемы с Steam",
+  "is_fuckup": "Факап",
+  "is_qiwi_disabled": "QIWI",
+  "is_tinkoff_disabled": "Тинькофф"
 }

@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from "react";
 
 import {Toaster} from "react-hot-toast";
-import {ArrowLeftCircle, CreditCard, Home, LifeBuoy, Users} from "react-feather";
+import {ArrowLeftCircle, CreditCard, Home, LifeBuoy, Settings, Users} from "react-feather";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Head from "next/head";
@@ -53,6 +53,12 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
       title: t("tickets"),
       disabled: false,
       icon: <LifeBuoy size="18" />,
+    },
+    {
+      url: "/manage/settings",
+      title: t("settings"),
+      disabled: false,
+      icon: <Settings size="18" />,
     },
   ];
 
