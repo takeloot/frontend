@@ -20,10 +20,10 @@ export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, 
   const workStatusesQuery = useWorkStatusesQuery();
 
   useWorkStatusesUpdatedSubscription({
-    onSubscriptionData: ({subscriptionData}) => {
-      if (!subscriptionData.data) return;
+    onData: ({data}) => {
+      if (!data.data) return;
 
-      const workStatusesUpdated = subscriptionData.data.workStatusesUpdated;
+      const workStatusesUpdated = data.data.workStatusesUpdated;
 
       workStatusesQuery.updateQuery((prev) => {
         return {

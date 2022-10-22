@@ -8,6 +8,7 @@ query me {
   me {
     id
     name
+    role
     avatar
     tradeUrl
     profiles {
