@@ -7,7 +7,7 @@ import {useTranslation} from "next-i18next";
 import {Menu, Transition} from "@headlessui/react";
 
 import {useConfirmationDialog} from "_app/hooks";
-import {useLogoutMutation} from "_app/generated/graphql";
+import {UserRole, useLogoutMutation} from "_app/generated/graphql";
 
 // @ts-ignore: work in progress, will be fixed later
 export const UserProfile = ({user}) => {
@@ -21,7 +21,7 @@ export const UserProfile = ({user}) => {
     },
   });
 
-  const {name, avatar} = user;
+  const {name, avatar, role} = user;
 
   const handleLogout = useCallback(async () => {
     const confirmed = await getConfirmation({
@@ -33,6 +33,26 @@ export const UserProfile = ({user}) => {
       logout();
     }
   }, [getConfirmation, logout]);
+
+  const PAGES = [
+    {
+      url: "/profile",
+      title: t("profile"),
+    },
+    {
+      url: "#",
+      title: t("refferal"),
+    },
+    {
+      url: "#",
+      title: t("transactions"),
+    },
+    {
+      url: "/manage",
+      title: t("manage"),
+      roles: [UserRole.Creator, UserRole.Admin, UserRole.Support],
+    },
+  ];
 
   return (
     <Menu as="div" className="relative pt-2">
@@ -60,55 +80,26 @@ export const UserProfile = ({user}) => {
             </Menu.Item>
           </div>
           <div className="p-2">
-            <Menu.Item>
-              {({active}) => (
-                <Link href="/profile">
-                  <a
-                    className={`${
-                      active ? "bg-gray " : ""
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
-                  >
-                    {t("profile")}
-                  </a>
-                </Link>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({active}) => (
-                <button
-                  className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  {t("refferal")}
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="p-2">
-            <Menu.Item>
-              {({active}) => (
-                <button
-                  className={`${active ? "bg-gray " : ""} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  {t("transactions")}
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="p-2">
-            {/* TODO: Hide by role from api + dto */}
-            <Menu.Item>
-              {({active}) => (
-                <Link href="/manage">
-                  <a
-                    className={`${
-                      active ? "bg-gray " : ""
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
-                  >
-                    {t("manage")}
-                  </a>
-                </Link>
-              )}
-            </Menu.Item>
+            {PAGES.map(({url, title, roles}) => {
+              if (roles && !roles.includes(role)) {
+                return null;
+              }
+              return (
+                <Menu.Item key={title}>
+                  {({active}) => (
+                    <Link href={url}>
+                      <a
+                        className={`${
+                          active ? "bg-gray " : ""
+                        } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
+                      >
+                        {t(title)}
+                      </a>
+                    </Link>
+                  )}
+                </Menu.Item>
+              );
+            })}
           </div>
           <div className="p-2">
             <Menu.Item>

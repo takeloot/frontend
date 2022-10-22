@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from "react";
+import React, {FC, ReactNode, useEffect, useMemo} from "react";
 
 import {Toaster} from "react-hot-toast";
 import {ArrowLeftCircle, Cpu, CreditCard, Home, LifeBuoy, Settings, Users} from "react-feather";
@@ -8,7 +8,7 @@ import Head from "next/head";
 import {useTranslation} from "next-i18next";
 import clsx from "clsx";
 
-import {useMeQuery} from "_app/generated/graphql";
+import {UserRole, useMeQuery} from "_app/generated/graphql";
 import {Loader, UserPanel} from "_app/components";
 
 interface IProps {
@@ -23,9 +23,21 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
   const userQuery = useMeQuery();
 
   const user = userQuery.data?.me;
+  const role = user?.role;
   const loading = userQuery.loading;
 
-  if (loading) {
+  const accessGrantedList = useMemo(() => [UserRole.Creator, UserRole.Admin, UserRole.Support], []);
+
+  const accessGranted = role && accessGrantedList.includes(role);
+
+  // TODO: Create Router Guard instead of this later
+  useEffect(() => {
+    if (!loading && !accessGranted) {
+      router.push("/");
+    }
+  }, [accessGranted, loading, router, user]);
+
+  if (loading || !accessGranted) {
     return <Loader />;
   }
 

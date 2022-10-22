@@ -45,6 +45,7 @@ fragment RegularSkin on Skin {
   steamId
   steamName
   steamImg
+  isBlacklisted
 }
 
 query userInventory($appId: Int!, $userId: ID!) {
