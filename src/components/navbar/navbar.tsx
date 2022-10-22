@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
 import {clsx} from "clsx";
+import {Balance} from "_components/balance";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 import {Listbox, Transition} from "@headlessui/react";
 
@@ -190,6 +191,7 @@ export const Navbar = () => {
             </div>
           </Listbox>
         </div>
+        {!!user && <Balance currency={currency} />}
         {/* @ts-ignore: work in progress, will be fixed later */}
         <UserPanel user={user} />
       </div>
