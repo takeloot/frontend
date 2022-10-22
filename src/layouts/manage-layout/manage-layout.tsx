@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from "react";
 
 import {Toaster} from "react-hot-toast";
-import {ArrowLeftCircle, CreditCard, Home, LifeBuoy, Settings, Users} from "react-feather";
+import {ArrowLeftCircle, Cpu, CreditCard, Home, LifeBuoy, Settings, Users} from "react-feather";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Head from "next/head";
@@ -41,6 +41,12 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
       title: t("users"),
       disabled: false,
       icon: <Users size="18" />,
+    },
+    {
+      url: "/manage/bots",
+      title: t("bots"),
+      disabled: false,
+      icon: <Cpu size="18" />,
     },
     {
       url: "/manage/finance",

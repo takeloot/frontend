@@ -14,29 +14,30 @@
     "format": "prettier --write .",
     "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
     "prepare": "husky install",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "udeps": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@fontsource/inter": "^4.5.12",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "@takeloot/dto": "takeloot/dto",
     "clsx": "^1.2.1",
     "color": "^4.2.3",
     "deepmerge": "^4.2.2",
     "framer-motion": "^7.3.5",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.11.2",
-    "iron-session": "^6.2.1",
+    "iron-session": "^6.3.1",
     "lodash.isequal": "^4.5.0",
-    "next": "12.3.0",
+    "next": "12.3.1",
     "next-i18next": "^12.1.0",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
-    "react-hot-toast": "^2.4.0",
-    "@takeloot/dto": "takeloot/dto"
+    "react-hot-toast": "^2.4.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.12.1",
@@ -47,15 +48,15 @@
     "@tailwindcss/typography": "^0.5.7",
     "@types/color": "^3.0.3",
     "@types/lodash.isequal": "^4.5.6",
-    "@types/node": "18.7.18",
+    "@types/node": "18.11.3",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "18.0.20",
+    "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.23.1",
-    "eslint-config-next": "12.3.0",
+    "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -64,9 +65,9 @@
     "postcss": "^8.4.17",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwind-scrollbar": "^2.0.1",
-    "tailwindcss": "^3.1.8",
+    "tailwind-scrollbar": "^2.1.0-preview.0",
+    "tailwindcss": "^3.2.1",
     "ts-loader": "^9.4.1",
-    "typescript": "4.8.3"
+    "typescript": "4.8.4"
   }
 }
