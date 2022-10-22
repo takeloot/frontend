@@ -52,5 +52,9 @@
   "is_steam_problems": "Steam problems",
   "is_fuckup": "Fuckup",
   "is_qiwi_disabled": "QIWI",
-  "is_tinkoff_disabled": "Tinkoff"
+  "is_tinkoff_disabled": "Tinkoff",
+  "bots": "Bots",
+  "bot_list": "Bot list",
+  "bot_list_is_empty": "Bot list is empty",
+  "add_bot": "Add bot"
 }

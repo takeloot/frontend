@@ -16,22 +16,18 @@ const Manage: NextPage = () => {
       <div className="mb-4 text-lg">Список необходимого функционала</div>
       <ul className="mb-4">
         <li className="text-cloud-dark">Минимальная сумма вывода</li>
-        <li className="text-cloud-dark">Минимальная цена предмента при продаже</li>
-        <li className="text-cloud-dark">Максимальная цена предмента при продаже</li>
+        <li className="text-cloud-dark">Минимальная цена предмета при продаже</li>
+        <li className="text-cloud-dark">Максимальная цена предмета при продаже</li>
         <li className="text-cloud-dark">Формула цены</li>
         <li className="text-cloud-dark">Вариант подтверждения продажи (Автоматический / Ручной)</li>
-        <li className="text-cloud-dark">Включить / отключить вывод средств</li>
-        <li className="text-cloud-dark">Включить / отключить депозит средств</li>
-        <li className="text-cloud-dark">Включить / отключить возможность продажи</li>
-        <li className="text-cloud-dark">Включить / отключить возможность продажи</li>
-        <li className="text-cloud-dark">Включить / отключить оплату через Qiwi</li>
-        <li className="text-cloud-dark">Включить / отключить оплату через Tinkoff</li>
-        <li className="text-cloud-dark">Включить / отключить заглушку (Технические работы)</li>
-        <li className="text-cloud-dark">Включить / отключить заглушку (Факап)</li>
-        <li className="text-cloud-dark">Включить / отключить заглушку (Проблемы на стороне Steam)</li>
         <li className="text-cloud-dark">Разлогинить пользователя</li>
         <li className="text-cloud-dark">Бан / разбан пользователя</li>
         <li className="text-cloud-dark">Модуль тикетов службы поддержки</li>
+      </ul>
+      <ul className="mb-4">
+        <li className="text-cloud-dark">Детальная страница бота</li>
+        <li className="text-cloud-dark">Просмотр инвентаря бота</li>
+        <li className="text-cloud-dark">Возможность снять предметы с бота</li>
       </ul>
       <ul>
         <li className="text-cloud-dark">Онлайн пользователей на сайте</li>

@@ -52,5 +52,9 @@
   "is_steam_problems": "Проблемы с Steam",
   "is_fuckup": "Факап",
   "is_qiwi_disabled": "QIWI",
-  "is_tinkoff_disabled": "Тинькофф"
+  "is_tinkoff_disabled": "Тинькофф",
+  "bots": "Боты",
+  "bot_list": "Список ботов",
+  "bot_list_is_empty": "Список ботов пуст",
+  "add_bot": "Добавить бота"
 }
