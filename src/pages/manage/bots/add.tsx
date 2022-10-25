@@ -8,6 +8,7 @@ import {useDropzone} from "react-dropzone";
 import {useRouter} from "next/router";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import FormData from "form-data";
 import axios from "axios";
 
 import {ManageLayout} from "_app/layouts";
