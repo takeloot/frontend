@@ -64,5 +64,7 @@
   "login": "Login",
   "password": "Password",
   "proxy": "Proxy",
-  "add": "Add"
+  "add": "Add",
+  "deactivated": "Deactivated",
+  "at_work": "At work"
 }
