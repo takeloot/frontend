@@ -66,5 +66,6 @@
   "proxy": "Proxy",
   "add": "Add",
   "deactivated": "Deactivated",
-  "at_work": "At work"
+  "at_work": "At work",
+  "select_a_file": "Select a file"
 }
