@@ -60,5 +60,9 @@
   "bots": "Bots",
   "bot_list": "Bot list",
   "bot_list_is_empty": "Bot list is empty",
-  "add_bot": "Add bot"
+  "add_bot": "Add bot",
+  "login": "Login",
+  "password": "Password",
+  "proxy": "Proxy",
+  "add": "Add"
 }

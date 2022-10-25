@@ -2,6 +2,7 @@ import React from "react";
 
 import type {GetStaticProps, NextPage} from "next";
 
+import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
@@ -14,9 +15,11 @@ const Bots: NextPage = () => {
     <ManageLayout title={t("bots")}>
       <div className="mb-4 flex items-center justify-between">
         <div className="text-lg">{t("bot_list")}</div>
-        <div className="rounded-lg bg-blue py-2 px-4 duration-200 hover:cursor-pointer hover:bg-blue-dark">
-          {t("add_bot")}
-        </div>
+        <Link href="/manage/bots/add">
+          <div className="rounded-lg bg-blue py-2 px-4 duration-200 hover:cursor-pointer hover:bg-blue-dark">
+            {t("add_bot")}
+          </div>
+        </Link>
       </div>
       {/* TODO: Handle empty list */}
       {/* <div>{t("bot_list_is_empty")}</div> */}
