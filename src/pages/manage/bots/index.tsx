@@ -2,14 +2,19 @@ import React from "react";
 
 import type {GetStaticProps, NextPage} from "next";
 
+import {Cpu} from "react-feather";
 import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
 import {ManageLayout} from "_app/layouts";
+import {useSteamBotsQuery} from "_app/generated/graphql";
 
 const Bots: NextPage = () => {
   const {t} = useTranslation("common");
+  const {loading, data} = useSteamBotsQuery();
+
+  const steamBots = data?.steamBots;
 
   return (
     <ManageLayout title={t("bots")}>
@@ -21,46 +26,32 @@ const Bots: NextPage = () => {
           </div>
         </Link>
       </div>
-      {/* TODO: Handle empty list */}
-      {/* <div>{t("bot_list_is_empty")}</div> */}
-      <div className="grid w-full gap-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-green">В работе</div>
+      {!!loading && (
+        <div className="flex flex-col items-center justify-center py-10">
+          <div className="mt-4 text-lg text-cloud-dark">{t("loading")}</div>
         </div>
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-green">В работе</div>
+      )}
+      {!steamBots?.length && (
+        <div className="flex flex-col items-center justify-center py-10">
+          <Cpu size="45" strokeWidth="1" color="#D2D7DF" />
+          <div className="mt-4 text-lg text-cloud-dark">{t("bot_list_is_empty")}</div>
         </div>
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-green">В работе</div>
+      )}
+      {!!steamBots?.length && (
+        <div className="grid w-full gap-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+          {steamBots.map((bot) => (
+            <div
+              key={bot.id}
+              className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark"
+            >
+              <div className="text-lg">{bot.name || bot.accountName}</div>
+              <div className="pt-1 text-cloud-dark">0 скинов</div>
+              <div className="pt-1 text-cloud-dark">$ 0,01 / 0,01 ₽</div>
+              <div className="pt-1 text-green">{t("at_work")}</div>
+            </div>
+          ))}
         </div>
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-green">В работе</div>
-        </div>
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-green">В работе</div>
-        </div>
-        <div className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark">
-          <div className="text-lg">Pudge</div>
-          <div className="pt-1 text-cloud-dark">250 скинов</div>
-          <div className="pt-1 text-cloud-dark">$ 1,000 / 60,000 ₽</div>
-          <div className="pt-1 text-red">Деактивирован</div>
-        </div>
-      </div>
+      )}
     </ManageLayout>
   );
 };

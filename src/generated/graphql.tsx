@@ -37,6 +37,11 @@ export type CreateSellInput = {
   wallet: Scalars['String'];
 };
 
+export enum EGame {
+  Csgo = 'CSGO',
+  Dota2 = 'DOTA2'
+}
+
 export enum ESellStatus {
   AcceptedBySupport = 'ACCEPTED_BY_SUPPORT',
   Completed = 'COMPLETED',
@@ -79,6 +84,8 @@ export type Mutation = {
   toggleWorkStatus: WorkStatuses;
   updateConnectionStatus: Scalars['Boolean'];
   updateMyTradeUrl: Scalars['Boolean'];
+  updatePrice: SteamMarketItem;
+  updatePrices: SteamMarketItem;
 };
 
 
@@ -97,6 +104,17 @@ export type MutationUpdateMyTradeUrlArgs = {
   tradeUrl?: InputMaybe<Scalars['String']>;
 };
 
+
+export type MutationUpdatePriceArgs = {
+  dto: UpdatePriceInput;
+  name: Scalars['String'];
+};
+
+
+export type MutationUpdatePricesArgs = {
+  dto: UpdatePricesInput;
+};
+
 export type Profile = {
   __typename?: 'Profile';
   avatar?: Maybe<Scalars['String']>;
@@ -110,14 +128,28 @@ export type Query = {
   __typename?: 'Query';
   me: User;
   myInventory?: Maybe<Inventory>;
+  searchByPrice: SteamMarketItem;
+  steamBot?: Maybe<SteamBotModel>;
+  steamBots: Array<SteamBotModel>;
   user?: Maybe<User>;
   userInventory?: Maybe<Inventory>;
+  users: Array<User>;
   workStatuses: WorkStatuses;
 };
 
 
 export type QueryMyInventoryArgs = {
   appId: Scalars['Int'];
+};
+
+
+export type QuerySearchByPriceArgs = {
+  query: SearchQueryInput;
+};
+
+
+export type QuerySteamBotArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -129,6 +161,13 @@ export type QueryUserArgs = {
 export type QueryUserInventoryArgs = {
   appId: Scalars['Int'];
   userId: Scalars['ID'];
+};
+
+export type SearchQueryInput = {
+  compare: Scalars['String'];
+  limit?: InputMaybe<Scalars['Float']>;
+  name: Scalars['String'];
+  price: Scalars['Float'];
 };
 
 export type Sell = {
@@ -204,6 +243,15 @@ export type SteamBotModel = {
   updatedAt: Scalars['DateTime'];
 };
 
+export type SteamMarketItem = {
+  __typename?: 'SteamMarketItem';
+  createdAt: Scalars['DateTime'];
+  gameId: EGame;
+  name: Scalars['String'];
+  price: Scalars['Float'];
+  updatedAt: Scalars['DateTime'];
+};
+
 export type Sticker = {
   __typename?: 'Sticker';
   id: Scalars['String'];
@@ -214,6 +262,14 @@ export type Sticker = {
 export type Subscription = {
   __typename?: 'Subscription';
   workStatusesUpdated: WorkStatuses;
+};
+
+export type UpdatePriceInput = {
+  price: Scalars['Float'];
+};
+
+export type UpdatePricesInput = {
+  game: EGame;
 };
 
 export type UpdateWorkStatusesInput = {
@@ -253,6 +309,20 @@ export type WorkStatuses = {
   isWithdrawalDisabled: Scalars['Boolean'];
   updatedAt: Scalars['DateTime'];
 };
+
+export type RegularSteamBotFragment = { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any };
+
+export type SteamBotsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SteamBotsQuery = { __typename?: 'Query', steamBots: Array<{ __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any }> };
+
+export type SteamBotQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type SteamBotQuery = { __typename?: 'Query', steamBot?: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any } | null };
 
 export type RegularCollectionFragment = { __typename?: 'Collection', id: string, name: string, img: string };
 
@@ -318,6 +388,23 @@ export type WorkStatusesUpdatedSubscriptionVariables = Exact<{ [key: string]: ne
 
 export type WorkStatusesUpdatedSubscription = { __typename?: 'Subscription', workStatusesUpdated: { __typename?: 'WorkStatuses', isDepositDisabled: boolean, isWithdrawalDisabled: boolean, isSellDisabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiDisabled: boolean, isTinkoffDisabled: boolean } };
 
+export const RegularSteamBotFragmentDoc = gql`
+    fragment RegularSteamBot on SteamBotModel {
+  id
+  accountName
+  password
+  proxy
+  sharedSecret
+  identitySecret
+  avatar
+  name
+  profileUrl
+  tradeUrl
+  cookies
+  createdAt
+  updatedAt
+}
+    `;
 export const RegularCollectionFragmentDoc = gql`
     fragment RegularCollection on Collection {
   id
@@ -391,6 +478,75 @@ export const RegularWorkStatusesFragmentDoc = gql`
   isTinkoffDisabled
 }
     `;
+export const SteamBotsDocument = gql`
+    query steamBots {
+  steamBots {
+    ...RegularSteamBot
+  }
+}
+    ${RegularSteamBotFragmentDoc}`;
+
+/**
+ * __useSteamBotsQuery__
+ *
+ * To run a query within a React component, call `useSteamBotsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSteamBotsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSteamBotsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSteamBotsQuery(baseOptions?: Apollo.QueryHookOptions<SteamBotsQuery, SteamBotsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SteamBotsQuery, SteamBotsQueryVariables>(SteamBotsDocument, options);
+      }
+export function useSteamBotsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SteamBotsQuery, SteamBotsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SteamBotsQuery, SteamBotsQueryVariables>(SteamBotsDocument, options);
+        }
+export type SteamBotsQueryHookResult = ReturnType<typeof useSteamBotsQuery>;
+export type SteamBotsLazyQueryHookResult = ReturnType<typeof useSteamBotsLazyQuery>;
+export type SteamBotsQueryResult = Apollo.QueryResult<SteamBotsQuery, SteamBotsQueryVariables>;
+export const SteamBotDocument = gql`
+    query steamBot($id: ID!) {
+  steamBot(id: $id) {
+    ...RegularSteamBot
+  }
+}
+    ${RegularSteamBotFragmentDoc}`;
+
+/**
+ * __useSteamBotQuery__
+ *
+ * To run a query within a React component, call `useSteamBotQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSteamBotQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSteamBotQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSteamBotQuery(baseOptions: Apollo.QueryHookOptions<SteamBotQuery, SteamBotQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SteamBotQuery, SteamBotQueryVariables>(SteamBotDocument, options);
+      }
+export function useSteamBotLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SteamBotQuery, SteamBotQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SteamBotQuery, SteamBotQueryVariables>(SteamBotDocument, options);
+        }
+export type SteamBotQueryHookResult = ReturnType<typeof useSteamBotQuery>;
+export type SteamBotLazyQueryHookResult = ReturnType<typeof useSteamBotLazyQuery>;
+export type SteamBotQueryResult = Apollo.QueryResult<SteamBotQuery, SteamBotQueryVariables>;
 export const UserInventoryDocument = gql`
     query userInventory($appId: Int!, $userId: ID!) {
   userInventory(appId: $appId, userId: $userId) {

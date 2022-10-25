@@ -1177,6 +1177,13 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tailwindcss/forms@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.3.tgz#e4d7989686cbcaf416c53f1523df5225332a86e7"
+  integrity sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
+
 "@tailwindcss/typography@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.7.tgz#e0b95bea787ee14c5a34a74fc824e6fe86ea8855"
@@ -2081,6 +2088,11 @@ class-validator@^0.12.2:
     google-libphonenumber "^3.2.8"
     tslib ">=1.9.0"
     validator "13.0.0"
+
+class-variance-authority@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/class-variance-authority/-/class-variance-authority-0.2.4.tgz#a9a4474e13943b506994f95fe670663135f7dba4"
+  integrity sha512-JJKn9ESARiNEBBRdTSPB9/SwaPb+wi19DMX/r8BVSyp1dxHa3JyUxa2GQjEVag5rBi+O3pL64UZ0XhnQsMz+3w==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -3859,6 +3871,11 @@ mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
+
 minimatch@4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-4.2.1.tgz#40d9d511a46bdc4e563c22c3080cde9c0d8299b4"
@@ -3925,6 +3942,11 @@ next-i18next@^12.1.0:
     i18next "^21.9.1"
     i18next-fs-backend "^1.1.5"
     react-i18next "^11.18.4"
+
+next-seo@^5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.8.0.tgz#c71c791971e030af448cae61dc1ece5e79da1790"
+  integrity sha512-V5W/JwqdoX6/0zG4S7m5g8zNajYffytWigkPo2hrbHhLD18yGFBU9607OPhvbI9zX3QjWQFMBSmlUY456xt9cA==
 
 next@12.3.1:
   version "12.3.1"
