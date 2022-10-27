@@ -16,14 +16,14 @@ export const transformWorkStatuses = (
     | EStatus
     | {
       __typename?: "WorkStatuses" | undefined;
-      isDepositDisabled: boolean;
-      isWithdrawalDisabled: boolean;
-      isSellDisabled: boolean;
+      isDepositEnabled: boolean;
+      isWithdrawalEnabled: boolean;
+      isSellEnabled: boolean;
       isMaintenance: boolean;
       isSteamProblems: boolean;
       isFuckup: boolean;
-      isQiwiDisabled: boolean;
-      isTinkoffDisabled: boolean;
+      isQiwiEnabled: boolean;
+      isTinkoffEnabled: boolean;
     },
 ): { name: string; value: boolean }[] => {
   // @ts-ignore

@@ -145,22 +145,6 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "email",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "items",
             "description": null,
             "type": {
@@ -178,38 +162,6 @@
                     "ofType": null
                   }
                 }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "paymentProvider",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "wallet",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               }
             },
             "defaultValue": null,
@@ -322,7 +274,7 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "IS_DEPOSIT_DISABLED",
+            "name": "IS_DEPOSIT_ENABLED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -340,13 +292,13 @@
             "deprecationReason": null
           },
           {
-            "name": "IS_QIWI_DISABLED",
+            "name": "IS_QIWI_ENABLED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "IS_SELL_DISABLED",
+            "name": "IS_SELL_ENABLED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -358,13 +310,13 @@
             "deprecationReason": null
           },
           {
-            "name": "IS_TINKOFF_DISABLED",
+            "name": "IS_TINKOFF_ENABLED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "IS_WITHDRAWAL_DISABLED",
+            "name": "IS_WITHDRAWAL_ENABLED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -1990,6 +1942,22 @@
             "deprecationReason": null
           },
           {
+            "name": "isDeactivated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "name",
             "description": null,
             "args": [],
@@ -2571,7 +2539,7 @@
             "deprecationReason": null
           },
           {
-            "name": "isDepositDisabled",
+            "name": "isDepositEnabled",
             "description": null,
             "args": [],
             "type": {
@@ -2619,7 +2587,7 @@
             "deprecationReason": null
           },
           {
-            "name": "isQiwiDisabled",
+            "name": "isQiwiEnabled",
             "description": null,
             "args": [],
             "type": {
@@ -2635,7 +2603,7 @@
             "deprecationReason": null
           },
           {
-            "name": "isSellDisabled",
+            "name": "isSellEnabled",
             "description": null,
             "args": [],
             "type": {
@@ -2667,7 +2635,7 @@
             "deprecationReason": null
           },
           {
-            "name": "isTinkoffDisabled",
+            "name": "isTinkoffEnabled",
             "description": null,
             "args": [],
             "type": {
@@ -2683,7 +2651,7 @@
             "deprecationReason": null
           },
           {
-            "name": "isWithdrawalDisabled",
+            "name": "isWithdrawalEnabled",
             "description": null,
             "args": [],
             "type": {

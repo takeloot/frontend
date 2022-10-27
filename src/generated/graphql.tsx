@@ -31,10 +31,7 @@ export type Collection = {
 };
 
 export type CreateSellInput = {
-  email: Scalars['String'];
   items: Array<Item>;
-  paymentProvider: Scalars['String'];
-  wallet: Scalars['String'];
 };
 
 export enum EGame {
@@ -54,14 +51,14 @@ export enum ESellStatus {
 }
 
 export enum EStatus {
-  IsDepositDisabled = 'IS_DEPOSIT_DISABLED',
+  IsDepositEnabled = 'IS_DEPOSIT_ENABLED',
   IsFuckup = 'IS_FUCKUP',
   IsMaintenance = 'IS_MAINTENANCE',
-  IsQiwiDisabled = 'IS_QIWI_DISABLED',
-  IsSellDisabled = 'IS_SELL_DISABLED',
+  IsQiwiEnabled = 'IS_QIWI_ENABLED',
+  IsSellEnabled = 'IS_SELL_ENABLED',
   IsSteamProblems = 'IS_STEAM_PROBLEMS',
-  IsTinkoffDisabled = 'IS_TINKOFF_DISABLED',
-  IsWithdrawalDisabled = 'IS_WITHDRAWAL_DISABLED'
+  IsTinkoffEnabled = 'IS_TINKOFF_ENABLED',
+  IsWithdrawalEnabled = 'IS_WITHDRAWAL_ENABLED'
 }
 
 export type Inventory = {
@@ -234,6 +231,7 @@ export type SteamBotModel = {
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
   identitySecret: Scalars['String'];
+  isDeactivated: Scalars['Boolean'];
   name: Scalars['String'];
   password: Scalars['String'];
   profileUrl: Scalars['String'];
@@ -299,30 +297,30 @@ export type WorkStatuses = {
   __typename?: 'WorkStatuses';
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
-  isDepositDisabled: Scalars['Boolean'];
+  isDepositEnabled: Scalars['Boolean'];
   isFuckup: Scalars['Boolean'];
   isMaintenance: Scalars['Boolean'];
-  isQiwiDisabled: Scalars['Boolean'];
-  isSellDisabled: Scalars['Boolean'];
+  isQiwiEnabled: Scalars['Boolean'];
+  isSellEnabled: Scalars['Boolean'];
   isSteamProblems: Scalars['Boolean'];
-  isTinkoffDisabled: Scalars['Boolean'];
-  isWithdrawalDisabled: Scalars['Boolean'];
+  isTinkoffEnabled: Scalars['Boolean'];
+  isWithdrawalEnabled: Scalars['Boolean'];
   updatedAt: Scalars['DateTime'];
 };
 
-export type RegularSteamBotFragment = { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any };
+export type RegularSteamBotFragment = { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any };
 
 export type SteamBotsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SteamBotsQuery = { __typename?: 'Query', steamBots: Array<{ __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any }> };
+export type SteamBotsQuery = { __typename?: 'Query', steamBots: Array<{ __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any }> };
 
 export type SteamBotQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type SteamBotQuery = { __typename?: 'Query', steamBot?: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, createdAt: any, updatedAt: any } | null };
+export type SteamBotQuery = { __typename?: 'Query', steamBot?: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } | null };
 
 export type RegularCollectionFragment = { __typename?: 'Collection', id: string, name: string, img: string };
 
@@ -345,7 +343,19 @@ export type MyInventoryQueryVariables = Exact<{
 
 export type MyInventoryQuery = { __typename?: 'Query', myInventory?: { __typename?: 'Inventory', id: string, createdAt: any, updatedAt: any, skins?: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }> | null } | null };
 
+export type RegularSellFragment = { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } };
+
+export type CreateSellMutationVariables = Exact<{
+  dto: CreateSellInput;
+  userId: Scalars['ID'];
+}>;
+
+
+export type CreateSellMutation = { __typename?: 'Mutation', createSell: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
+
 export type RegularProfileFragment = { __typename?: 'Profile', id: string, provider: string, serviceId: string };
+
+export type RegularUserFragment = { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null };
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -369,42 +379,25 @@ export type UpdateMyTradeUrlMutationVariables = Exact<{
 
 export type UpdateMyTradeUrlMutation = { __typename?: 'Mutation', updateMyTradeUrl: boolean };
 
-export type RegularWorkStatusesFragment = { __typename?: 'WorkStatuses', isDepositDisabled: boolean, isWithdrawalDisabled: boolean, isSellDisabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiDisabled: boolean, isTinkoffDisabled: boolean };
+export type RegularWorkStatusesFragment = { __typename?: 'WorkStatuses', isDepositEnabled: boolean, isWithdrawalEnabled: boolean, isSellEnabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiEnabled: boolean, isTinkoffEnabled: boolean };
 
 export type WorkStatusesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type WorkStatusesQuery = { __typename?: 'Query', workStatuses: { __typename?: 'WorkStatuses', isDepositDisabled: boolean, isWithdrawalDisabled: boolean, isSellDisabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiDisabled: boolean, isTinkoffDisabled: boolean } };
+export type WorkStatusesQuery = { __typename?: 'Query', workStatuses: { __typename?: 'WorkStatuses', isDepositEnabled: boolean, isWithdrawalEnabled: boolean, isSellEnabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiEnabled: boolean, isTinkoffEnabled: boolean } };
 
 export type ToggleWorkStatusMutationVariables = Exact<{
   status: UpdateWorkStatusesInput;
 }>;
 
 
-export type ToggleWorkStatusMutation = { __typename?: 'Mutation', toggleWorkStatus: { __typename?: 'WorkStatuses', isDepositDisabled: boolean, isWithdrawalDisabled: boolean, isSellDisabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiDisabled: boolean, isTinkoffDisabled: boolean } };
+export type ToggleWorkStatusMutation = { __typename?: 'Mutation', toggleWorkStatus: { __typename?: 'WorkStatuses', isDepositEnabled: boolean, isWithdrawalEnabled: boolean, isSellEnabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiEnabled: boolean, isTinkoffEnabled: boolean } };
 
 export type WorkStatusesUpdatedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
-export type WorkStatusesUpdatedSubscription = { __typename?: 'Subscription', workStatusesUpdated: { __typename?: 'WorkStatuses', isDepositDisabled: boolean, isWithdrawalDisabled: boolean, isSellDisabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiDisabled: boolean, isTinkoffDisabled: boolean } };
+export type WorkStatusesUpdatedSubscription = { __typename?: 'Subscription', workStatusesUpdated: { __typename?: 'WorkStatuses', isDepositEnabled: boolean, isWithdrawalEnabled: boolean, isSellEnabled: boolean, isMaintenance: boolean, isSteamProblems: boolean, isFuckup: boolean, isQiwiEnabled: boolean, isTinkoffEnabled: boolean } };
 
-export const RegularSteamBotFragmentDoc = gql`
-    fragment RegularSteamBot on SteamBotModel {
-  id
-  accountName
-  password
-  proxy
-  sharedSecret
-  identitySecret
-  avatar
-  name
-  profileUrl
-  tradeUrl
-  cookies
-  createdAt
-  updatedAt
-}
-    `;
 export const RegularCollectionFragmentDoc = gql`
     fragment RegularCollection on Collection {
   id
@@ -466,16 +459,72 @@ export const RegularProfileFragmentDoc = gql`
   serviceId
 }
     `;
+export const RegularUserFragmentDoc = gql`
+    fragment RegularUser on User {
+  id
+  name
+  role
+  avatar
+  tradeUrl
+  profiles {
+    ...RegularProfile
+  }
+}
+    ${RegularProfileFragmentDoc}`;
+export const RegularSteamBotFragmentDoc = gql`
+    fragment RegularSteamBot on SteamBotModel {
+  id
+  accountName
+  password
+  proxy
+  sharedSecret
+  identitySecret
+  avatar
+  name
+  profileUrl
+  tradeUrl
+  cookies
+  isDeactivated
+  createdAt
+  updatedAt
+}
+    `;
+export const RegularSellFragmentDoc = gql`
+    fragment RegularSell on Sell {
+  id
+  totalItemsPrice
+  paymentProvider
+  wallet
+  email
+  items {
+    ...RegularSkin
+  }
+  givenItem
+  user {
+    ...RegularUser
+  }
+  ip
+  userAgent
+  steamBot {
+    ...RegularSteamBot
+  }
+  status
+  createdAt
+  updatedAt
+}
+    ${RegularSkinFragmentDoc}
+${RegularUserFragmentDoc}
+${RegularSteamBotFragmentDoc}`;
 export const RegularWorkStatusesFragmentDoc = gql`
     fragment RegularWorkStatuses on WorkStatuses {
-  isDepositDisabled
-  isWithdrawalDisabled
-  isSellDisabled
+  isDepositEnabled
+  isWithdrawalEnabled
+  isSellEnabled
   isMaintenance
   isSteamProblems
   isFuckup
-  isQiwiDisabled
-  isTinkoffDisabled
+  isQiwiEnabled
+  isTinkoffEnabled
 }
     `;
 export const SteamBotsDocument = gql`
@@ -628,20 +677,47 @@ export function useMyInventoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type MyInventoryQueryHookResult = ReturnType<typeof useMyInventoryQuery>;
 export type MyInventoryLazyQueryHookResult = ReturnType<typeof useMyInventoryLazyQuery>;
 export type MyInventoryQueryResult = Apollo.QueryResult<MyInventoryQuery, MyInventoryQueryVariables>;
+export const CreateSellDocument = gql`
+    mutation createSell($dto: CreateSellInput!, $userId: ID!) {
+  createSell(dto: $dto, userId: $userId) {
+    ...RegularSell
+  }
+}
+    ${RegularSellFragmentDoc}`;
+export type CreateSellMutationFn = Apollo.MutationFunction<CreateSellMutation, CreateSellMutationVariables>;
+
+/**
+ * __useCreateSellMutation__
+ *
+ * To run a mutation, you first call `useCreateSellMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateSellMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createSellMutation, { data, loading, error }] = useCreateSellMutation({
+ *   variables: {
+ *      dto: // value for 'dto'
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useCreateSellMutation(baseOptions?: Apollo.MutationHookOptions<CreateSellMutation, CreateSellMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateSellMutation, CreateSellMutationVariables>(CreateSellDocument, options);
+      }
+export type CreateSellMutationHookResult = ReturnType<typeof useCreateSellMutation>;
+export type CreateSellMutationResult = Apollo.MutationResult<CreateSellMutation>;
+export type CreateSellMutationOptions = Apollo.BaseMutationOptions<CreateSellMutation, CreateSellMutationVariables>;
 export const MeDocument = gql`
     query me {
   me {
-    id
-    name
-    role
-    avatar
-    tradeUrl
-    profiles {
-      ...RegularProfile
-    }
+    ...RegularUser
   }
 }
-    ${RegularProfileFragmentDoc}`;
+    ${RegularUserFragmentDoc}`;
 
 /**
  * __useMeQuery__
