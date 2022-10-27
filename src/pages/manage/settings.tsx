@@ -61,14 +61,14 @@ const Settings: NextPage = () => {
   );
 
   const WORK_STATUSES_NAMES = {
-    isDepositDisabled: t("is_deposit_disabled"),
-    isWithdrawalDisabled: t("is_withdrawal_disabled"),
-    isSellDisabled: t("is_sell_disabled"),
+    isDepositEnabled: t("is_deposit_enabled"),
+    isWithdrawalEnabled: t("is_withdrawal_enabled"),
+    isSellEnabled: t("is_sell_enabled"),
     isMaintenance: t("is_maintenance"),
     isSteamProblems: t("is_steam_problems"),
     isFuckup: t("is_fuckup"),
-    isQiwiDisabled: t("is_qiwi_disabled"),
-    isTinkoffDisabled: t("is_tinkoff_disabled"),
+    isQiwiEnabled: t("is_qiwi_enabled"),
+    isTinkoffEnabled: t("is_tinkoff_enabled"),
   };
 
   return (

@@ -1,12 +1,12 @@
 fragment RegularWorkStatuses on WorkStatuses {
-  isDepositDisabled
-  isWithdrawalDisabled
-  isSellDisabled
+  isDepositEnabled
+  isWithdrawalEnabled
+  isSellEnabled
   isMaintenance
   isSteamProblems
   isFuckup
-  isQiwiDisabled
-  isTinkoffDisabled
+  isQiwiEnabled
+  isTinkoffEnabled
 }
 
 query workStatuses {

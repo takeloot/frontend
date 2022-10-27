@@ -1,0 +1,28 @@
+fragment RegularSell on Sell {
+  id
+  totalItemsPrice
+  paymentProvider
+  wallet
+  email
+  items {
+    ...RegularSkin
+  }
+  givenItem
+  user {
+    ...RegularUser
+  }
+  ip
+  userAgent
+  steamBot {
+    ...RegularSteamBot
+  }
+  status
+  createdAt
+  updatedAt
+}
+
+mutation createSell($dto: CreateSellInput!, $userId: ID!) {
+  createSell(dto: $dto, userId: $userId) {
+    ...RegularSell
+  }
+}

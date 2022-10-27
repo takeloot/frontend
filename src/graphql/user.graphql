@@ -4,16 +4,20 @@ fragment RegularProfile on Profile {
   serviceId
 }
 
+fragment RegularUser on User {
+  id
+  name
+  role
+  avatar
+  tradeUrl
+  profiles {
+    ...RegularProfile
+  }
+}
+
 query me {
   me {
-    id
-    name
-    role
-    avatar
-    tradeUrl
-    profiles {
-      ...RegularProfile
-    }
+    ...RegularUser
   }
 }
 

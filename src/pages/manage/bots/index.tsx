@@ -6,6 +6,7 @@ import {Cpu} from "react-feather";
 import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import clsx from "clsx";
 
 import {ManageLayout} from "_app/layouts";
 import {useSteamBotsQuery} from "_app/generated/graphql";
@@ -47,7 +48,9 @@ const Bots: NextPage = () => {
               <div className="text-lg">{bot.name || bot.accountName}</div>
               <div className="pt-1 text-cloud-dark">0 скинов</div>
               <div className="pt-1 text-cloud-dark">$ 0,01 / 0,01 ₽</div>
-              <div className="pt-1 text-green">{t("at_work")}</div>
+              <div className={clsx("pt-1", bot.isDeactivated ? "text-red" : "text-green")}>
+                {t(bot.isDeactivated ? "deactivated" : "at_work")}
+              </div>
             </div>
           ))}
         </div>

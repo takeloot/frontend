@@ -41,22 +41,22 @@ export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, 
   const isMaintenance = workStatuses?.isMaintenance || false;
   const isFuckup = workStatuses?.isFuckup || false;
   const isSteamProblems = workStatuses?.isSteamProblems || false;
-  const isSellDisabled = workStatuses?.isSellDisabled || false;
-  const isQiwiDisabled = workStatuses?.isQiwiDisabled || false;
-  const isTinkoffDisabled = workStatuses?.isTinkoffDisabled || false;
-  const isDepositDisabled = workStatuses?.isDepositDisabled || false;
-  const isWithdrawalDisabled = workStatuses?.isWithdrawalDisabled || false;
+  const isSellEnabled = workStatuses?.isSellEnabled || false;
+  const isQiwiEnabled = workStatuses?.isQiwiEnabled || false;
+  const isTinkoffEnabled = workStatuses?.isTinkoffEnabled || false;
+  const isDepositEnabled = workStatuses?.isDepositEnabled || false;
+  const isWithdrawalEnabled = workStatuses?.isWithdrawalEnabled || false;
 
   // TODO: Handle these statuses
   console.log({
     isMaintenance,
     isFuckup,
     isSteamProblems,
-    isSellDisabled,
-    isQiwiDisabled,
-    isTinkoffDisabled,
-    isDepositDisabled,
-    isWithdrawalDisabled,
+    isSellEnabled,
+    isQiwiEnabled,
+    isTinkoffEnabled,
+    isDepositEnabled,
+    isWithdrawalEnabled,
   });
 
   return (
