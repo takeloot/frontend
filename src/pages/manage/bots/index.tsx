@@ -45,7 +45,7 @@ const Bots: NextPage = () => {
               key={bot.id}
               className="box-content flex flex-col items-center rounded-lg border-2 border-gray bg-background p-4 text-center hover:cursor-pointer hover:border-gray-light hover:bg-background-dark"
             >
-              <div className="text-lg">{bot.name || bot.accountName}</div>
+              <div className="text-lg">{bot.name}</div>
               <div className="pt-1 text-cloud-dark">0 скинов</div>
               <div className="pt-1 text-cloud-dark">$ 0,01 / 0,01 ₽</div>
               <div className={clsx("pt-1", bot.isDeactivated ? "text-red" : "text-green")}>

@@ -1,12 +1,13 @@
 import React, {FC, useCallback, useMemo} from "react";
 
+import toast from "react-hot-toast";
 import {Trash} from "react-feather";
 import Image from "next/image";
 import {useTranslation} from "next-i18next";
 import clsx from "clsx";
 import {useQuery} from "@apollo/client";
 
-import {Skin} from "_app/generated/graphql";
+import {Skin, useCreateSellMutation, useMeQuery} from "_app/generated/graphql";
 
 import {SELL_LIST_QUERY, updateSellList} from "../user-inventory";
 
@@ -14,8 +15,11 @@ export const CartListing: FC = () => {
   const {t} = useTranslation("common");
 
   const {data: dataSellList} = useQuery(SELL_LIST_QUERY);
+  const userQuery = useMeQuery();
+  const [createSell, {loading}] = useCreateSellMutation();
 
   const selectedList = dataSellList.sellList;
+  const user = userQuery.data?.me;
 
   const handleDeselect = useCallback(
     (skin: Skin) => {
@@ -26,6 +30,47 @@ export const CartListing: FC = () => {
   );
 
   const lastSkinId = useMemo(() => selectedList.length && selectedList[selectedList.length - 1].id, [selectedList]);
+
+  const items = useMemo(
+    () =>
+      selectedList.map((skin: Skin) => ({
+        id: skin.id,
+        price: skin.price || 1,
+      })),
+    [selectedList],
+  );
+
+  // TODO: toast from hoc or hook later
+  const successNotify = useCallback(() => {
+    toast.success(t("trade_sent"), {
+      duration: 1500,
+      style: {
+        borderRadius: "0.5rem",
+        background: "#1E1F27",
+        color: "#FFFFFF",
+      },
+    });
+  }, [t]);
+
+  const handleCreateSell = useCallback(async () => {
+    if (!user) return;
+
+    const {data} = await createSell({
+      variables: {
+        dto: {
+          items,
+        },
+        userId: user?.id,
+      },
+    });
+
+    // TODO: Add error handling later
+
+    if (data?.createSell) {
+      updateSellList([]);
+      successNotify();
+    }
+  }, [createSell, items, successNotify, user]);
 
   return (
     <div className="relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
@@ -81,10 +126,10 @@ export const CartListing: FC = () => {
             </div>
           </div>
           <div
-            onClick={() => alert(t("sell"))}
+            onClick={handleCreateSell}
             className="rounded-lg bg-blue px-4 py-2 text-white hover:cursor-pointer hover:bg-blue-dark"
           >
-            {t("sell")}
+            {t(loading ? "loading" : "sell")}
           </div>
         </div>
       )}

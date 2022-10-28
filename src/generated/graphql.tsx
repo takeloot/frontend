@@ -308,19 +308,19 @@ export type WorkStatuses = {
   updatedAt: Scalars['DateTime'];
 };
 
-export type RegularSteamBotFragment = { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any };
+export type RegularSteamBotFragment = { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any };
 
 export type SteamBotsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SteamBotsQuery = { __typename?: 'Query', steamBots: Array<{ __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any }> };
+export type SteamBotsQuery = { __typename?: 'Query', steamBots: Array<{ __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any }> };
 
 export type SteamBotQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type SteamBotQuery = { __typename?: 'Query', steamBot?: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } | null };
+export type SteamBotQuery = { __typename?: 'Query', steamBot?: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } | null };
 
 export type RegularCollectionFragment = { __typename?: 'Collection', id: string, name: string, img: string };
 
@@ -343,7 +343,7 @@ export type MyInventoryQueryVariables = Exact<{
 
 export type MyInventoryQuery = { __typename?: 'Query', myInventory?: { __typename?: 'Inventory', id: string, createdAt: any, updatedAt: any, skins?: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }> | null } | null };
 
-export type RegularSellFragment = { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } };
+export type RegularSellFragment = { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } };
 
 export type CreateSellMutationVariables = Exact<{
   dto: CreateSellInput;
@@ -351,7 +351,7 @@ export type CreateSellMutationVariables = Exact<{
 }>;
 
 
-export type CreateSellMutation = { __typename?: 'Mutation', createSell: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, accountName: string, password: string, proxy?: string | null, sharedSecret: string, identitySecret: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, cookies: Array<string>, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
+export type CreateSellMutation = { __typename?: 'Mutation', createSell: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
 
 export type RegularProfileFragment = { __typename?: 'Profile', id: string, provider: string, serviceId: string };
 
@@ -474,16 +474,10 @@ export const RegularUserFragmentDoc = gql`
 export const RegularSteamBotFragmentDoc = gql`
     fragment RegularSteamBot on SteamBotModel {
   id
-  accountName
-  password
-  proxy
-  sharedSecret
-  identitySecret
   avatar
   name
   profileUrl
   tradeUrl
-  cookies
   isDeactivated
   createdAt
   updatedAt
