@@ -67,5 +67,6 @@
   "add": "Add",
   "deactivated": "Deactivated",
   "at_work": "At work",
-  "select_a_file": "Select a file"
+  "select_a_file": "Select a file",
+  "trade_sent": "Trade was successfully sent"
 }
