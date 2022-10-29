@@ -62,7 +62,7 @@ const Add: NextPage = () => {
 
       const token = await getToken();
       const sendQuery = async () =>
-        await axios.post("https://dev.takeloot.ru/steam-bot/create", formData, {
+        await axios.post("https://dev-api.takeloot.ru/steam-bot/create", formData, {
           headers: {
             Authorization: token,
             "Content-Type": "multipart/form-data",
