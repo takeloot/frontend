@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
-  const {steamName, steamImg, quality, price} = skin;
+  const {steamName, img, steamImg, quality, price} = skin;
 
   return (
     <div
@@ -22,9 +22,9 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
         "box-content rounded-lg border-2 border-gray bg-background p-4 hover:cursor-pointer",
       )}
     >
-      {!!steamImg && (
+      {(!!img || !!steamImg) && (
         <div className="relative mb-4 h-20 w-full text-center">
-          <Image src={steamImg} alt="CS:GO" layout="fill" objectFit="contain" />
+          <Image src={img || steamImg} alt="CS:GO" layout="fill" objectFit="contain" />
         </div>
       )}
       <div>
