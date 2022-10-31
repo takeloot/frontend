@@ -42,6 +42,7 @@ export enum EGame {
 export enum ESellStatus {
   AcceptedBySupport = 'ACCEPTED_BY_SUPPORT',
   Completed = 'COMPLETED',
+  Failed = 'FAILED',
   PayAcceptedByMerchant = 'PAY_ACCEPTED_BY_MERCHANT',
   PayRequestToMerchant = 'PAY_REQUEST_TO_MERCHANT',
   TradeAcceptedByUser = 'TRADE_ACCEPTED_BY_USER',
@@ -82,13 +83,12 @@ export type Mutation = {
   updateConnectionStatus: Scalars['Boolean'];
   updateMyTradeUrl: Scalars['Boolean'];
   updatePrice: SteamMarketItem;
-  updatePrices: SteamMarketItem;
+  updatePrices: Scalars['Boolean'];
 };
 
 
 export type MutationCreateSellArgs = {
   dto: CreateSellInput;
-  userId: Scalars['ID'];
 };
 
 
@@ -123,6 +123,8 @@ export type Profile = {
 
 export type Query = {
   __typename?: 'Query';
+  getSell?: Maybe<Sell>;
+  getUserActiveSell?: Maybe<Sell>;
   me: User;
   myInventory?: Maybe<Inventory>;
   searchByPrice: SteamMarketItem;
@@ -132,6 +134,11 @@ export type Query = {
   userInventory?: Maybe<Inventory>;
   users: Array<User>;
   workStatuses: WorkStatuses;
+};
+
+
+export type QueryGetSellArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -171,7 +178,7 @@ export type Sell = {
   __typename?: 'Sell';
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
-  givenItem: Scalars['String'];
+  givenItem?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   ip: Scalars['String'];
   items: Array<Skin>;
@@ -179,6 +186,7 @@ export type Sell = {
   status: ESellStatus;
   steamBot: SteamBotModel;
   totalItemsPrice: Scalars['Float'];
+  tradeId?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
   user: User;
   userAgent: Scalars['String'];
@@ -225,18 +233,12 @@ export type Skin = {
 
 export type SteamBotModel = {
   __typename?: 'SteamBotModel';
-  accountName: Scalars['String'];
   avatar?: Maybe<Scalars['String']>;
-  cookies: Array<Scalars['String']>;
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
-  identitySecret: Scalars['String'];
   isDeactivated: Scalars['Boolean'];
   name: Scalars['String'];
-  password: Scalars['String'];
   profileUrl: Scalars['String'];
-  proxy?: Maybe<Scalars['String']>;
-  sharedSecret: Scalars['String'];
   tradeUrl?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
@@ -259,7 +261,13 @@ export type Sticker = {
 
 export type Subscription = {
   __typename?: 'Subscription';
+  sellStatusChanged: Sell;
   workStatusesUpdated: WorkStatuses;
+};
+
+
+export type SubscriptionSellStatusChangedArgs = {
+  id: Scalars['ID'];
 };
 
 export type UpdatePriceInput = {
@@ -343,15 +351,33 @@ export type MyInventoryQueryVariables = Exact<{
 
 export type MyInventoryQuery = { __typename?: 'Query', myInventory?: { __typename?: 'Inventory', id: string, createdAt: any, updatedAt: any, skins?: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }> | null } | null };
 
-export type RegularSellFragment = { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } };
+export type RegularSellFragment = { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem?: string | null, ip: string, userAgent: string, status: ESellStatus, tradeId?: string | null, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } };
 
-export type CreateSellMutationVariables = Exact<{
-  dto: CreateSellInput;
-  userId: Scalars['ID'];
+export type GetSellQueryVariables = Exact<{
+  id: Scalars['String'];
 }>;
 
 
-export type CreateSellMutation = { __typename?: 'Mutation', createSell: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem: string, ip: string, userAgent: string, status: ESellStatus, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
+export type GetSellQuery = { __typename?: 'Query', getSell?: { __typename?: 'Sell', id: string, tradeId?: string | null, status: ESellStatus } | null };
+
+export type GetUserActiveSellQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserActiveSellQuery = { __typename?: 'Query', getUserActiveSell?: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem?: string | null, ip: string, userAgent: string, status: ESellStatus, tradeId?: string | null, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } } | null };
+
+export type CreateSellMutationVariables = Exact<{
+  dto: CreateSellInput;
+}>;
+
+
+export type CreateSellMutation = { __typename?: 'Mutation', createSell: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem?: string | null, ip: string, userAgent: string, status: ESellStatus, tradeId?: string | null, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
+
+export type SellStatusChangedSubscriptionVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type SellStatusChangedSubscription = { __typename?: 'Subscription', sellStatusChanged: { __typename?: 'Sell', id: string, totalItemsPrice: number, paymentProvider: string, wallet: string, email: string, givenItem?: string | null, ip: string, userAgent: string, status: ESellStatus, tradeId?: string | null, createdAt: any, updatedAt: any, items: Array<{ __typename?: 'Skin', id: string, appId: number, assetId: string, name?: string | null, img?: string | null, preview?: string | null, screenshot?: string | null, inspect?: string | null, float?: number | null, floatMin?: number | null, floatMax?: number | null, pattern?: number | null, quality?: string | null, rarity?: string | null, botPrice?: number | null, defaultPrice?: number | null, lowestPrice?: number | null, price?: number | null, overstockDiff?: number | null, hasHighDemand?: boolean | null, isUnsellable?: boolean | null, model3d?: string | null, fullName?: string | null, hasScreenshot: boolean, isStatTrak?: boolean | null, steamId: string, steamName: string, steamImg: string, isBlacklisted: boolean, collection?: Array<{ __typename?: 'Collection', id: string, name: string, img: string }> | null, case?: Array<{ __typename?: 'Case', id: string, name: string, img: string }> | null }>, user: { __typename?: 'User', id: string, name?: string | null, role: UserRole, avatar?: string | null, tradeUrl?: string | null, profiles?: Array<{ __typename?: 'Profile', id: string, provider: string, serviceId: string }> | null }, steamBot: { __typename?: 'SteamBotModel', id: string, avatar?: string | null, name: string, profileUrl: string, tradeUrl?: string | null, isDeactivated: boolean, createdAt: any, updatedAt: any } } };
 
 export type RegularProfileFragment = { __typename?: 'Profile', id: string, provider: string, serviceId: string };
 
@@ -503,6 +529,7 @@ export const RegularSellFragmentDoc = gql`
     ...RegularSteamBot
   }
   status
+  tradeId
   createdAt
   updatedAt
 }
@@ -671,9 +698,80 @@ export function useMyInventoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type MyInventoryQueryHookResult = ReturnType<typeof useMyInventoryQuery>;
 export type MyInventoryLazyQueryHookResult = ReturnType<typeof useMyInventoryLazyQuery>;
 export type MyInventoryQueryResult = Apollo.QueryResult<MyInventoryQuery, MyInventoryQueryVariables>;
+export const GetSellDocument = gql`
+    query getSell($id: String!) {
+  getSell(id: $id) {
+    id
+    tradeId
+    status
+  }
+}
+    `;
+
+/**
+ * __useGetSellQuery__
+ *
+ * To run a query within a React component, call `useGetSellQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSellQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSellQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetSellQuery(baseOptions: Apollo.QueryHookOptions<GetSellQuery, GetSellQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSellQuery, GetSellQueryVariables>(GetSellDocument, options);
+      }
+export function useGetSellLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSellQuery, GetSellQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSellQuery, GetSellQueryVariables>(GetSellDocument, options);
+        }
+export type GetSellQueryHookResult = ReturnType<typeof useGetSellQuery>;
+export type GetSellLazyQueryHookResult = ReturnType<typeof useGetSellLazyQuery>;
+export type GetSellQueryResult = Apollo.QueryResult<GetSellQuery, GetSellQueryVariables>;
+export const GetUserActiveSellDocument = gql`
+    query getUserActiveSell {
+  getUserActiveSell {
+    ...RegularSell
+  }
+}
+    ${RegularSellFragmentDoc}`;
+
+/**
+ * __useGetUserActiveSellQuery__
+ *
+ * To run a query within a React component, call `useGetUserActiveSellQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserActiveSellQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserActiveSellQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserActiveSellQuery(baseOptions?: Apollo.QueryHookOptions<GetUserActiveSellQuery, GetUserActiveSellQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserActiveSellQuery, GetUserActiveSellQueryVariables>(GetUserActiveSellDocument, options);
+      }
+export function useGetUserActiveSellLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserActiveSellQuery, GetUserActiveSellQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserActiveSellQuery, GetUserActiveSellQueryVariables>(GetUserActiveSellDocument, options);
+        }
+export type GetUserActiveSellQueryHookResult = ReturnType<typeof useGetUserActiveSellQuery>;
+export type GetUserActiveSellLazyQueryHookResult = ReturnType<typeof useGetUserActiveSellLazyQuery>;
+export type GetUserActiveSellQueryResult = Apollo.QueryResult<GetUserActiveSellQuery, GetUserActiveSellQueryVariables>;
 export const CreateSellDocument = gql`
-    mutation createSell($dto: CreateSellInput!, $userId: ID!) {
-  createSell(dto: $dto, userId: $userId) {
+    mutation createSell($dto: CreateSellInput!) {
+  createSell(dto: $dto) {
     ...RegularSell
   }
 }
@@ -694,7 +792,6 @@ export type CreateSellMutationFn = Apollo.MutationFunction<CreateSellMutation, C
  * const [createSellMutation, { data, loading, error }] = useCreateSellMutation({
  *   variables: {
  *      dto: // value for 'dto'
- *      userId: // value for 'userId'
  *   },
  * });
  */
@@ -705,6 +802,36 @@ export function useCreateSellMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateSellMutationHookResult = ReturnType<typeof useCreateSellMutation>;
 export type CreateSellMutationResult = Apollo.MutationResult<CreateSellMutation>;
 export type CreateSellMutationOptions = Apollo.BaseMutationOptions<CreateSellMutation, CreateSellMutationVariables>;
+export const SellStatusChangedDocument = gql`
+    subscription sellStatusChanged($id: ID!) {
+  sellStatusChanged(id: $id) {
+    ...RegularSell
+  }
+}
+    ${RegularSellFragmentDoc}`;
+
+/**
+ * __useSellStatusChangedSubscription__
+ *
+ * To run a query within a React component, call `useSellStatusChangedSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useSellStatusChangedSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSellStatusChangedSubscription({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSellStatusChangedSubscription(baseOptions: Apollo.SubscriptionHookOptions<SellStatusChangedSubscription, SellStatusChangedSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<SellStatusChangedSubscription, SellStatusChangedSubscriptionVariables>(SellStatusChangedDocument, options);
+      }
+export type SellStatusChangedSubscriptionHookResult = ReturnType<typeof useSellStatusChangedSubscription>;
+export type SellStatusChangedSubscriptionResult = Apollo.SubscriptionResult<SellStatusChangedSubscription>;
 export const MeDocument = gql`
     query me {
   me {

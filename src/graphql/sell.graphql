@@ -17,12 +17,33 @@ fragment RegularSell on Sell {
     ...RegularSteamBot
   }
   status
+  tradeId
   createdAt
   updatedAt
 }
 
-mutation createSell($dto: CreateSellInput!, $userId: ID!) {
-  createSell(dto: $dto, userId: $userId) {
+query getSell($id: String!) {
+  getSell(id: $id) {
+    id
+    tradeId
+    status
+  }
+}
+
+query getUserActiveSell {
+  getUserActiveSell {
+    ...RegularSell
+  }
+}
+
+mutation createSell($dto: CreateSellInput!) {
+  createSell(dto: $dto) {
+    ...RegularSell
+  }
+}
+
+subscription sellStatusChanged($id: ID!) {
+  sellStatusChanged(id: $id) {
     ...RegularSell
   }
 }

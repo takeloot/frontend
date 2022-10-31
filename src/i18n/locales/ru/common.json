@@ -68,5 +68,9 @@
   "deactivated": "Деактивирован",
   "at_work": "В работе",
   "select_a_file": "Выберите файл",
-  "trade_sent": "Трейд успешно отправлен"
+  "trade_sent": "Трейд успешно отправлен",
+  "trade_process": "Процесс обмена",
+  "looking_for_a_free_bot": "Ищем свободного бота...",
+  "making_an_offer": "Готовим оффер...",
+  "browser": "Браузер"
 }

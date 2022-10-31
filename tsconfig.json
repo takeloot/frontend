@@ -24,7 +24,7 @@
       "_app/*": ["./src/*"],
       "_mocks/*": ["./__mocks__/*"],
       "_components/*": ["./src/components/*"],
-      "_design-system/*": ["./src/design-system/*"],
+      "_primitives/*": ["./src/primitives/*"],
       "_core/*": ["./src/core/*"],
       "_constants/*": ["./src/constants/*"],
       "_i18n/*": ["./src/i18n/*"],

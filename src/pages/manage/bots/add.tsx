@@ -11,9 +11,9 @@ import {useTranslation} from "next-i18next";
 import FormData from "form-data";
 import axios from "axios";
 
+import {Button, Label, TextInput} from "_app/primitives";
 import {ManageLayout} from "_app/layouts";
 import {useSteamBotsQuery} from "_app/generated/graphql";
-import {Button, Label, TextInput} from "_app/design-system";
 
 // TODO: add form validation and error handling later
 // TODO: add success and error toast later
