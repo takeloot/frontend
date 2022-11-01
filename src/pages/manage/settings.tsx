@@ -100,7 +100,7 @@ const Settings: NextPage = () => {
                       />
                     </Switch>
                     <div className="ml-4 hover:cursor-pointer" onClick={() => handleToggle(workStatus)}>
-                      <div className="mb-1 text-lg">{getValueByKey(WORK_STATUSES_NAMES, workStatus.name)}</div>
+                      <div>{getValueByKey(WORK_STATUSES_NAMES, workStatus.name)}</div>
                     </div>
                   </div>
                 )

@@ -8,8 +8,10 @@ import Head from "next/head";
 import {useTranslation} from "next-i18next";
 import clsx from "clsx";
 
+import {humanizeRole} from "_app/utils";
+import {Avatar} from "_app/primitives";
 import {UserRole, useMeQuery} from "_app/generated/graphql";
-import {Loader, UserPanel} from "_app/components";
+import {Loader} from "_app/components";
 
 interface IProps {
   children: ReactNode;
@@ -89,41 +91,55 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
       </Head>
       <div className="flex h-screen flex-col scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full">
         <div className="flex flex-auto flex-row">
-          <div className="w-1/4 border-r border-r-gray p-4">
-            <div className="flex h-full flex-col justify-between">
+          <aside className="w-60 border-r border-r-gray p-4">
+            <div className="flex h-full w-full flex-col justify-between">
               <div>
                 <div className="mb-4 flex items-center justify-between rounded-lg p-2">
                   <Link href="/manage">
                     <div className="mr-12 text-lg font-semibold hover:cursor-pointer">takeloot</div>
                   </Link>
                 </div>
-                <div className="flex items-center justify-between rounded-lg border border-gray bg-surface p-2">
-                  <div>
-                    <div className="text-lg">{user?.name}</div>
-                    {/* TODO: Get role from api + dto */}
-                    <div className="text-cloud-dark">Сотрудник поддержки</div>
+                {user && (
+                  <div className="group flex w-full items-center justify-between rounded-lg border border-gray bg-surface p-2">
+                    {/* @ts-ignore: work in progress, will be fixed later */}
+                    {user.avatar && user.name && (
+                      <div className="relative flex flex-shrink-0">
+                        <Avatar.Root
+                          variant={Avatar.EVariant.Circle}
+                          alt={user.name}
+                          initials={user.name}
+                          src={user.avatar}
+                          online
+                        />
+                      </div>
+                    )}
+                    {user?.name && user?.role && (
+                      <div className="ml-2 flex-grow truncate text-sm">
+                        <div className="text-md block truncate">{user?.name}</div>
+                        {/* TODO: Get role from api + dto */}
+                        <div className="block truncate text-sm text-cloud-dark">{t(humanizeRole(user?.role))}</div>
+                      </div>
+                    )}
                   </div>
-                  {/* @ts-ignore: work in progress, will be fixed later */}
-                  <UserPanel user={user} />
-                </div>
+                )}
                 {/* Manage menu */}
                 <ul className="mt-8 flex w-full flex-col">
                   {PAGES.map((page, pageIdx) => {
                     const isActiveLink = router.pathname === page.url;
 
                     return (
-                      <li key={pageIdx} className="mb-2 w-full">
+                      <li key={pageIdx} className="mb-1 w-full">
                         <Link
                           href={page.disabled ? "#" : page.url}
                           className={clsx(
-                            "mr-6 flex w-full items-center rounded-lg px-4 py-2 duration-200",
+                            "mr-6 flex w-full items-center truncate rounded-lg px-3 py-2 duration-200",
                             page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
                             isActiveLink
                               ? "hover:white bg-blue text-white hover:bg-blue-dark"
                               : "text-cloud hover:bg-gray",
                           )}
                         >
-                          {page.icon} <div className="pl-2">{page.title}</div>
+                          {page.icon} <div className="truncate pl-2 text-sm">{page.title}</div>
                         </Link>
                       </li>
                     );
@@ -133,18 +149,18 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
               <Link
                 href="/"
                 className={clsx(
-                  "hover:white flex w-full items-center rounded-lg bg-gray px-4 py-2 text-white duration-200 hover:bg-gray-dark",
+                  "hover:white flex w-full items-center rounded-lg bg-gray px-3 py-2 text-white duration-200 hover:bg-gray-dark",
                 )}
               >
                 <div className="flex w-full flex-row items-center justify-center">
-                  <ArrowLeftCircle size={18} className="flex" />
-                  <div className="w-full pl-2">{t("log_back_on")}</div>
+                  <ArrowLeftCircle size={20} className="flex" />
+                  <div className="w-full truncate pl-2 text-sm">{t("back")}</div>
                 </div>
               </Link>
             </div>
-          </div>
+          </aside>
           <div className="w-full p-4">
-            <div>{title}</div>
+            <div className="truncate text-xl font-bold">{title}</div>
             <div className="mt-8 rounded-lg border border-gray bg-surface p-2">{children}</div>
           </div>
         </div>

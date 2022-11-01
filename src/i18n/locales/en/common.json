@@ -73,5 +73,9 @@
   "looking_for_a_free_bot": "Looking for a free bot",
   "making_an_offer": "Making an offer",
   "browser": "Browser",
-  "log_back_on": "Log back on"
+  "back": "back",
+  "creator": "Creator",
+  "admin": "Admin",
+  "support": "Support",
+  "user": "User"
 }
