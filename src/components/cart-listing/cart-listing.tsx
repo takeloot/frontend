@@ -9,8 +9,7 @@ import dayjs from "dayjs";
 import clsx from "clsx";
 import {useQuery} from "@apollo/client";
 
-import * as Dialog from "_app/primitives";
-import {Button} from "_app/primitives";
+import {Button, Dialog} from "_app/primitives";
 import {
   Skin,
   useCreateSellMutation,
@@ -118,7 +117,7 @@ export const CartListing: FC = () => {
   }, [createSell, items, onTradeDialogChange, t, user]);
 
   return (
-    <div className="w- relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
+    <div className="relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
       <div className="text-medium px-3 py-4 text-2xl">{t("sell_list")}</div>
       {!selectedList.length && (
         <div className="flex h-full w-full items-center">

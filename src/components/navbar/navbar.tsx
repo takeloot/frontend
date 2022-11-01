@@ -95,7 +95,7 @@ export const Navbar = () => {
       </div>
       <div className="flex flex-row items-center align-middle">
         <div className="mr-4 mt-1 flex flex-row items-center align-middle">
-          <div className="mr-2 flex h-2 w-2  animate-pulse rounded-full bg-green-dark align-middle" />
+          <div className="animate-pulse mr-2 flex h-2  w-2 rounded-full bg-green-dark align-middle" />
           <div className="text-sm font-bold text-green-dark">{online}</div>
         </div>
         <div className="mr-4 w-24">

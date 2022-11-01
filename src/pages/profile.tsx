@@ -5,10 +5,10 @@ import type {GetStaticProps, NextPage} from "next";
 import toast from "react-hot-toast";
 import {Check, Loader as LoaderIcon, X} from "react-feather";
 import Link from "next/link";
-import Image from "next/image";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
+import {Avatar} from "_app/primitives";
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery, useUpdateMyTradeUrlMutation} from "_app/generated/graphql";
 import {toastStyle} from "_app/constants/toast";
@@ -81,15 +81,16 @@ const Profile: NextPage = () => {
   return (
     <MainLayout>
       <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
-        {avatar && name && (
-          <div className="flex flex-row items-start justify-between rounded-lg border border-gray bg-surface p-2">
+        <div className="flex flex-row items-start justify-between rounded-lg border border-gray bg-surface p-2">
+          {avatar && name && (
             <div className="flex flex-row items-center">
-              <Image className="rounded-full" src={avatar} alt={name} height="40" width="40" loading="lazy" />
+              <Avatar.Root variant={Avatar.EVariant.Circle} alt={name} initials={name} src={avatar} />
               <div className="ml-4">{name}</div>
             </div>
-            {!!id && <CopyField title="id" text={id} />}
-          </div>
-        )}
+          )}
+          {!!id && <CopyField title="id" text={id} />}
+        </div>
+
         <div className="flex flex-col rounded-lg border border-gray bg-surface p-2">
           <div className="flex flex-row items-center justify-between">
             <div>{t("steam_account")}</div>
