@@ -217,15 +217,15 @@ export const CartListing: FC = () => {
                 </div>
                 {!loading && (
                   <div className="flex flex-row">
-                    <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`}>
-                      <a target="_blank" rel="noreferrer">
-                        <Button value="Steam" className="mr-2" />
-                      </a>
+                    <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`} target="_blank" rel="noreferrer">
+                      <Button value="Steam" className="mr-2" />
                     </Link>
-                    <Link href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}>
-                      <a target="_blank" rel="noreferrer">
-                        <Button value={t("browser")} />
-                      </a>
+                    <Link
+                      href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button value={t("browser")} />
                     </Link>
                   </div>
                 )}

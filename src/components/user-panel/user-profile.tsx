@@ -87,14 +87,13 @@ export const UserProfile = ({user}) => {
               return (
                 <Menu.Item key={title}>
                   {({active}) => (
-                    <Link href={url}>
-                      <a
-                        className={`${
-                          active ? "bg-gray " : ""
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
-                      >
-                        {t(title)}
-                      </a>
+                    <Link
+                      href={url}
+                      className={`${
+                        active ? "bg-gray " : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
+                    >
+                      {t(title)}
                     </Link>
                   )}
                 </Menu.Item>

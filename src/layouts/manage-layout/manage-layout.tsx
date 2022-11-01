@@ -113,35 +113,33 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
 
                     return (
                       <li key={pageIdx} className="mb-2 w-full">
-                        <Link href={page.disabled ? "#" : page.url}>
-                          <a
-                            className={clsx(
-                              "mr-6 flex w-full items-center rounded-lg px-4 py-2 duration-200",
-                              page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
-                              isActiveLink
-                                ? "hover:white bg-blue text-white hover:bg-blue-dark"
-                                : "text-cloud hover:bg-gray",
-                            )}
-                          >
-                            {page.icon} <div className="pl-2">{page.title}</div>
-                          </a>
+                        <Link
+                          href={page.disabled ? "#" : page.url}
+                          className={clsx(
+                            "mr-6 flex w-full items-center rounded-lg px-4 py-2 duration-200",
+                            page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
+                            isActiveLink
+                              ? "hover:white bg-blue text-white hover:bg-blue-dark"
+                              : "text-cloud hover:bg-gray",
+                          )}
+                        >
+                          {page.icon} <div className="pl-2">{page.title}</div>
                         </Link>
                       </li>
                     );
                   })}
                 </ul>
               </div>
-              <Link href="/">
-                <a
-                  className={clsx(
-                    "hover:white flex w-full items-center rounded-lg bg-gray px-4 py-2 text-white duration-200 hover:bg-gray-dark",
-                  )}
-                >
-                  <div className="flex w-full flex-row items-center justify-center">
-                    <ArrowLeftCircle size={18} className="flex" />
-                    <div className="w-full pl-2">Вернуться на сайт</div>
-                  </div>
-                </a>
+              <Link
+                href="/"
+                className={clsx(
+                  "hover:white flex w-full items-center rounded-lg bg-gray px-4 py-2 text-white duration-200 hover:bg-gray-dark",
+                )}
+              >
+                <div className="flex w-full flex-row items-center justify-center">
+                  <ArrowLeftCircle size={18} className="flex" />
+                  <div className="w-full pl-2">{t("log_back_on")}</div>
+                </div>
               </Link>
             </div>
           </div>

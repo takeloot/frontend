@@ -100,14 +100,13 @@ const Profile: NextPage = () => {
             <div className="flex flex-auto flex-col">
               <label className="my-4" htmlFor="tradeUrl">
                 <span>{t("trade_url")}</span>
-                <Link href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-4 text-blue hover:cursor-pointer hover:text-blue-dark"
-                  >
-                    {t("find_trade_url")}
-                  </a>
+                <Link
+                  href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url"
+                  className="ml-4 text-blue hover:cursor-pointer hover:text-blue-dark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("find_trade_url")}
                 </Link>
               </label>
               <div className="flex flex-row">
