@@ -2,10 +2,10 @@ import {Fragment, useCallback} from "react";
 
 import {useRouter} from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 import {useTranslation} from "next-i18next";
 import {Menu, Transition} from "@headlessui/react";
 
+import {Avatar} from "_app/primitives";
 import {useConfirmationDialog} from "_app/hooks";
 import {UserRole, useLogoutMutation} from "_app/generated/graphql";
 
@@ -57,7 +57,7 @@ export const UserProfile = ({user}) => {
   return (
     <Menu as="div" className="relative pt-2">
       <Menu.Button>
-        <Image className="rounded-full" src={avatar} alt={name} height="40" width="40" loading="lazy" />
+        <Avatar.Root variant={Avatar.EVariant.Circle} alt={name} initials={name} src={avatar} online />
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -87,14 +87,13 @@ export const UserProfile = ({user}) => {
               return (
                 <Menu.Item key={title}>
                   {({active}) => (
-                    <Link href={url}>
-                      <a
-                        className={`${
-                          active ? "bg-gray " : ""
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
-                      >
-                        {t(title)}
-                      </a>
+                    <Link
+                      href={url}
+                      className={`${
+                        active ? "bg-gray " : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray`}
+                    >
+                      {t(title)}
                     </Link>
                   )}
                 </Menu.Item>

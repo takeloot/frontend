@@ -91,12 +91,12 @@ const Settings: NextPage = () => {
                       checked={workStatus.value}
                       onChange={() => handleToggle(workStatus)}
                       className={`${workStatus.value ? "bg-blue" : "bg-cloud"}
-          relative inline-flex h-[30px] w-[58px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          transition-colors relative inline-flex h-[30px] w-[58px] shrink-0 cursor-pointer rounded-full border-2 border-transparent duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
                     >
                       <span
                         aria-hidden="true"
                         className={`${workStatus.value ? "translate-x-7" : "translate-x-0"}
-            pointer-events-none inline-block h-[26px] w-[26px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            transition pointer-events-none inline-block h-[26px] w-[26px] transform rounded-full bg-white shadow-lg ring-0 duration-200 ease-in-out`}
                       />
                     </Switch>
                     <div className="ml-4 hover:cursor-pointer" onClick={() => handleToggle(workStatus)}>

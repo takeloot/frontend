@@ -53,12 +53,12 @@ export const Title = (props: PropsWithChildren) => {
   return <_Title>{children}</_Title>;
 };
 
-interface RootProps extends PropsWithChildren, Pick<DialogPrimitive.DialogProps, "onOpenChange" | "open"> {
+interface IRootProps extends PropsWithChildren, Pick<DialogPrimitive.DialogProps, "onOpenChange" | "open"> {
   trigger?: ReactNode;
   showCloseIcon?: boolean;
 }
 
-export const Root = (props: RootProps) => {
+const Root = (props: IRootProps) => {
   const {onOpenChange, open, trigger, children, showCloseIcon = true} = props;
 
   return (
@@ -76,3 +76,5 @@ export const Root = (props: RootProps) => {
     </DialogPrimitive.Root>
   );
 };
+
+export {Root};

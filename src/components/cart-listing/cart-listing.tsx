@@ -9,8 +9,7 @@ import dayjs from "dayjs";
 import clsx from "clsx";
 import {useQuery} from "@apollo/client";
 
-import * as Dialog from "_app/primitives";
-import {Button} from "_app/primitives";
+import {Button, Dialog} from "_app/primitives";
 import {
   Skin,
   useCreateSellMutation,
@@ -118,7 +117,7 @@ export const CartListing: FC = () => {
   }, [createSell, items, onTradeDialogChange, t, user]);
 
   return (
-    <div className="w- relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
+    <div className="relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
       <div className="text-medium px-3 py-4 text-2xl">{t("sell_list")}</div>
       {!selectedList.length && (
         <div className="flex h-full w-full items-center">
@@ -218,15 +217,15 @@ export const CartListing: FC = () => {
                 </div>
                 {!loading && (
                   <div className="flex flex-row">
-                    <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`}>
-                      <a target="_blank" rel="noreferrer">
-                        <Button value="Steam" className="mr-2" />
-                      </a>
+                    <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`} target="_blank" rel="noreferrer">
+                      <Button value="Steam" className="mr-2" />
                     </Link>
-                    <Link href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}>
-                      <a target="_blank" rel="noreferrer">
-                        <Button value={t("browser")} />
-                      </a>
+                    <Link
+                      href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button value={t("browser")} />
                     </Link>
                   </div>
                 )}

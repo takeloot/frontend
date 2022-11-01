@@ -47,7 +47,7 @@ export const ConfirmationDialog: FC<IProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-surface p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="transition-all w-full max-w-md transform overflow-hidden rounded-lg bg-surface p-6 text-left align-middle shadow-xl">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                   {title}
                 </Dialog.Title>

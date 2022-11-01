@@ -77,16 +77,15 @@ export const Navbar = () => {
 
             return (
               <li key={pageIdx}>
-                <Link href={page.disabled ? "#" : page.url}>
-                  <a
-                    className={clsx(
-                      isActiveLink && "text-blue hover:text-blue",
-                      page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
-                      "mr-6 text-sm font-medium uppercase text-cloud hover:text-blue-light",
-                    )}
-                  >
-                    {page.title}
-                  </a>
+                <Link
+                  href={page.disabled ? "#" : page.url}
+                  className={clsx(
+                    isActiveLink && "text-blue hover:text-blue",
+                    page.disabled && "cursor-not-allowed text-cloud-dark hover:text-cloud-dark",
+                    "mr-6 text-sm font-medium uppercase text-cloud hover:text-blue-light",
+                  )}
+                >
+                  {page.title}
                 </Link>
               </li>
             );
@@ -95,7 +94,7 @@ export const Navbar = () => {
       </div>
       <div className="flex flex-row items-center align-middle">
         <div className="mr-4 mt-1 flex flex-row items-center align-middle">
-          <div className="mr-2 flex h-2 w-2  animate-pulse rounded-full bg-green-dark align-middle" />
+          <div className="animate-pulse mr-2 flex h-2  w-2 rounded-full bg-green-dark align-middle" />
           <div className="text-sm font-bold text-green-dark">{online}</div>
         </div>
         <div className="mr-4 w-24">
@@ -116,29 +115,27 @@ export const Navbar = () => {
                 <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-surface py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                   {router.locales?.map((language, languageIdx) => (
                     <Link href={router.asPath} locale={language} key={languageIdx}>
-                      <a>
-                        <Listbox.Option
-                          className={({active}) =>
-                            `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                              active ? "bg-gray text-white" : "text-white"
-                            }`
-                          }
-                          value={language}
-                        >
-                          {({selected}) => (
-                            <>
-                              <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
-                                {language.toUpperCase()}
+                      <Listbox.Option
+                        className={({active}) =>
+                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                            active ? "bg-gray text-white" : "text-white"
+                          }`
+                        }
+                        value={language}
+                      >
+                        {({selected}) => (
+                          <>
+                            <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                              {language.toUpperCase()}
+                            </span>
+                            {selected ? (
+                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
+                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
                               </span>
-                              {selected ? (
-                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
-                                  <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                </span>
-                              ) : null}
-                            </>
-                          )}
-                        </Listbox.Option>
-                      </a>
+                            ) : null}
+                          </>
+                        )}
+                      </Listbox.Option>
                     </Link>
                   ))}
                 </Listbox.Options>
