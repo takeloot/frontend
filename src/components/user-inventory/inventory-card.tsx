@@ -24,7 +24,14 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
     >
       {(!!img || !!steamImg) && (
         <div className="relative mb-4 h-20 w-full text-center">
-          <Image src={img || steamImg} alt="CS:GO" layout="fill" objectFit="contain" />
+          <Image
+            src={img || steamImg}
+            alt="CS:GO"
+            layout="fill"
+            objectFit="contain"
+            placeholder="blur"
+            blurDataURL={img || steamImg}
+          />
         </div>
       )}
       <div>

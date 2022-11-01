@@ -142,7 +142,14 @@ export const CartListing: FC = () => {
               >
                 <div className="flex flex-row items-center px-4">
                   <div className="relative mr-4 h-[100px] w-[100px] text-center">
-                    <Image src={skin.img || skin.steamImg} alt="CS:GO" layout="fill" objectFit="contain" />
+                    <Image
+                      src={skin.img || skin.steamImg}
+                      alt="CS:GO"
+                      layout="fill"
+                      objectFit="contain"
+                      placeholder="blur"
+                      blurDataURL={skin.img || skin.steamImg}
+                    />
                   </div>
                   <div>{skin.steamName}</div>
                 </div>
@@ -204,6 +211,8 @@ export const CartListing: FC = () => {
                                   alt="CS:GO"
                                   layout="fill"
                                   objectFit="scale-down"
+                                  placeholder="blur"
+                                  blurDataURL={skin.img || skin.steamImg}
                                 />
                               </div>
                             </div>
