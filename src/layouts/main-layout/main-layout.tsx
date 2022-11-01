@@ -34,30 +34,30 @@ export const MainLayout: FC<IProps> = ({children, title, withoutHeader = false, 
     },
   });
 
-  const {data} = workStatusesQuery;
+  // const {data} = workStatusesQuery;
 
-  const workStatuses = data?.workStatuses || null;
+  // const workStatuses = data?.workStatuses || null;
 
-  const isMaintenance = workStatuses?.isMaintenance || false;
-  const isFuckup = workStatuses?.isFuckup || false;
-  const isSteamProblems = workStatuses?.isSteamProblems || false;
-  const isSellEnabled = workStatuses?.isSellEnabled || false;
-  const isQiwiEnabled = workStatuses?.isQiwiEnabled || false;
-  const isTinkoffEnabled = workStatuses?.isTinkoffEnabled || false;
-  const isDepositEnabled = workStatuses?.isDepositEnabled || false;
-  const isWithdrawalEnabled = workStatuses?.isWithdrawalEnabled || false;
+  // const isMaintenance = workStatuses?.isMaintenance || false;
+  // const isFuckup = workStatuses?.isFuckup || false;
+  // const isSteamProblems = workStatuses?.isSteamProblems || false;
+  // const isSellEnabled = workStatuses?.isSellEnabled || false;
+  // const isQiwiEnabled = workStatuses?.isQiwiEnabled || false;
+  // const isTinkoffEnabled = workStatuses?.isTinkoffEnabled || false;
+  // const isDepositEnabled = workStatuses?.isDepositEnabled || false;
+  // const isWithdrawalEnabled = workStatuses?.isWithdrawalEnabled || false;
 
   // TODO: Handle these statuses
-  console.log({
-    isMaintenance,
-    isFuckup,
-    isSteamProblems,
-    isSellEnabled,
-    isQiwiEnabled,
-    isTinkoffEnabled,
-    isDepositEnabled,
-    isWithdrawalEnabled,
-  });
+  // console.log({
+  //   isMaintenance,
+  //   isFuckup,
+  //   isSteamProblems,
+  //   isSellEnabled,
+  //   isQiwiEnabled,
+  //   isTinkoffEnabled,
+  //   isDepositEnabled,
+  //   isWithdrawalEnabled,
+  // });
 
   return (
     <>

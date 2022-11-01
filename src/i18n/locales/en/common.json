@@ -68,5 +68,9 @@
   "deactivated": "Deactivated",
   "at_work": "At work",
   "select_a_file": "Select a file",
-  "trade_sent": "Trade was successfully sent"
+  "trade_sent": "Trade was successfully sent",
+  "trade_process": "Trade process",
+  "looking_for_a_free_bot": "Looking for a free bot",
+  "making_an_offer": "Making an offer",
+  "browser": "Browser"
 }

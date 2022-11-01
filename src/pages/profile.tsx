@@ -11,6 +11,7 @@ import {useTranslation} from "next-i18next";
 
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery, useUpdateMyTradeUrlMutation} from "_app/generated/graphql";
+import {toastStyle} from "_app/constants/toast";
 import {STEAM_TRADE_URL_REGEX} from "_app/constants";
 import {CopyField, Loader} from "_app/components";
 
@@ -51,28 +52,6 @@ const Profile: NextPage = () => {
     setTradeUrl("");
   }, []);
 
-  const successNotify = useCallback(() => {
-    toast.success(t("trade_url_successfully_updated"), {
-      duration: 1500,
-      style: {
-        borderRadius: "0.5rem",
-        background: "#1E1F27",
-        color: "#FFFFFF",
-      },
-    });
-  }, [t]);
-
-  const errorNotify = useCallback(() => {
-    toast.error(t("trade_url_update_failed"), {
-      duration: 1500,
-      style: {
-        borderRadius: "0.5rem",
-        background: "#1E1F27",
-        color: "#FFFFFF",
-      },
-    });
-  }, [t]);
-
   const handleTradeUrlSave = useCallback(async () => {
     if (!tradeUrlIsError && tradeUrl) {
       const {data} = await updateMyTradeUrlMutation({
@@ -88,12 +67,12 @@ const Profile: NextPage = () => {
       const tradeUrlUpdated = data?.updateMyTradeUrl;
 
       if (tradeUrlUpdated && !tradeUrlIsError) {
-        return successNotify();
+        return toast.success(t("trade_url_successfully_updated"), toastStyle);
       }
     }
 
-    return errorNotify();
-  }, [errorNotify, successNotify, tradeUrl, tradeUrlIsError, updateMyTradeUrlMutation]);
+    return toast.error(t("trade_url_update_failed"), toastStyle);
+  }, [t, tradeUrl, tradeUrlIsError, updateMyTradeUrlMutation]);
 
   if (userLoading) {
     return <Loader />;

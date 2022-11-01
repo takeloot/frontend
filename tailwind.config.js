@@ -76,7 +76,7 @@ const colors = {
 
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   purge: {
     enabled: true,
     options: {
@@ -104,6 +104,37 @@ module.exports = {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
     },
+    keyframes: {
+      // Dialog
+      "scale-fade-in": {
+        "0%": {opacity: 0, transform: "scale(.95)"},
+        "100%": {opacity: 1, transform: "scale(1)"},
+      },
+      "scale-fade-out": {
+        "0%": {opacity: 1, transform: "scale(1)"},
+        "100%": {opacity: 1, transform: "scale(.95)"},
+      },
+      "fade-in": {
+        "0%": {opacity: 0},
+        "100%": {opacity: 1},
+      },
+      "fade-out": {
+        "0%": {opacity: 1},
+        "100%": {opacity: 0},
+      },
+    },
+    animation: {
+      // Dialog
+      "scale-fade-in": "scale-fade-in 0.2s ease-in-out",
+      "scale-fade-out": "scale-fade-out 0.2s ease-in-out",
+      "fade-in": "fade-in 0.2s ease",
+      "fade-out": "fade-out 0.2s ease",
+    },
+    transitionProperty: {
+      button: "box-shadow, background-color, opacity",
+      input: "box-shadow, background-color, opacity",
+      link: "box-shadow, background-color, opacity",
+    },
   },
   variants: {
     typography: ["dark"],
@@ -112,5 +143,6 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("tailwind-scrollbar")({nocompatible: true}),
     require("@tailwindcss/forms"),
+    require("tailwindcss-radix")(),
   ],
 };

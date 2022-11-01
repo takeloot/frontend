@@ -5,6 +5,7 @@ import {Copy} from "react-feather";
 import {useTranslation} from "next-i18next";
 
 import {useCopyToClipboard} from "_app/hooks";
+import {toastStyle} from "_app/constants/toast";
 
 interface IProps {
   title: string;
@@ -15,39 +16,17 @@ export const CopyField: FC<IProps> = ({title, text}) => {
   const {t} = useTranslation("common");
   const [value, copy] = useCopyToClipboard();
 
-  const successNotify = useCallback(() => {
-    toast.success(t("successfully_copied"), {
-      duration: 1500,
-      style: {
-        borderRadius: "0.5rem",
-        background: "#1E1F27",
-        color: "#FFFFFF",
-      },
-    });
-  }, [t]);
-
-  const errorNotify = useCallback(() => {
-    toast.error(t("copy_failed"), {
-      duration: 1500,
-      style: {
-        borderRadius: "0.5rem",
-        background: "#1E1F27",
-        color: "#FFFFFF",
-      },
-    });
-  }, [t]);
-
   const handleCopy = useCallback(() => {
     if (!text) {
-      return errorNotify();
+      return toast.error(t("copy_failed"), toastStyle);
     }
 
     copy(text);
 
     console.log(t("successfully_copied"), value);
 
-    successNotify();
-  }, [text, value, t, copy, errorNotify, successNotify]);
+    return toast.success(t("successfully_copied"), toastStyle);
+  }, [text, value, t, copy]);
 
   return (
     <>
