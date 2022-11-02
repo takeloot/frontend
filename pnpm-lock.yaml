@@ -27,7 +27,6 @@ specifiers:
   '@typescript-eslint/parser': ^5.42.0
   autoprefixer: ^10.4.13
   axios: ^1.1.3
-  class-variance-authority: ^0.2.4
   clsx: ^1.2.1
   color: ^4.2.3
   dayjs: ^1.11.6
@@ -76,7 +75,6 @@ dependencies:
   '@radix-ui/react-tooltip': 1.0.2_knhnagtyfncgg2hpin7s37uixq
   '@takeloot/dto': github.com/takeloot/dto/d31ed01003581f82495ab5ac64ebb6916243e02d
   axios: 1.1.3
-  class-variance-authority: 0.2.4_typescript@4.8.4
   clsx: 1.2.1
   color: 4.2.3
   dayjs: 1.11.6
@@ -2910,17 +2908,6 @@ packages:
       google-libphonenumber: 3.2.31
       tslib: 2.4.1
       validator: 13.0.0
-    dev: false
-
-  /class-variance-authority/0.2.4_typescript@4.8.4:
-    resolution: {integrity: sha512-JJKn9ESARiNEBBRdTSPB9/SwaPb+wi19DMX/r8BVSyp1dxHa3JyUxa2GQjEVag5rBi+O3pL64UZ0XhnQsMz+3w==}
-    peerDependencies:
-      typescript: '>= 4.5.5 < 5'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 4.8.4
     dev: false
 
   /clean-stack/2.2.0:
