@@ -1,8 +1,8 @@
 import React, {FC, useEffect} from "react";
 
-import Link from "next/link";
 import {useTranslation} from "next-i18next";
 
+import {Button} from "_app/primitives";
 import {useUpdateConnectionStatusMutation} from "_app/generated/graphql";
 
 import {UserProfile} from "./user-profile";
@@ -29,11 +29,9 @@ export const UserPanel: FC = ({user}) => {
     <div>
       {!!user && <UserProfile user={user} />}
       {!user && (
-        <Link href="/api/auth/steam?continue=">
-          <div className="rounded-lg bg-blue py-2 px-4 duration-200 hover:cursor-pointer hover:bg-blue-dark">
-            {t("login_steam")}
-          </div>
-        </Link>
+        <Button href="/api/auth/steam?continue=">
+          {t("login_steam")}
+        </Button>
       )}
     </div>
   );

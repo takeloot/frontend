@@ -176,7 +176,7 @@ export const CartListing: FC = () => {
               <span>0.1 ₽</span>
             </div>
           </div>
-          <Button onClick={handleCreateSell} value={t(loading ? "loading" : "sell")} />
+          <Button onClick={handleCreateSell}>{t(loading ? "loading" : "sell")}</Button>
           <Dialog.Root open={isTradeProcessing} onOpenChange={onTradeDialogChange}>
             <Dialog.Title>{t("trade_process")}</Dialog.Title>
             {!!loading && <div className="mt-4 mb-72">{t("loading")}</div>}
@@ -227,14 +227,14 @@ export const CartListing: FC = () => {
                 {!loading && (
                   <div className="flex flex-row">
                     <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`} target="_blank" rel="noreferrer">
-                      <Button value="Steam" className="mr-2" />
+                      <Button className="mr-2">Steam</Button>
                     </Link>
                     <Link
                       href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Button value={t("browser")} />
+                      <Button>{t("browser")}</Button>
                     </Link>
                   </div>
                 )}

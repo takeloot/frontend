@@ -2,6 +2,8 @@ import React, {FC, Fragment} from "react";
 
 import {Dialog, Transition} from "@headlessui/react";
 
+import {Button} from "_app/primitives";
+
 interface IProps {
   open: boolean;
   title: string;
@@ -56,20 +58,21 @@ export const ConfirmationDialog: FC<IProps> = ({
                 </div>
 
                 <div className="mt-4">
-                  <button
-                    type="button"
-                    className="mr-4 inline-flex w-16 justify-center rounded-lg border border-transparent bg-red px-4 py-2 text-sm font-medium text-white focus:outline-none"
+                  <Button
+                    color="destructive"
                     onClick={onConfirm}
+                    
+                    // TODO: replace margin with <ButtonGroup /> primitive later
+                    className="mr-4"
                   >
                     {confirmText}
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex w-16 justify-center rounded-lg border border-transparent bg-gray px-4 py-2 text-sm font-medium  text-white focus:outline-none"
+                  </Button>
+                  <Button
+                    color="secondary"
                     onClick={onDismiss}
                   >
                     {dismissText}
-                  </button>
+                  </Button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
