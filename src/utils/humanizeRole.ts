@@ -1,4 +1,4 @@
-import { UserRole } from "_app/generated/graphql";
+import {UserRole} from "_app/generated/graphql";
 
 export const humanizeRole = (role: UserRole): string => {
   const translations = {

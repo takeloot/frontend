@@ -12,10 +12,10 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
+    "test-all": "pnpm check-format && pnpm check-lint && pnpm check-types && pnpm build",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
-    "codegen": "graphql-codegen --config codegen.yml",
-    "udeps": "yarn upgrade-interactive --latest"
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -35,6 +35,7 @@
     "form-data": "^4.0.0",
     "framer-motion": "^7.6.4",
     "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
     "graphql-ws": "^5.11.2",
     "iron-session": "^6.3.1",
     "lodash.isequal": "^4.5.0",
