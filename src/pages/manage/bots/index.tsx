@@ -8,6 +8,8 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 import clsx from "clsx";
 
+import {Tooltip} from "_app/primitives";
+import {Button} from "_app/primitives";
 import {ManageLayout} from "_app/layouts";
 import {useSteamBotsQuery} from "_app/generated/graphql";
 
@@ -21,11 +23,12 @@ const Bots: NextPage = () => {
     <ManageLayout title={t("bots")}>
       <div className="mb-4 flex items-center justify-between">
         <div className="text-lg">{t("bot_list")}</div>
-        <Link href="/manage/bots/add">
-          <div className="rounded-lg bg-blue py-2 px-4 duration-200 hover:cursor-pointer hover:bg-blue-dark">
-            {t("add_bot")}
-          </div>
-        </Link>
+        {/* TODO: Test primitive, change tooltip text later */}
+        <Tooltip.Root side="left" content={t("add_bot")}>
+          <Link href="/manage/bots/add">
+            <Button value={t("add_bot")} />
+          </Link>
+        </Tooltip.Root>
       </div>
       {!!loading && (
         <div className="flex flex-col items-center justify-center py-10">

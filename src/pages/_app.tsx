@@ -7,6 +7,7 @@ import {appWithTranslation} from "next-i18next";
 import {ApolloProvider} from "@apollo/client";
 
 import {useApollo} from "_app/services";
+import {Tooltip} from "_app/primitives";
 import {ConfirmationDialogProvider} from "_app/core";
 import {PUBLIC_API, TOAST_LIMIT} from "_app/constants";
 import {sellListVar} from "_app/components";
@@ -50,7 +51,9 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <ConfirmationDialogProvider>
       <ApolloProvider client={apolloClient}>
-        <Component {...pageProps} />
+        <Tooltip.Provider>
+          <Component {...pageProps} />
+        </Tooltip.Provider>
       </ApolloProvider>
     </ConfirmationDialogProvider>
   );
