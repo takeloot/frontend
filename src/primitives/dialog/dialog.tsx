@@ -63,6 +63,7 @@ const Root = (props: IRootProps) => {
 
   return (
     <DialogPrimitive.Root {...{onOpenChange, open}}>
+      {/* @ts-ignore */}
       {trigger && <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>}
       <_Overlay />
       <_Content>

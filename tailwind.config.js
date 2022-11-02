@@ -99,37 +99,38 @@ module.exports = {
         "gradient-radial-to-tl": "radial-gradient(115% 90% at 100% 100%, var(--tw-gradient-stops))",
         "gradient-radial-to-br": "radial-gradient(90% 115% at 0% 0%, var(--tw-gradient-stops))",
         "gradient-radial-to-bl": "radial-gradient(90% 115% at 100% 0%, var(--tw-gradient-stops))",
+        "gradient-radial-main": "radial-gradient(ellipse 80% 50% at 50% -20%, var(--tw-gradient-stops))",
       }),
     },
     fontFamily: {
       inter: ["Inter", "sans-serif"],
     },
-    keyframes: {
-      // Dialog
-      "scale-fade-in": {
-        "0%": {opacity: 0, transform: "scale(.95)"},
-        "100%": {opacity: 1, transform: "scale(1)"},
-      },
-      "scale-fade-out": {
-        "0%": {opacity: 1, transform: "scale(1)"},
-        "100%": {opacity: 1, transform: "scale(.95)"},
-      },
-      "fade-in": {
-        "0%": {opacity: 0},
-        "100%": {opacity: 1},
-      },
-      "fade-out": {
-        "0%": {opacity: 1},
-        "100%": {opacity: 0},
-      },
-    },
-    animation: {
-      // Dialog
-      "scale-fade-in": "scale-fade-in 0.2s ease-in-out",
-      "scale-fade-out": "scale-fade-out 0.2s ease-in-out",
-      "fade-in": "fade-in 0.2s ease",
-      "fade-out": "fade-out 0.2s ease",
-    },
+    // keyframes: {
+    //   // Dialog
+    //   "scale-fade-in": {
+    //     "0%": {opacity: 0, transform: "scale(.95)"},
+    //     "100%": {opacity: 1, transform: "scale(1)"},
+    //   },
+    //   "scale-fade-out": {
+    //     "0%": {opacity: 1, transform: "scale(1)"},
+    //     "100%": {opacity: 1, transform: "scale(.95)"},
+    //   },
+    //   "fade-in": {
+    //     "0%": {opacity: 0},
+    //     "100%": {opacity: 1},
+    //   },
+    //   "fade-out": {
+    //     "0%": {opacity: 1},
+    //     "100%": {opacity: 0},
+    //   },
+    // },
+    // animation: {
+    //   // Dialog
+    //   "scale-fade-in": "scale-fade-in 0.2s ease-in-out",
+    //   "scale-fade-out": "scale-fade-out 0.2s ease-in-out",
+    //   "fade-in": "fade-in 0.2s ease",
+    //   "fade-out": "fade-out 0.2s ease",
+    // },
     transitionProperty: {
       button: "box-shadow, background-color, opacity",
       input: "box-shadow, background-color, opacity",
