@@ -19,11 +19,11 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
       onClick={() => handleSelect(skin)}
       className={clsx(
         selected ? "hover:takeloot-gradient takeloot-gradient border-blue" : "hover:takeloot-gradient bg-gray",
-        "box-content rounded-lg border-2 border-gray bg-background p-4 hover:cursor-pointer",
+        "box-content rounded-lg border border-gray bg-background p-3 hover:cursor-pointer",
       )}
     >
       {(!!img || !!steamImg) && (
-        <div className="relative mb-4 h-20 w-full text-center">
+        <div className="relative mb-2 h-20 w-full text-center">
           <Image
             src={img || steamImg}
             alt="CS:GO"
@@ -35,9 +35,11 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
         </div>
       )}
       <div>
-        {!!quality && <div>{quality}</div>}
-        {!!steamName && <div>{steamName}</div>}
-        {!!price && <div>Price {price}</div>}
+        {/* {!!quality && <div>{quality}</div>} */}
+        {/* {!!steamName && <div>{steamName}</div>} */}
+        {/* {!!price && <div>Price {price}</div>} */}
+        <div className="text-sm text-cloud-dark">FT / 0.2066</div>
+        <div className="text-sm font-bold">44.64 $</div>
       </div>
     </div>
   );

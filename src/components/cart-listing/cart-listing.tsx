@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import clsx from "clsx";
 import {useQuery} from "@apollo/client";
 
-import {Button, Dialog} from "_app/primitives";
+import {Button, Dialog, Label, TextInput} from "_app/primitives";
 import {
   Skin,
   useCreateSellMutation,
@@ -117,27 +117,24 @@ export const CartListing: FC = () => {
   }, [createSell, items, onTradeDialogChange, t, user]);
 
   return (
-    <div className="relative flex h-full max-h-screen flex-col overflow-auto rounded-lg border border-gray bg-surface">
-      <div className="text-medium px-3 py-4 text-2xl">{t("sell_list")}</div>
-      {!selectedList.length && (
-        <div className="flex h-full w-full items-center">
-          <div className="flex w-full flex-col items-center pb-12">
-            <div className="flex w-full flex-col items-center pb-12">
+    <div className="relative flex h-full max-h-screen flex-col rounded-lg border border-gray bg-surface overflow-auto">
+      <div className="overflow-auto py-1 scrollbar-thin scrollbar-track-background-light/10 scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full h-full">
+        {!selectedList.length && (
+          <div className="flex h-full w-full items-center">
+            <div className="flex w-full flex-col items-center justify-center">
               <div>{t("sell_list_is_empy")}</div>
               <div className="text-cloud-dark">{t("add_items_to_list")}</div>
             </div>
           </div>
-        </div>
-      )}
-      {!!selectedList.length && (
-        <div className="scrollbar-thumb-rounded-ful mb-20 scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full">
-          <div>
+        )}
+        {!!selectedList.length && (
+          <div className="mb-20">
             {selectedList.map((skin: Skin) => (
               <div
                 key={skin.id}
                 className={clsx(
-                  "mx-2 box-content flex flex-row justify-between rounded-lg border border-gray bg-background hover:bg-background-light",
-                  lastSkinId === skin.id ? "mb-0" : "mb-2",
+                  "mx-1 box-content flex flex-row justify-between rounded-lg border border-gray bg-background hover:bg-background-light",
+                  lastSkinId === skin.id ? "mb-0" : "mb-1",
                 )}
               >
                 <div className="flex flex-row items-center px-4">
@@ -151,7 +148,24 @@ export const CartListing: FC = () => {
                       blurDataURL={skin.img || skin.steamImg}
                     />
                   </div>
-                  <div>{skin.steamName}</div>
+                  {/* <div>{skin.steamName}</div> */}
+                  <div className="flex flex-row mr-4">  
+                    <div className="text-sm text-cloud-dark">FT / 0.2066</div>
+                  </div>
+                  <div className="flex flex-col mr-4">  
+                    <div>{t("commission")}</div>
+                    <div className="text-cloud-dark pt-4 pb-4">5%</div>
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="mr-4">
+                      <Label name={t("you_will_get")} htmlFor="you_will_get" />
+                      <TextInput id="you_will_get" defaultValue="44.64" placeholder={t("you_will_get")} />
+                    </div>
+                    <div>
+                      <Label name={t("sale_price")} htmlFor="sale_price" />
+                      <TextInput id="sale_price" defaultValue="44.64" placeholder={t("sale_price")} />
+                    </div>
+                  </div>
                 </div>
                 <div
                   onClick={() => handleDeselect(skin)}
@@ -162,88 +176,88 @@ export const CartListing: FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
-      {!!selectedList.length && (
-        <div className="absolute bottom-0 flex w-full flex-row items-center justify-between bg-surface px-3 py-4">
-          <div className="flex flex-row items-center">
-            <div className="mr-6">
-              <span className="text-cloud-dark">{t("total_amount")}: </span>
-              <span>0.1 ₽</span>
+        )}
+        {!!selectedList.length && (
+          <div className="absolute bottom-0 flex w-full flex-row items-center justify-between bg-surface px-2 py-3">
+            <div className="flex flex-row items-center">
+              <div className="mr-6">
+                <span className="text-cloud-dark">{t("total_amount")}: </span>
+                <span>0.1 ₽</span>
+              </div>
+              <div>
+                <span className="text-cloud-dark">{t("you_will_get")}: </span>
+                <span>0.1 ₽</span>
+              </div>
             </div>
-            <div>
-              <span className="text-cloud-dark">{t("you_will_get")}: </span>
-              <span>0.1 ₽</span>
-            </div>
-          </div>
-          <Button onClick={handleCreateSell}>{t(loading ? "loading" : "sell")}</Button>
-          <Dialog.Root open={isTradeProcessing} onOpenChange={onTradeDialogChange}>
-            <Dialog.Title>{t("trade_process")}</Dialog.Title>
-            {!!loading && <div className="mt-4 mb-72">{t("loading")}</div>}
-            {!loading && error && <div className="mt-4 mb-72">{error?.message}</div>}
-            {!error && !loading && (
-              <div className="mt-4 mb-72 flex flex-row items-center justify-between rounded-lg bg-gray p-2">
-                <div className="flex w-auto flex-auto flex-row items-center">
-                  <div className="mr-2 flex items-center justify-center rounded-lg bg-surface p-3">
-                    <Clock size="18" />
-                  </div>
-                  {!!loading && <div>{t("looking_for_a_free_bot")}</div>}
-                  {!loading && createSellData && (
-                    <div>
-                      <div>{trade?.steamBot.name}</div>
-                      <div className="text-cloud-dark">{dayjs(trade?.steamBot.createdAt).format("DD/MM/YYYY")}</div>
+            <Button onClick={handleCreateSell}>{t(loading ? "loading" : "sell")}</Button>
+            <Dialog.Root open={isTradeProcessing} onOpenChange={onTradeDialogChange}>
+              <Dialog.Title>{t("trade_process")}</Dialog.Title>
+              {!!loading && <div className="mt-4 mb-72">{t("loading")}</div>}
+              {!loading && error && <div className="mt-4 mb-72">{error?.message}</div>}
+              {!error && !loading && (
+                <div className="mt-4 mb-72 flex flex-row items-center justify-between rounded-lg bg-gray p-2">
+                  <div className="flex w-auto flex-auto flex-row items-center">
+                    <div className="mr-2 flex items-center justify-center rounded-lg bg-surface p-3">
+                      <Clock size="18" />
                     </div>
-                  )}
-                </div>
-                <div className="flex flex-auto flex-row items-center">
-                  <div className="flex flex-row">
-                    {selectedList.map(
-                      (skin: Skin, idx: number) =>
-                        idx <= 2 && (
-                          <div
-                            key={skin.id}
-                            className={clsx("mr-2 box-content flex flex-row justify-between rounded-lg bg-surface")}
-                          >
-                            <div className="flex flex-row items-center justify-center px-4">
-                              <div className="relative h-[64px] w-[36px] text-center">
-                                <Image
-                                  src={skin.img || skin.steamImg}
-                                  alt="CS:GO"
-                                  layout="fill"
-                                  objectFit="scale-down"
-                                  placeholder="blur"
-                                  blurDataURL={skin.img || skin.steamImg}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        ),
+                    {!!loading && <div>{t("looking_for_a_free_bot")}</div>}
+                    {!loading && createSellData && (
+                      <div>
+                        <div>{trade?.steamBot.name}</div>
+                        <div className="text-cloud-dark">{dayjs(trade?.steamBot.createdAt).format("DD/MM/YYYY")}</div>
+                      </div>
                     )}
                   </div>
-                  <div className="ml-2 mr-2 flex items-center justify-center rounded-lg bg-surface p-3">
-                    <ArrowRight size="18" />
+                  <div className="flex flex-auto flex-row items-center">
+                    <div className="flex flex-row">
+                      {selectedList.map(
+                        (skin: Skin, idx: number) =>
+                          idx <= 2 && (
+                            <div
+                              key={skin.id}
+                              className={clsx("mr-2 box-content flex flex-row justify-between rounded-lg bg-surface")}
+                            >
+                              <div className="flex flex-row items-center justify-center px-4">
+                                <div className="relative h-[64px] w-[36px] text-center">
+                                  <Image
+                                    src={skin.img || skin.steamImg}
+                                    alt="CS:GO"
+                                    layout="fill"
+                                    objectFit="scale-down"
+                                    placeholder="blur"
+                                    blurDataURL={skin.img || skin.steamImg}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          ),
+                      )}
+                    </div>
+                    <div className="ml-2 mr-2 flex items-center justify-center rounded-lg bg-surface p-3">
+                      <ArrowRight size="18" />
+                    </div>
                   </div>
+                  {!loading && (
+                    <div className="flex flex-row">
+                      <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`} target="_blank" rel="noreferrer">
+                        <Button className="mr-2">Steam</Button>
+                      </Link>
+                      <Link
+                        href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <Button>{t("browser")}</Button>
+                      </Link>
+                    </div>
+                  )}
+                  {!!loading && <div className="mr-2">{t("making_an_offer")}</div>}
                 </div>
-                {!loading && (
-                  <div className="flex flex-row">
-                    <Link href={`steam://url/ShowTradeOffer/${trade?.tradeId}`} target="_blank" rel="noreferrer">
-                      <Button className="mr-2">Steam</Button>
-                    </Link>
-                    <Link
-                      href={`https://steamcommunity.com/tradeoffer/${trade?.tradeId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Button>{t("browser")}</Button>
-                    </Link>
-                  </div>
-                )}
-                {!!loading && <div className="mr-2">{t("making_an_offer")}</div>}
-              </div>
-            )}
-          </Dialog.Root>
-        </div>
-      )}
+              )}
+            </Dialog.Root>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -89,7 +89,7 @@ export const ManageLayout: FC<IProps> = ({children, title}) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex h-screen flex-col scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full">
+      <div className="flex h-screen flex-col scrollbar-thin scrollbar-track-background-light/10 scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full">
         <div className="flex flex-auto flex-row">
           <aside className="w-60 border-r border-r-gray p-4">
             <div className="flex h-full w-full flex-col justify-between">
