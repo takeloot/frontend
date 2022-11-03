@@ -38,7 +38,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
 
   const apolloClient = useApollo(pageProps, {
-    apiUrl: process.env.NODE_ENV !== "development" ? "wss://" : "ws://" + PUBLIC_API,
+    apiUrl: process.env.NODE_ENV !== "development" ? "wss://" + PUBLIC_API : "ws://" + PUBLIC_API,
     inMemoryCacheConfig: {typePolicies},
   });
 
