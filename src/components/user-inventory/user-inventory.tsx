@@ -90,7 +90,7 @@ export const UserInventory: FC = () => {
 
 const UserInventoryWrapper: FC<IUserInventoryWrapperProps> = ({children}) => {
   return (
-    <div className="grid max-h-screen gap-2 overflow-auto rounded-lg border border-gray bg-surface p-2 scrollbar-thin scrollbar-track-background-light scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="grid max-h-screen gap-1 overflow-auto rounded-lg border border-gray bg-surface p-1 scrollbar-thin scrollbar-track-background-light/10 scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
       {children}
     </div>
   );
