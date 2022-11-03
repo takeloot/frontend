@@ -12,7 +12,13 @@ interface IProps {
 }
 
 export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
-  const {steamName, img, steamImg, quality, price} = skin;
+  const {
+    // steamName, 
+    img, 
+    steamImg, 
+    // quality, 
+    // price
+  } = skin;
 
   return (
     <div
