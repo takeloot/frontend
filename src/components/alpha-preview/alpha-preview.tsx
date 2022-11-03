@@ -3,6 +3,8 @@ import React, {FC, Fragment, useState} from "react";
 import {useTranslation} from "next-i18next";
 import {Dialog, Transition} from "@headlessui/react";
 
+import {Button} from "_app/primitives";
+
 interface IAlphaPreviewModalProps {
   isOpen: boolean;
   closeModal: () => void;
@@ -23,12 +25,12 @@ export const AlphaPreview: FC = () => {
 
   return (
     <>
-      <div
+      <button
         onClick={openModal}
-        className="absolute right-4 bottom-4 rounded-lg bg-blue px-4 py-2 text-white hover:cursor-pointer hover:bg-blue-dark"
+        className="absolute right-4 bottom-4 rounded-lg bg-blue px-4 py-2 text-white hover:cursor-pointer duration-200 hover:duration-200 hover:bg-blue-dark text-sm"
       >
         {t("alpha_preview")}
-      </div>
+      </button>
       <AlphaPreviewModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
@@ -73,13 +75,11 @@ const AlphaPreviewModal: FC<IAlphaPreviewModalProps> = ({isOpen, closeModal}) =>
                 </div>
 
                 <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md bg-blue px-4 py-2 text-sm font-medium text-cloud duration-200 focus:outline-none hover:bg-blue-dark"
+                  <Button
                     onClick={closeModal}
                   >
                     {t("got_it_thanks")}
-                  </button>
+                  </Button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

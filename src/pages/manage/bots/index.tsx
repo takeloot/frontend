@@ -3,12 +3,10 @@ import React from "react";
 import type {GetStaticProps, NextPage} from "next";
 
 import {Cpu} from "react-feather";
-import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 import clsx from "clsx";
 
-import {Tooltip} from "_app/primitives";
 import {Button} from "_app/primitives";
 import {ManageLayout} from "_app/layouts";
 import {useSteamBotsQuery} from "_app/generated/graphql";
@@ -24,11 +22,7 @@ const Bots: NextPage = () => {
       <div className="mb-4 flex items-center justify-between">
         <div className="text-lg">{t("bot_list")}</div>
         {/* TODO: Test primitive, change tooltip text later */}
-        <Tooltip.Root side="left" content={t("add_bot")}>
-          <Link href="/manage/bots/add">
-            <Button value={t("add_bot")} />
-          </Link>
-        </Tooltip.Root>
+        <Button href="/manage/bots/add" tooltip={t("add_bot")}>{t("add_bot")}</Button>
       </div>
       {!!loading && (
         <div className="flex flex-col items-center justify-center py-10">

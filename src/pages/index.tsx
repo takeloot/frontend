@@ -2,10 +2,10 @@ import React from "react";
 
 import type {GetStaticProps, NextPage} from "next";
 
-import Link from "next/link";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 
+import {Button} from "_app/primitives";
 import {MainLayout} from "_app/layouts/main-layout";
 import {useMeQuery} from "_app/generated/graphql";
 
@@ -29,17 +29,11 @@ const Home: NextPage = () => {
           {t("fast_safe")}
         </div>
         {!user ? (
-          <Link href="/api/auth/steam?continue=">
-            <div className="rounded-lg bg-blue py-2 px-4 text-lg duration-200 hover:cursor-pointer hover:bg-blue-dark">
-              {t("login_steam")}
-            </div>
-          </Link>
+          <Button href="/api/auth/steam?continue=">
+            {t("login_steam")}
+          </Button>
         ) : (
-          <Link href="/sell">
-            <div className="rounded-lg bg-blue py-2 px-4 text-lg duration-200 hover:cursor-pointer hover:bg-blue-dark">
-              {t("start_selling")}
-            </div>
-          </Link>
+          <Button href="/sell">{t("start_selling")}</Button>
         )}
       </div>
     </MainLayout>

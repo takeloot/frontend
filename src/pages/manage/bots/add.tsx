@@ -2,6 +2,7 @@ import React, {useCallback, useMemo, useState} from "react";
 
 import type {GetStaticProps, NextPage} from "next";
 
+import toast from "react-hot-toast";
 import {FieldValues, useForm} from "react-hook-form";
 import {File} from "react-feather";
 import {useDropzone} from "react-dropzone";
@@ -14,6 +15,7 @@ import axios from "axios";
 import {Button, Label, TextInput} from "_app/primitives";
 import {ManageLayout} from "_app/layouts";
 import {useSteamBotsQuery} from "_app/generated/graphql";
+import {toastStyle} from "_app/constants/toast";
 
 // TODO: add form validation and error handling later
 // TODO: add success and error toast later
@@ -76,8 +78,8 @@ const Add: NextPage = () => {
           router.push("/manage/bots");
         }
       } catch (e) {
-        // @ts-ignore: update later
-        alert(`${e.message || e}`);
+        // @ts-ignore: fix later
+        toast.error(`${e.message || e}`, toastStyle);
       }
 
       setIsLoading(false);
@@ -125,7 +127,7 @@ const Add: NextPage = () => {
                 </div>
               </div>
             </div>
-            <Button onClick={handleCreateBot} value={isLoading ? t("loading") : t("add")} />
+            <Button onClick={handleCreateBot} loading={isLoading}>{isLoading ? t("loading") : t("add")}</Button>
           </div>
         </div>
       </form>

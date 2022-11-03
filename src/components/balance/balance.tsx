@@ -26,9 +26,9 @@ export const Balance: FC<IBalanceProps> = ({currency}) => {
 
   return (
     <Menu as="div" className="relative z-50 mr-4 pt-1">
-      <Button className="cursor-pointer rounded-lg bg-surface py-2 px-4 text-sm">{`${t(
+      <Button className="cursor-pointer rounded-lg bg-surface hover:bg-surface-light duration-200 hover:duration-200 py-2 px-4 text-sm">{`${t(
         "balance",
-      )} ${currentCur()}`}</Button>
+      )} ${currentCur()} 0.01`}</Button>
       <Items className="absolute right-0 mt-2 w-64 origin-top-right rounded-md bg-surface p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
         <Item as="div">
           <span>{t("current_balance")}</span>
