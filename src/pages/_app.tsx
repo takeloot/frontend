@@ -36,8 +36,9 @@ const typePolicies = {
 function MyApp({Component, pageProps}: AppProps) {
   const {toasts} = useToasterStore();
 
+
   const apolloClient = useApollo(pageProps, {
-    apiUrl: PUBLIC_API,
+    apiUrl: process.env.NODE_ENV !== "development" ? "wss://" : "ws://" + PUBLIC_API,
     inMemoryCacheConfig: {typePolicies},
   });
 
@@ -60,3 +61,4 @@ function MyApp({Component, pageProps}: AppProps) {
 }
 
 export default appWithTranslation(MyApp);
+

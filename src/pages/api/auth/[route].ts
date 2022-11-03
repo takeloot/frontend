@@ -1,10 +1,10 @@
 import {withIronSessionApiRoute} from "iron-session/next";
 
-import {IS_LOCAL, PUBLIC_API} from "_app/constants";
+import {PUBLIC_API} from "_app/constants";
 
 export const sessionOptions = {
   cookieName: "ts",
-  password: process.env["NEXT_SESSION_PASSWORD"] || "",
+  password: process.env.NEXT_SESSION_PASSWORD || "session_password",
 };
 
 // @ts-ignore: FIX LATER
@@ -13,7 +13,7 @@ async function provider(req, res) {
   const provider = req?.query?.route;
 
   const params = new URLSearchParams();
-  const protocol = IS_LOCAL ? "http" : "https";
+  const protocol = process.env.NODE_ENV !== "development" ? "https" : "http";
 
   params.set("code_handler", `${protocol}://${host}/api/auth/callback?`);
   params.set("redirect_uri", `${protocol}://${host}${req.query?.continue}`);
