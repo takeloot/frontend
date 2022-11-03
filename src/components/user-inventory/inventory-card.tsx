@@ -33,8 +33,9 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
           <Image
             src={img || steamImg}
             alt="CS:GO"
-            layout="fill"
-            objectFit="contain"
+            fill
+            sizes="100%"
+            className="object-contain"
             placeholder="blur"
             blurDataURL={img || steamImg}
           />

@@ -142,8 +142,9 @@ export const CartListing: FC = () => {
                     <Image
                       src={skin.img || skin.steamImg}
                       alt="CS:GO"
-                      layout="fill"
-                      objectFit="contain"
+                      fill
+                      sizes="100%"
+                      className="object-contain"
                       placeholder="blur"
                       blurDataURL={skin.img || skin.steamImg}
                     />
@@ -222,8 +223,9 @@ export const CartListing: FC = () => {
                                   <Image
                                     src={skin.img || skin.steamImg}
                                     alt="CS:GO"
-                                    layout="fill"
-                                    objectFit="scale-down"
+                                    fill
+                                    sizes="100%"
+                                    style="scale-down"
                                     placeholder="blur"
                                     blurDataURL={skin.img || skin.steamImg}
                                   />
