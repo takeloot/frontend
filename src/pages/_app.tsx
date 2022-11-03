@@ -4,6 +4,7 @@ import toast, {useToasterStore} from "react-hot-toast";
 import NProgress from "nprogress";
 import {Router} from "next/router";
 import {appWithTranslation} from "next-i18next";
+import * as Sentry from "@sentry/nextjs";
 import {ApolloProvider} from "@apollo/client";
 
 import {useApollo} from "_app/services";
@@ -33,9 +34,15 @@ const typePolicies = {
   },
 };
 
-function MyApp({Component, pageProps}: AppProps) {
-  const {toasts} = useToasterStore();
+const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
+function MyApp({Component, pageProps}: AppProps) {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    tracesSampleRate: 1.0,
+  });
+
+  const {toasts} = useToasterStore();
 
   const apolloClient = useApollo(pageProps, {
     apiUrl: process.env.NODE_ENV !== "development" ? "wss://" + PUBLIC_API : "ws://" + PUBLIC_API,

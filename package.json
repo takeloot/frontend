@@ -26,6 +26,7 @@
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-icons": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.0.2",
+    "@sentry/nextjs": "^7.17.4",
     "@takeloot/dto": "takeloot/dto",
     "axios": "^1.1.3",
     "clsx": "^1.2.1",
