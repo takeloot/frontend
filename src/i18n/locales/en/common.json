@@ -21,7 +21,7 @@
   "empty_inventory": "Your inventory is empty",
   "loading": "Loading",
   "something_went_wrong": "Something went wrong. Try again later.",
-  "login_steam": "Login with Steam",
+  "login_steam": "Sign in with Steam",
   "start_selling": "Start selling",
   "alpha_preview": "Alpha preview",
   "got_it_thanks": "Got it, thanks!",
@@ -79,5 +79,7 @@
   "support": "Support",
   "user": "User",
   "sale_price": "Sale price",
-  "commission": "Commission"
+  "commission": "Commission",
+  "logon": "Sign in",
+  "not_logged_in_text": "Steam authorization is required to use the website"
 }

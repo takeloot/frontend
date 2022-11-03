@@ -1,10 +1,12 @@
 import React, {FC, ReactNode, useCallback} from "react";
 
+import {User} from "react-feather";
 import {useTranslation} from "next-i18next";
 import {EGame} from "@takeloot/dto";
 import {gql, makeVar, useQuery} from "@apollo/client";
 
-import {Skin, useMyInventoryQuery} from "_app/generated/graphql";
+import { Button } from "_app/primitives";
+import {Skin, useMeQuery, useMyInventoryQuery} from "_app/generated/graphql";
 
 import {InventoryCard} from "./inventory-card";
 
@@ -28,6 +30,7 @@ interface IUserInventoryWrapperProps {
 export const UserInventory: FC = () => {
   const {t} = useTranslation("common");
 
+  const userQuery = useMeQuery();
   const {data, loading, error} = useMyInventoryQuery({
     variables: {
       appId: EGame.CSGO,
@@ -73,6 +76,21 @@ export const UserInventory: FC = () => {
     },
     [selectedList, handleDeselect, isSelected],
   );
+
+  const user = userQuery?.data?.me;
+
+  if (!user) {
+    return <div className="max-h-screen overflow-auto rounded-lg border border-gray bg-surface p-1 scrollbar-thin scrollbar-track-background-light/10 scrollbar-thumb-surface-light scrollbar-track-rounded-full scrollbar-thumb-rounded-full flex">
+      <div className="flex flex-col w-full items-center justify-center">
+        <div className="p-3 rounded-full bg-gray-light mb-4"><User size={18} /></div>
+        <div className="mb-2">{t("login_steam")}</div>
+        <div className="text-cloud-dark mb-4">{t("not_logged_in_text")}</div>
+        <Button href="/api/auth/steam?continue=">
+          {t("logon")}
+        </Button>
+      </div>
+    </div>;
+  }
 
   return (
     <UserInventoryWrapper>
