@@ -145,8 +145,6 @@ export const CartListing: FC = () => {
                       fill
                       sizes="100%"
                       className="object-contain"
-                      placeholder="blur"
-                      blurDataURL={skin.img || skin.steamImg}
                     />
                   </div>
                   {/* <div>{skin.steamName}</div> */}
@@ -225,9 +223,10 @@ export const CartListing: FC = () => {
                                     alt="CS:GO"
                                     fill
                                     sizes="100%"
-                                    style="scale-down"
-                                    placeholder="blur"
-                                    blurDataURL={skin.img || skin.steamImg}
+                                    style={{objectFit: "scale-down"}}
+                                    // fill
+                                    // sizes="100%"
+                                    // style="scale-down"
                                   />
                                 </div>
                               </div>

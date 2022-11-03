@@ -36,8 +36,6 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
             fill
             sizes="100%"
             className="object-contain"
-            placeholder="blur"
-            blurDataURL={img || steamImg}
           />
         </div>
       )}
