@@ -158,11 +158,11 @@ export const CartListing: FC = () => {
                   <div className="flex flex-row">
                     <div className="mr-4">
                       <Label name={t("you_will_get")} htmlFor="you_will_get" />
-                      <TextInput id="you_will_get" defaultValue="44.64" placeholder={t("you_will_get")} />
+                      <TextInput id="you_will_get" defaultValue={`${skin?.defaultPrice || 0}`} placeholder={t("you_will_get")} />
                     </div>
                     <div>
                       <Label name={t("sale_price")} htmlFor="sale_price" />
-                      <TextInput id="sale_price" defaultValue="44.64" placeholder={t("sale_price")} />
+                      <TextInput id="sale_price" defaultValue={`${skin?.defaultPrice || 0}`} placeholder={t("sale_price")} />
                     </div>
                   </div>
                 </div>

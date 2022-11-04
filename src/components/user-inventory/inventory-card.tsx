@@ -1,6 +1,7 @@
 import {FC} from "react";
 
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import clsx from "clsx";
 
 import {Skin} from "_app/generated/graphql";
@@ -12,11 +13,14 @@ interface IProps {
 }
 
 export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
+  const {t} = useTranslation("common");
+    
   const {
     // steamName, 
     img, 
     steamImg, 
     // quality, 
+    defaultPrice,
     // price
   } = skin;
 
@@ -44,7 +48,10 @@ export const InventoryCard: FC<IProps> = ({skin, selected, handleSelect}) => {
         {/* {!!steamName && <div>{steamName}</div>} */}
         {/* {!!price && <div>Price {price}</div>} */}
         <div className="text-sm text-cloud-dark">FT / 0.2066</div>
-        <div className="text-sm font-bold">44.64 $</div>
+        {/* TODO: replace with price field later */}
+        <div className="text-sm font-bold">
+          {defaultPrice === 0 ? t("unavailable") : `$ ${defaultPrice}`}
+        </div>
       </div>
     </div>
   );
