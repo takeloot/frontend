@@ -1,0 +1,34 @@
+fragment RegularProfile on Profile {
+  id
+  provider
+  serviceId
+}
+
+fragment RegularUser on User {
+  id
+  name
+  role
+  avatar
+  tradeUrl
+  profiles {
+    ...RegularProfile
+  }
+}
+
+query me {
+  me {
+    ...RegularUser
+  }
+}
+
+mutation logout {
+  logout
+}
+
+mutation updateConnectionStatus {
+  updateConnectionStatus
+}
+
+mutation updateMyTradeUrl($tradeUrl: String!) {
+  updateMyTradeUrl(tradeUrl: $tradeUrl)
+}

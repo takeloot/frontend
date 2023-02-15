@@ -1,0 +1,49 @@
+fragment RegularSell on Sell {
+  id
+  totalItemsPrice
+  paymentProvider
+  wallet
+  email
+  items {
+    ...RegularSkin
+  }
+  givenItem
+  user {
+    ...RegularUser
+  }
+  ip
+  userAgent
+  steamBot {
+    ...RegularSteamBot
+  }
+  status
+  tradeId
+  createdAt
+  updatedAt
+}
+
+query getSell($id: String!) {
+  getSell(id: $id) {
+    id
+    tradeId
+    status
+  }
+}
+
+query getUserActiveSell {
+  getUserActiveSell {
+    ...RegularSell
+  }
+}
+
+mutation createSell($dto: CreateSellInput!) {
+  createSell(dto: $dto) {
+    ...RegularSell
+  }
+}
+
+subscription sellStatusChanged($id: ID!) {
+  sellStatusChanged(id: $id) {
+    ...RegularSell
+  }
+}
