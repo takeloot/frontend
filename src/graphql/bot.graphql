@@ -1,0 +1,22 @@
+fragment RegularSteamBot on SteamBotModel {
+  id
+  avatar
+  name
+  profileUrl
+  tradeUrl
+  isDeactivated
+  createdAt
+  updatedAt
+}
+
+query steamBots {
+  steamBots {
+    ...RegularSteamBot
+  }
+}
+
+query steamBot($id: ID!) {
+  steamBot(id: $id) {
+    ...RegularSteamBot
+  }
+}
